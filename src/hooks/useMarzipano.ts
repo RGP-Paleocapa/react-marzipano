@@ -16,8 +16,8 @@ export const useMarzipano = (panoRef: RefObject<HTMLDivElement>, appData: AppDat
     const viewer = new Marzipano.Viewer(panoRef.current, viewerOpts);
     const sceneObjects = scenes.map(data => {
       const source = Marzipano.ImageUrlSource.fromString(
-        `/assets/tiles/${data.id}/{z}/{f}/{y}/{x}.jpg`,
-        { cubeMapPreviewUrl: `/assets/tiles/${data.id}/preview.jpg` }
+        `/react-marzipano/assets/tiles/${data.id}/{z}/{f}/{y}/{x}.jpg`,
+        { cubeMapPreviewUrl: `/react-marzipano/assets/tiles/${data.id}/preview.jpg` }
       );
 
       const geometry = new Marzipano.CubeGeometry(data.levels);
