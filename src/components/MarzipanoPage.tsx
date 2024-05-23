@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import '../styles/style.css';
+import 'tailwindcss/tailwind.css'; // Ensure Tailwind CSS is imported
 import { AppData } from '../types/marzipano-types';
 import { useMarzipano } from '../hooks/useMarzipano';
 import APP_DATA from '../data/config.json';
@@ -12,7 +12,7 @@ const MarzipanoPage: React.FC<MarzipanoPageProps> = ({ currentSceneIndex }) => {
   const panoRef = useRef<HTMLDivElement>(null);
   useMarzipano(panoRef, APP_DATA as AppData, currentSceneIndex);
 
-  return <div id='pano' ref={panoRef} style={{ width: '100%', height: '100%' }}></div>;
+  return <div id='pano' ref={panoRef} className="absolute top-0 left-0 w-full h-full overflow-hidden"></div>;
 };
 
 export default MarzipanoPage;

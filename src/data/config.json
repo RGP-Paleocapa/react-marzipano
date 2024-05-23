@@ -19,7 +19,7 @@
       },
       "linkHotspots": [
         {
-          "yaw": 1.5,
+          "yaw": -0.2,
           "pitch": 0,
           "rotation": 0,
           "target": "scene2",
@@ -27,7 +27,26 @@
           "text": "Go to scene 2"
         }
       ],
-      "infoHotspots": []
+      "infoHotspots": [
+        {
+          "yaw": 0.28,
+          "pitch": -0.18,
+          "title": "Sample Hotspot",
+          "infoText": "This is a sample info hotspot."
+        },
+        {
+          "yaw": 1.2424,
+          "pitch": 0,
+          "title": "Exit Hotspot",
+          "infoText": "This is a sample info hotspot."
+        },
+        {
+          "yaw": -1.2424,
+          "pitch": -0.6,
+          "title": "Roof Hotspot",
+          "infoText": "This is a sample info hotspot."
+        }
+      ]
     },
     {
       "id": "1-02",
