@@ -1,5 +1,5 @@
 # Site
-- <a href="https://rgp-paleocapa.github.io/react-marzipano/" target="_blank" rel="noopener noreferrer">React Marzipano</a>
+- [React Marzipano](https://rgp-paleocapa.github.io/react-marzipano/)
 
 
 # React + TypeScript + Vite
