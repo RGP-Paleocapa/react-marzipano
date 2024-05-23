@@ -1,13 +1,3 @@
-export interface Scene {
-  id: string;
-  name: string;
-  levels: Level[];
-  faceSize: number;
-  initialViewParameters: InitialViewParameters;
-  linkHotspots: LinkHotspot[];
-  infoHotspots: InfoHotspot[];
-}
-
 export interface Level {
   tileSize: number;
   size: number;
@@ -20,18 +10,6 @@ export interface InitialViewParameters {
   fov: number;
 }
 
-export interface Settings {
-  mouseViewMode: string;
-  autorotateEnabled: boolean;
-  fullscreenButton: boolean;
-  viewControlButtons: boolean;
-}
-
-export interface AppData {
-  settings: Settings;
-  scenes: Scene[];
-}
-
 export interface BaseHotspot {
   yaw: number;
   pitch: number;
@@ -39,12 +17,38 @@ export interface BaseHotspot {
 }
 
 export interface LinkHotspot extends BaseHotspot {
-  rotation?: number;  // This could represent rotation angle, if applicable
-  target: string;  // Target scene id
-  isRed: boolean;  // Example attribute for specific styling or behavior
+  rotation?: number;  
+  target: string;  
+  isRed: boolean;  
 }
 
 export interface InfoHotspot extends BaseHotspot {
-  title: string;  // Title for the information hotspot
-  infoText: string;  // Detailed text for the hotspot
+  title: string;  
+  infoText: string;  
+}
+
+export interface Scene {
+  id: string;
+  name: string;
+  initialViewParameters: InitialViewParameters;
+  linkHotspots: LinkHotspot[];
+  infoHotspots: InfoHotspot[];
+}
+
+export interface Settings {
+  mouseViewMode: string;
+  autorotateEnabled: boolean;
+  fullscreenButton: boolean;
+  viewControlButtons: boolean;
+}
+
+export interface Common {
+  levels: Level[];
+  faceSize: number;
+}
+
+export interface AppData {
+  settings: Settings;
+  scenes: Scene[];
+  common: Common;
 }

@@ -6,7 +6,7 @@ export const useMarzipano = (panoRef: RefObject<HTMLDivElement>, appData: AppDat
   useEffect(() => {
     if (!panoRef.current) return;
 
-    const { settings, scenes } = appData;
+    const { settings, scenes, common } = appData;
     const viewerOpts = {
       controls: {
         mouseViewMode: settings.mouseViewMode
@@ -14,14 +14,20 @@ export const useMarzipano = (panoRef: RefObject<HTMLDivElement>, appData: AppDat
     };
 
     const viewer = new Marzipano.Viewer(panoRef.current, viewerOpts);
+    const basePrefix = "react-marzipano"; // NAME of the project / repository
+
     const sceneObjects = scenes.map(data => {
       const source = Marzipano.ImageUrlSource.fromString(
-        `/react-marzipano/assets/tiles/${data.id}/{z}/{f}/{y}/{x}.jpg`,
-        { cubeMapPreviewUrl: `/react-marzipano/assets/tiles/${data.id}/preview.jpg` }
+        `/${basePrefix}/assets/tiles/${data.id}/{z}/{f}/{y}/{x}.jpg`,
+        { cubeMapPreviewUrl: `/${basePrefix}/assets/tiles/${data.id}/preview.jpg` }
       );
 
-      const geometry = new Marzipano.CubeGeometry(data.levels);
-      const limiter = Marzipano.RectilinearView.limit.traditional(data.faceSize, 100 * Math.PI / 180, 120 * Math.PI / 180);
+      // Common data
+      const levels = common.levels;
+      const faceSize = common.faceSize;
+
+      const geometry = new Marzipano.CubeGeometry(levels);
+      const limiter = Marzipano.RectilinearView.limit.traditional(faceSize, 100 * Math.PI / 180, 120 * Math.PI / 180);
       const view = new Marzipano.RectilinearView(data.initialViewParameters, limiter);
 
       return viewer.createScene({

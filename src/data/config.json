@@ -1,15 +1,17 @@
 {
+  "common": {
+    "levels": [
+      { "tileSize": 256, "size": 256, "fallbackOnly": true },
+      { "tileSize": 512, "size": 512 },
+      { "tileSize": 512, "size": 1024 },
+      { "tileSize": 512, "size": 2048 }
+    ],
+    "faceSize": 1520
+  },
   "scenes": [
     {
       "id": "0-01",
       "name": "01",
-      "levels": [
-        { "tileSize": 256, "size": 256, "fallbackOnly": true },
-        { "tileSize": 512, "size": 512 },
-        { "tileSize": 512, "size": 1024 },
-        { "tileSize": 512, "size": 2048 }
-      ],
-      "faceSize": 1520,
       "initialViewParameters": {
         "pitch": 0,
         "yaw": 0,
@@ -30,13 +32,6 @@
     {
       "id": "1-02",
       "name": "02",
-      "levels": [
-        { "tileSize": 256, "size": 256, "fallbackOnly": true },
-        { "tileSize": 512, "size": 512 },
-        { "tileSize": 512, "size": 1024 },
-        { "tileSize": 512, "size": 2048 }
-      ],
-      "faceSize": 1520,
       "initialViewParameters": {
         "pitch": 0,
         "yaw": 0,
@@ -48,13 +43,6 @@
     {
       "id": "2-03",
       "name": "03",
-      "levels": [
-        { "tileSize": 256, "size": 256, "fallbackOnly": true },
-        { "tileSize": 512, "size": 512 },
-        { "tileSize": 512, "size": 1024 },
-        { "tileSize": 512, "size": 2048 }
-      ],
-      "faceSize": 1520,
       "initialViewParameters": {
         "pitch": 0,
         "yaw": 0,
@@ -66,13 +54,6 @@
     {
       "id": "3-04",
       "name": "04",
-      "levels": [
-        { "tileSize": 256, "size": 256, "fallbackOnly": true },
-        { "tileSize": 512, "size": 512 },
-        { "tileSize": 512, "size": 1024 },
-        { "tileSize": 512, "size": 2048 }
-      ],
-      "faceSize": 1520,
       "initialViewParameters": {
         "pitch": 0,
         "yaw": 0,
@@ -84,13 +65,6 @@
     {
       "id": "4-05",
       "name": "05",
-      "levels": [
-        { "tileSize": 256, "size": 256, "fallbackOnly": true },
-        { "tileSize": 512, "size": 512 },
-        { "tileSize": 512, "size": 1024 },
-        { "tileSize": 512, "size": 2048 }
-      ],
-      "faceSize": 1520,
       "initialViewParameters": {
         "pitch": 0,
         "yaw": 0,
