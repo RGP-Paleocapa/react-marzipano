@@ -10,87 +10,207 @@
   },
   "scenes": [
     {
-      "id": "0-01",
-      "name": "01",
+      "id": "0-museo-1",
+      "name": "Museo", 
       "initialViewParameters": {
-        "pitch": 0,
-        "yaw": 0,
-        "fov": 1.5707963267948966
+        "yaw": 0.0073876370454897256,
+        "pitch": 0.004988716927911696,
+        "fov": 1.4550425388027854
       },
       "linkHotspots": [
         {
-          "yaw": -0.2,
-          "pitch": 0,
-          "rotation": 0,
-          "target": "scene2",
-          "isRed": false,
-          "text": "Go to scene 2"
+          "yaw": -0.23817464724527682,
+          "pitch": 0.10231538244980953,
+          "rotation": 12.566370614359176,
+          "target": "2-ingresso-museo-primo-locale-1",
+          "isRed": true
+        },
+        {
+          "yaw": 1.5088723555172425,
+          "pitch": 0.2764355655316546,
+          "rotation": 4.71238898038469,
+          "target": "1-museo-2",
+          "isRed": false
         }
       ],
       "infoHotspots": [
         {
-          "yaw": 0.28,
-          "pitch": -0.18,
-          "title": "Sample Hotspot",
-          "infoText": "This is a sample info hotspot."
-        },
-        {
-          "yaw": 1.2424,
-          "pitch": 0,
-          "title": "Exit Hotspot",
-          "infoText": "This is a sample info hotspot."
-        },
-        {
-          "yaw": -1.2424,
-          "pitch": -0.6,
-          "title": "Roof Hotspot",
-          "infoText": "This is a sample info hotspot."
+          "yaw": 0.47983935090504026,
+          "pitch": -0.24488264090410183,
+          "title": "Museo Valdimagnino di Amagno",
+          "infoText": "entrata"
         }
       ]
     },
     {
-      "id": "1-02",
-      "name": "02",
+      "id": "1-museo-2",
+      "name": "Museo",
       "initialViewParameters": {
-        "pitch": 0,
-        "yaw": 0,
-        "fov": 1.5707963267948966
+        "yaw": -0.33247259182996913,
+        "pitch": 0.15215586630126765,
+        "fov": 1.4550425388027854
       },
-      "linkHotspots": [],
-      "infoHotspots": []
+      "linkHotspots": [
+        {
+          "yaw": 0.7585240356298737,
+          "pitch": 0.06473834479165141,
+          "rotation": 5.497787143782138,
+          "target": "13-piazzetta-esterna-3",
+          "isRed": false
+        },
+        {
+          "yaw": -1.763085814502526,
+          "pitch": 0.19675875920273,
+          "rotation": 1.5707963267948966,
+          "target": "0-museo-1",
+          "isRed": true
+        }
+      ],
+      "infoHotspots": [
+        {
+          "yaw": -1.3964035004162216,
+          "pitch": -0.2144186852938219,
+          "title": "Museo Valdimagnino di Amagno",
+          "infoText": "Text"
+        }
+      ]
     },
     {
-      "id": "2-03",
-      "name": "03",
+      "id": "2-ingresso-museo-primo-locale-1",
+      "name": "Ingresso Museo - primo locale",
       "initialViewParameters": {
-        "pitch": 0,
-        "yaw": 0,
-        "fov": 1.5707963267948966
+        "yaw": -1.9098935415135294,
+        "pitch": 0.2812820205300852,
+        "fov": 1.4550425388027854
       },
-      "linkHotspots": [],
-      "infoHotspots": []
+      "linkHotspots": [
+        {
+          "yaw": 1.1,
+          "pitch": 0.2,
+          "rotation": 3.4,
+          "target": "0-museo-1",
+          "isRed": false
+        },
+        {
+          "yaw": -1.7475782313745416,
+          "pitch": 0.4425969374781431,
+          "rotation": 11.780972450961727,
+          "target": "3-ingresso-museo-primo-locale-2",
+          "isRed": true
+        }
+      ],
+      "infoHotspots": [
+        {
+          "yaw": 2.0696263665191124,
+          "pitch": -0.23645498179391033,
+          "title": "Campane",
+          "infoText": "campane e campanelle antiche"
+        },
+        {
+          "yaw": -2.8455095414426914,
+          "pitch": 0.6174025152499762,
+          "title": "cose entrata",
+          "infoText": "Text"
+        }
+      ]
     },
     {
-      "id": "3-04",
-      "name": "04",
+      "id": "3-ingresso-museo-primo-locale-2",
+      "name": "Ingresso Museo - primo locale",
       "initialViewParameters": {
-        "pitch": 0,
-        "yaw": 0,
-        "fov": 1.5707963267948966
+        "yaw": 1.494929883643513,
+        "pitch": 0.277927618178321,
+        "fov": 1.4550425388027854
       },
-      "linkHotspots": [],
-      "infoHotspots": []
+      "linkHotspots": [
+        {
+          "yaw": -1,
+          "pitch": 0.5,
+          "rotation": 2,
+          "target": "2-ingresso-museo-primo-locale-1",
+          "isRed": false
+        },
+        {
+          "yaw": 2.0633658797847385,
+          "pitch": 0.5653961158338117,
+          "rotation": 7.853981633974483,
+          "target": "5-museo-secondo-locale-1",
+          "isRed": true
+        },
+        {
+          "yaw": 0.6875001061502992,
+          "pitch": 0.25264886457414804,
+          "rotation": 0.7853981633974483,
+          "target": "4-ingresso-al-tunnel-della-nevera",
+          "isRed": true
+        }
+      ],
+      "infoHotspots": [
+        {
+          "yaw": 0.6602894520743341,
+          "pitch": 0.3955729112845354,
+          "title": "Oggetti entrata i2",
+          "infoText": "0"
+        },
+        {
+          "yaw": 1.2722730725212834,
+          "pitch": -0.18766926510757997,
+          "title": "mappa su oggeto",
+          "infoText": "Text"
+        },
+        {
+          "yaw": -2.617942912404178,
+          "pitch": -0.224065436581661,
+          "title": "oggetti entrata i2",
+          "infoText": "1"
+        }
+      ]
     },
     {
-      "id": "4-05",
-      "name": "05",
+      "id": "4-ingresso-al-tunnel-della-nevera",
+      "name": "Ingresso al tunnel della Nevera",
       "initialViewParameters": {
-        "pitch": 0,
-        "yaw": 0,
-        "fov": 1.5707963267948966
+        "yaw": -2.883657100488371,
+        "pitch": 0.11433160168152412,
+        "fov": 1.4550425388027854
       },
-      "linkHotspots": [],
-      "infoHotspots": []
+      "linkHotspots": [
+        {
+          "yaw": -2.9895572951990594,
+          "pitch": 0.25555409802460716,
+          "rotation": 0,
+          "target": "7-proseguimento-tunnel",
+          "isRed": true
+        },
+        {
+          "yaw": -0.6,
+          "pitch": 0.2,
+          "rotation": 3,
+          "target": "3-ingresso-museo-primo-locale-2",
+          "isRed": false
+        },
+        {
+          "yaw": -1.4,
+          "pitch": 0.3,
+          "rotation": 0,
+          "target": "5-museo-secondo-locale-1",
+          "isRed": false
+        }
+      ],
+      "infoHotspots": [
+        {
+          "yaw": -1.2306920914586392,
+          "pitch": -0.1948963292575865,
+          "title": "Oggetti seconda stanza",
+          "infoText": "0"
+        },
+        {
+          "yaw": 1.208816503897357,
+          "pitch": -0.3406714748726614,
+          "title": "Omaggio",
+          "infoText": "Le persone che hanno conrtribuito alla costruzione di questo museo"
+        }
+      ]
     }
   ],
   "settings": {
