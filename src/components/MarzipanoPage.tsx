@@ -6,15 +6,12 @@ import Scene from './Scene';
 
 interface MarzipanoPageProps {
   currentSceneIndex: number;
+  switchScene: (index: number) => void;  // Add this prop
 }
 
-const MarzipanoPage: React.FC<MarzipanoPageProps> = ({ currentSceneIndex }) => {
+const MarzipanoPage: React.FC<MarzipanoPageProps> = ({ currentSceneIndex, switchScene }) => {  // Accept switchScene as a prop
   const panoRef = useRef<HTMLDivElement>(null);
   const { viewer, sceneObjects } = useMarzipano(panoRef, APP_DATA as AppData, currentSceneIndex);
-
-  const handleSceneCreated = (scene: any) => {
-    // Handle any additional logic when a scene is created
-  };
 
   return (
     <div id='pano' ref={panoRef} className="absolute top-0 left-0 w-full h-full overflow-hidden">
@@ -26,7 +23,7 @@ const MarzipanoPage: React.FC<MarzipanoPageProps> = ({ currentSceneIndex }) => {
           basePrefix="react-marzipano"
           sceneObjects={sceneObjects}
           currentSceneIndex={currentSceneIndex}
-          onSceneCreated={handleSceneCreated}
+          switchScene={switchScene}  // Pass switchScene to Scene
         />
       )}
     </div>

@@ -2,10 +2,11 @@ import { RefObject, useEffect, useState } from 'react';
 import { AppData } from '@/types/marzipano-types';
 import { createViewer } from '@hooks/marzipanoViewer';
 import { createScene } from '@hooks/marzipanoScene';
+import Marzipano from 'marzipano';
 
 export const useMarzipano = (panoRef: RefObject<HTMLDivElement>, appData: AppData, currentSceneIndex: number) => {
-  const [sceneObjects, setSceneObjects] = useState<any[]>([]);
-  const [viewer, setViewer] = useState<any>(null);
+  const [sceneObjects, setSceneObjects] = useState<Marzipano.Scene[]>([]);
+  const [viewer, setViewer] = useState<Marzipano.Viewer | null>(null);
 
   useEffect(() => {
     if (!panoRef.current) return;
@@ -15,8 +16,8 @@ export const useMarzipano = (panoRef: RefObject<HTMLDivElement>, appData: AppDat
     setViewer(viewer);
     const basePrefix = "react-marzipano";
 
-    const sceneObjects = scenes.map(data => createScene(viewer, data, common, basePrefix));
-    setSceneObjects(sceneObjects);
+    const newSceneObjects = scenes.map(data => createScene(viewer, data, common, basePrefix));
+    setSceneObjects(newSceneObjects);
 
     panoRef.current.addEventListener('click', () => {
       const contents = document.querySelectorAll('.hotspot__content');
@@ -25,8 +26,8 @@ export const useMarzipano = (panoRef: RefObject<HTMLDivElement>, appData: AppDat
       });
     });
 
-    if (sceneObjects[currentSceneIndex]) {
-      sceneObjects[currentSceneIndex].switchTo();
+    if (newSceneObjects[currentSceneIndex]) {
+      newSceneObjects[currentSceneIndex].switchTo();
     }
 
     return () => {
@@ -37,7 +38,7 @@ export const useMarzipano = (panoRef: RefObject<HTMLDivElement>, appData: AppDat
         });
       });
     };
-  }, [panoRef, appData, currentSceneIndex]);
+  }, [panoRef, appData]);
 
   useEffect(() => {
     if (sceneObjects[currentSceneIndex]) {

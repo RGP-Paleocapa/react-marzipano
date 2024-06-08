@@ -1,32 +1,58 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { InfoHotspot, LinkHotspot } from '@/types/marzipano-types';
 import InfoHotspotElement from './InfoHotspotElement';
 import LinkHotspotElement from './LinkHotspotElement';
 import { createRoot } from 'react-dom/client';
 import appData from '@data/config.json';
+import Marzipano from 'marzipano';
 
 interface HotspotContainerProps {
   infoHotspots: InfoHotspot[];
   linkHotspots: LinkHotspot[];
-  sceneObjects: any[];
+  sceneObjects: Marzipano.Scene[];
   currentSceneIndex: number;
+  switchScene: (index: number) => void;
 }
 
-const HotspotContainer: React.FC<HotspotContainerProps> = ({ infoHotspots, linkHotspots, sceneObjects, currentSceneIndex }) => {
+const HotspotContainer: React.FC<HotspotContainerProps> = ({
+  infoHotspots,
+  linkHotspots,
+  sceneObjects,
+  currentSceneIndex,
+  switchScene,
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const hotspotsRef = useRef<any[]>([]);
+  const hotspotsRef = useRef<Marzipano.Hotspot[]>([]);
+  const [prevSceneIndex, setPrevSceneIndex] = useState<number | null>(null);
 
   useEffect(() => {
+    if (prevSceneIndex !== null) {
+      const prevScene = sceneObjects[prevSceneIndex];
+      const hotspotContainer = prevScene.hotspotContainer();
+
+      console.log('Clearing existing hotspots from previous scene');
+      hotspotsRef.current.forEach((hotspot, index) => {
+        try {
+          if (hotspotContainer.hasHotspot(hotspot)) {
+            console.log(`Destroying hotspot ${index} from previous scene`);
+            hotspotContainer.destroyHotspot(hotspot);
+          } else {
+            console.warn(`Hotspot ${index} does not exist in the container of previous scene`);
+          }
+        } catch (error) {
+          console.error(`Error destroying hotspot ${index} from previous scene:`, error);
+        }
+      });
+      hotspotsRef.current = [];
+    }
+
     const scene = sceneObjects[currentSceneIndex];
-    if (!scene || !containerRef.current) return;
+    if (!scene || !containerRef.current) {
+      console.error('Scene or container not found');
+      return;
+    }
 
     const hotspotContainer = scene.hotspotContainer();
-
-    // Clear existing hotspots
-    hotspotsRef.current.forEach((hotspot) => {
-      hotspotContainer.destroyHotspot(hotspot);
-    });
-    hotspotsRef.current = [];
 
     // Add info hotspots
     infoHotspots.forEach((hotspot, index) => {
@@ -35,6 +61,7 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({ infoHotspots, linkH
       const root = createRoot(element);
       root.render(<InfoHotspotElement key={index} hotspot={hotspot} />);
       const marzipanoHotspot = hotspotContainer.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
+      console.log(`Creating info hotspot ${index}`, marzipanoHotspot);
       hotspotsRef.current.push(marzipanoHotspot);
     });
 
@@ -45,22 +72,25 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({ infoHotspots, linkH
       const targetSceneIndex = appData.scenes.findIndex(scene => scene.id === hotspot.target);
       if (targetSceneIndex === -1) {
         console.error(`Target scene with ID ${hotspot.target} not found.`);
+        return;
       }
       const root = createRoot(element);
       root.render(
         <LinkHotspotElement
           key={index}
           switchToScene={() => {
-            if (sceneObjects[targetSceneIndex]) {
-              sceneObjects[targetSceneIndex].switchTo();
-            }
+            console.log(`Switching to target scene ${targetSceneIndex}`);
+            switchScene(targetSceneIndex);
           }}
         />
       );
       const marzipanoHotspot = hotspotContainer.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
+      console.log(`Creating link hotspot ${index}`, marzipanoHotspot);
       hotspotsRef.current.push(marzipanoHotspot);
     });
-  }, [infoHotspots, linkHotspots, sceneObjects, currentSceneIndex]);
+
+    setPrevSceneIndex(currentSceneIndex);
+  }, [currentSceneIndex, sceneObjects, infoHotspots, linkHotspots, switchScene]);
 
   useEffect(() => {
     const closeAllHotspotContents = () => {
