@@ -4,37 +4,23 @@ import HotspotContainer from './HotspotContainer';
 import Marzipano from 'marzipano';
 
 interface SceneProps {
-  viewer: any;
+  viewer: Marzipano.Viewer;
   data: AppData['scenes'][0];
   common: AppData['common'];
   basePrefix: string;
-  sceneObjects: any[];
+  sceneObjects: Marzipano.Scene[];
   currentSceneIndex: number;
-  onSceneCreated: (scene: any) => void;
+  switchScene: (index: number) => void;  // Add this prop
 }
 
-const Scene: React.FC<SceneProps> = ({ viewer, data, common, basePrefix, sceneObjects, currentSceneIndex, onSceneCreated }) => {
+const Scene: React.FC<SceneProps> = ({ viewer, data, sceneObjects, currentSceneIndex, switchScene }) => {  // Accept switchScene as a prop
   useEffect(() => {
-    const source = Marzipano.ImageUrlSource.fromString(
-      `/${basePrefix}/assets/tiles/${data.id}/{z}/{f}/{y}/{x}.jpg`,
-      { cubeMapPreviewUrl: `/${basePrefix}/assets/tiles/${data.id}/preview.jpg` }
-    );
-
-    const levels = common.levels;
-    const faceSize = common.faceSize;
-    const geometry = new Marzipano.CubeGeometry(levels);
-    const limiter = Marzipano.RectilinearView.limit.traditional(faceSize, 100 * Math.PI / 180, 120 * Math.PI / 180);
-    const view = new Marzipano.RectilinearView(data.initialViewParameters, limiter);
-
-    const scene = viewer.createScene({
-      source: source,
-      geometry: geometry,
-      view: view,
-      pinFirstLevel: true
-    });
-
-    onSceneCreated(scene);
-  }, [viewer, data, common, basePrefix, onSceneCreated]);
+    const currentScene = sceneObjects[currentSceneIndex];
+    if (currentScene) {
+      console.log(`Switching to scene ${currentSceneIndex}`);
+      currentScene.switchTo();
+    }
+  }, [currentSceneIndex, sceneObjects]);
 
   return (
     <div>
@@ -43,6 +29,7 @@ const Scene: React.FC<SceneProps> = ({ viewer, data, common, basePrefix, sceneOb
         linkHotspots={data.linkHotspots}
         sceneObjects={sceneObjects}
         currentSceneIndex={currentSceneIndex}
+        switchScene={switchScene}  // Pass switchScene to HotspotContainer
       />
     </div>
   );

@@ -9,8 +9,9 @@ declare module 'marzipano' {
 
   export class Viewer {
     constructor(element: HTMLElement, opts?: ViewerOptions);
-    lookTo(initialViewParameters: { pitch: number; yaw: number; fov: number; }): void;
-    createScene(data: SceneData): Scene;
+    lookTo(params: InitialViewParameters, transitionDuration?: number): void;
+    stopMovement(): void; // Method to stop any ongoing movement or animation
+    createScene(data: SceneData): Scene;  
   }
 
   export class Scene {
@@ -20,6 +21,8 @@ declare module 'marzipano' {
 
   export class HotspotContainer {
     createHotspot(element: HTMLElement, position: { yaw: number, pitch: number }): Hotspot;
+    destroyHotspot(hotspot: Hotspot): void;
+    hasHotspot(hotspot: Hotspot): boolean;
   }
 
   export class Hotspot {
