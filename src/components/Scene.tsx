@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { AppData } from '@/types/marzipano-types';
 import HotspotContainer from './HotspotContainer';
 import Marzipano from 'marzipano';
+import { useStore } from '../context/useStore';
 
 interface SceneProps {
   viewer: Marzipano.Viewer;
@@ -10,10 +11,11 @@ interface SceneProps {
   basePrefix: string;
   sceneObjects: Marzipano.Scene[];
   currentSceneIndex: number;
-  switchScene: (index: number) => void;  // Add this prop
 }
 
-const Scene: React.FC<SceneProps> = ({ viewer, data, sceneObjects, currentSceneIndex, switchScene }) => {  // Accept switchScene as a prop
+const Scene: React.FC<SceneProps> = ({ viewer, data, sceneObjects, currentSceneIndex }) => {
+  const { switchScene } = useStore();
+
   useEffect(() => {
     const currentScene = sceneObjects[currentSceneIndex];
     if (currentScene) {

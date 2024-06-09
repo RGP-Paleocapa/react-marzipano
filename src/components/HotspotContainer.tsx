@@ -74,9 +74,16 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
         console.error(`Target scene with ID ${hotspot.target} not found.`);
         return;
       }
+
+      const currentScene = appData.scenes[currentSceneIndex];
+      const isRed = currentScene.linkHotspots.find(
+        (lh) => lh.yaw === hotspot.yaw && lh.pitch === hotspot.pitch
+      )?.isRed || false;
+
       const root = createRoot(element);
       root.render(
         <LinkHotspotElement
+          isRed={isRed}
           key={index}
           switchToScene={() => {
             console.log(`Switching to target scene ${targetSceneIndex}`);
