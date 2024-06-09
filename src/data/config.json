@@ -38,7 +38,15 @@
           "yaw": 0.47983935090504026,
           "pitch": -0.24488264090410183,
           "title": "Museo Valdimagnino di Amagno",
+          "infoText": "Entrata",
           "videoLink": "https://www.youtube.com/watch?v=0_rLz7WHAJo"
+        },
+        {
+          "yaw": -0.47983935090504026,
+          "pitch": 0.24488264090410183,
+          "title": "Museo Valdimagnino di Amagno",
+          "infoText": "Entrata",
+          "videoLink": "@/assets/videos/SCP-5688 - THE HAND.mp4"
         }
       ]
     },
