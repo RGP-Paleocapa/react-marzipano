@@ -25,3 +25,10 @@ html, body {
 .hotspot__text {
   @apply text-sm;
 }
+
+
+/* Add this to your global CSS file or within a <style> tag in your HTML */
+.iframe-custom-size {
+  width: calc(100vw - 40rem); /* Adjust the 4rem to the desired margin */
+  height: calc(100vh - 4rem); /* Adjust the 4rem to the desired margin */
+}
