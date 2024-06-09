@@ -24,7 +24,8 @@ export interface LinkHotspot extends BaseHotspot {
 
 export interface InfoHotspot extends BaseHotspot {
   title: string;  
-  infoText: string;  
+  infoText?: string;
+  videoLink?: string;  
 }
 
 export interface Scene {
