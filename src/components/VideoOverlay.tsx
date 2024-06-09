@@ -20,7 +20,7 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
       <div className="relative w-full max-w-3xl p-4 bg-gray-800 rounded-lg">
         <button 
           onClick={onClose} 
-          className="absolute -top-2 -right-96 bg-red-600 text-white rounded-full w-14 h-14 flex items-center justify-center"
+          className="absolute top-8 -right-96 bg-red-600 text-white rounded-full w-14 h-14 flex items-center justify-center animate-pulse"
         >
           X
         </button>
