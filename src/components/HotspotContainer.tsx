@@ -89,6 +89,7 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
             console.log(`Switching to target scene ${targetSceneIndex}`);
             switchScene(targetSceneIndex);
           }}
+          rotation={hotspot.rotation}
         />
       );
       const marzipanoHotspot = hotspotContainer.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
