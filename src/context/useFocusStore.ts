@@ -1,5 +1,5 @@
 // useFocusStore.ts
-import create from 'zustand';
+import { create } from 'zustand';
 import { RefObject } from 'react';
 
 interface FocusStoreState {
