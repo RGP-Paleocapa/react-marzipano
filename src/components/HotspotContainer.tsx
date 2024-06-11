@@ -75,21 +75,15 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
         return;
       }
 
-      const currentScene = appData.scenes[currentSceneIndex];
-      const isRed = currentScene.linkHotspots.find(
-        (lh) => lh.yaw === hotspot.yaw && lh.pitch === hotspot.pitch
-      )?.isRed || false;
-
       const root = createRoot(element);
       root.render(
         <LinkHotspotElement
-          isRed={isRed}
+          hotspot={hotspot}
           key={index}
           switchToScene={() => {
             console.log(`Switching to target scene ${targetSceneIndex}`);
             switchScene(targetSceneIndex);
           }}
-          rotation={hotspot.rotation}
         />
       );
       const marzipanoHotspot = hotspotContainer.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
