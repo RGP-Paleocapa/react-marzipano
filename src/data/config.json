@@ -23,7 +23,8 @@
           "pitch": 0.10231538244980953,
           "rotation": 720,
           "target": "2-ingresso-museo-primo-locale-1",
-          "isRed": true
+          "isRed": true,
+          "text": "Hover Message"
         },
         {
           "yaw": 1.5088723555172425,
@@ -143,7 +144,7 @@
           "pitch": 0.5653961158338117,
           "rotation": 450,
           "target": "5-museo-secondo-locale-1",
-          "isRed": true
+          "isRed": false
         },
         {
           "yaw": 0.6875001061502992,
