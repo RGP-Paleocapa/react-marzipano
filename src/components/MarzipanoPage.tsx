@@ -10,9 +10,9 @@ const MarzipanoPage: React.FC = () => {
   const { currentSceneIndex } = useStore();
   const { viewer, sceneObjects } = useMarzipano(panoRef, APP_DATA as AppData, currentSceneIndex);
 
-  const handleSceneCreated = (scene: any) => {
-    // Handle any additional logic when a scene is created
-  };
+  // const handleSceneCreated = (scene: any) => {
+  //   // Handle any additional logic when a scene is created
+  // };
 
   return (
     <div id='pano' ref={panoRef} className="absolute top-0 left-0 w-full h-full overflow-hidden">
