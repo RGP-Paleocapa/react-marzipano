@@ -12,7 +12,7 @@ const LinkHotspotElement: React.FC<LinkHotspotElementProps> = ({ switchToScene, 
   console.log(rotation);
   return (
     <div
-      className="w-14 p-0 m-0 rounded-3xl flex items-center justify-center"
+      className="w-14 p-0 m-0 rounded-3xl flex items-center justify-center cursor-pointer"
       style={{ transform: `rotate(${rotation}deg)` }}
       onClick={(e) => {
         e.stopPropagation();
