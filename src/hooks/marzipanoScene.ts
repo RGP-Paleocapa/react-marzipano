@@ -1,7 +1,7 @@
-import Marzipano from 'marzipano';
+import Marzipano, { Viewer } from 'marzipano';
 import { AppData } from '@/types/marzipano-types';
 
-export const createScene = (viewer: any, data: AppData['scenes'][0], common: AppData['common'], basePrefix: string) => {
+export const createScene = (viewer: Viewer, data: AppData['scenes'][0], common: AppData['common'], basePrefix: string) => {
   const source = Marzipano.ImageUrlSource.fromString(
     `/${basePrefix}/assets/tiles/${data.id}/{z}/{f}/{y}/{x}.jpg`,
     { cubeMapPreviewUrl: `/${basePrefix}/assets/tiles/${data.id}/preview.jpg` }

@@ -1,23 +1,24 @@
 import React, { useEffect } from 'react';
 import { AppData } from '@/types/marzipano-types';
-import HotspotContainer from './HotspotContainer';
+import HotspotContainer from '@components/HotspotContainer';
 import Marzipano from 'marzipano';
-import { useStore } from '../context/useStore';
+// import { useSceneStore } from '@/context/useSceneStore';
 
 interface SceneProps {
   viewer: Marzipano.Viewer;
   data: AppData['scenes'][0];
   common: AppData['common'];
-  basePrefix: string;
+  // basePrefix: string;
   sceneObjects: Marzipano.Scene[];
   currentSceneIndex: number;
+  switchScene: (index: number) => void;
 }
 
 // viewer ??
 // It saves previous scene location. remove it?
 
-const Scene: React.FC<SceneProps> = ({ data, sceneObjects, currentSceneIndex }) => {
-  const { switchScene } = useStore();
+const Scene: React.FC<SceneProps> = ({ data, sceneObjects, currentSceneIndex, switchScene }) => {
+  // const { switchScene } = useSceneStore();
 
   useEffect(() => {
     const currentScene = sceneObjects[currentSceneIndex];

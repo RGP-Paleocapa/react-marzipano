@@ -25,3 +25,6 @@ dist-ssr
 
 # Auto dependabot pull
 merge_dependabot_prs.sh
+
+# PlantUML
+test_uml.wsd
