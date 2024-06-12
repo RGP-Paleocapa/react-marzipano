@@ -1,7 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: npm
-    directory: "/" # This is the directory where your package.json file is located
+    directory: "/"
     schedule:
       interval: daily
     commit-message:
@@ -10,18 +10,4 @@ updates:
     rebase-strategy: auto
     open-pull-requests-limit: 5
     reviewers:
-      - rgp-paleocapa # GitHub username(s) of the reviewers
-  - package-ecosystem: npm
-    directory: "/" # This is the directory where your package.json file is located
-    schedule:
-      interval: weekly
-    commit-message:
-      include: scope
-      prefix: "security"
-    rebase-strategy: auto
-    open-pull-requests-limit: 5
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-minor", "version-update:semver-patch"]
-    reviewers:
-      - rgp-paleocapa # GitHub username(s) of the reviewers
+      - rgp-paleocapa
