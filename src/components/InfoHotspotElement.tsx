@@ -2,14 +2,14 @@
 import React from 'react';
 import { InfoHotspot } from '@/types/marzipano-types';
 import infoImage from '@/assets/icons/info.png';
-import { useStore } from '@/context/useStore';
+import { useVideoStore } from '@/context/useVideoStore';
 
 interface InfoHotspotElementProps {
   hotspot: InfoHotspot;
 }
 
 const InfoHotspotElement: React.FC<InfoHotspotElementProps> = ({ hotspot }) => {
-  const { showVideo } = useStore();
+  const { showVideo } = useVideoStore();
   const [isContentVisible, setContentVisibility] = React.useState(false);
 
   const toggleContentVisibility = (event: React.MouseEvent) => {

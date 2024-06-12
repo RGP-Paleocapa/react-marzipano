@@ -1,12 +1,13 @@
 // useFocusStore.ts
 import { create } from 'zustand';
-import { RefObject } from 'react';
+// import { RefObject } from 'react';
+import { FocusStoreState } from '@/types/store-types';
 
-interface FocusStoreState {
-  focusLinkHotspot: RefObject<HTMLDivElement> | null;
-  setFocusLinkHotspot: (ref: RefObject<HTMLDivElement>) => void;
-  triggerFocus: () => void;
-}
+// interface FocusStoreState {
+//   focusLinkHotspot: RefObject<HTMLDivElement> | null;
+//   setFocusLinkHotspot: (ref: RefObject<HTMLDivElement>) => void;
+//   triggerFocus: () => void;
+// }
 
 const useFocusStore = create<FocusStoreState>((set) => ({
   focusLinkHotspot: null,
