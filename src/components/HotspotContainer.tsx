@@ -5,13 +5,14 @@ import LinkHotspotElement from './LinkHotspotElement';
 import { createRoot } from 'react-dom/client';
 import appData from '@data/config.json';
 import Marzipano from 'marzipano';
+import { useSceneStore } from '@/context/useSceneStore';
 
 interface HotspotContainerProps {
   infoHotspots: InfoHotspot[];
   linkHotspots: LinkHotspot[];
   sceneObjects: Marzipano.Scene[];
   currentSceneIndex: number;
-  switchScene: (index: number) => void;
+  // switchScene: (index: number) => void;
 }
 
 const HotspotContainer: React.FC<HotspotContainerProps> = ({
@@ -19,8 +20,9 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
   linkHotspots,
   sceneObjects,
   currentSceneIndex,
-  switchScene,
+  /*switchScene,*/
 }) => {
+  const { switchScene } = useSceneStore();
   const containerRef = useRef<HTMLDivElement>(null);
   const hotspotsRef = useRef<Marzipano.Hotspot[]>([]);
   const [prevSceneIndex, setPrevSceneIndex] = useState<number | null>(null);
