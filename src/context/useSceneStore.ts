@@ -1,9 +1,5 @@
+import { SceneState } from '@/types/store-types';
 import { create } from 'zustand';
-
-interface SceneState {
-    currentSceneIndex: number;
-    switchScene: (index: number) => void;
-}
 
 export const useSceneStore = create<SceneState>((set) => ({
     currentSceneIndex: 0,
