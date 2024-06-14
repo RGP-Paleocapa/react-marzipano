@@ -4,18 +4,20 @@ import APP_DATA from '@data/config.json';
 import Scene from '@components/Scene';
 import { AppData } from '@/types/marzipano-types';
 import { Viewer, Scene as SceneObjects, autorotate } from 'marzipano';
-import Navbar from './Navbar'; // Import the Navbar component
+import Navbar from '@components/Navbar'; // Import the Navbar component
+import { useSceneStore } from '@/context/useSceneStore';
 
 const MarzipanoPage: React.FC = () => {
   const panoRef = useRef<HTMLDivElement>(null);
-  const [currentSceneIndex, setCurrentSceneIndex] = useState<number>(0);
+  // const [currentSceneIndex, setCurrentSceneIndex] = useState<number>(0);
+  const { currentSceneIndex } = useSceneStore();
   const [isAutorotating, setIsAutorotating] = useState<boolean>(APP_DATA.settings.autorotateEnabled);
 
   const { viewer, sceneObjects } = useMarzipano(panoRef, APP_DATA as AppData, currentSceneIndex);
 
-  const switchScene = (index: number) => {
-    setCurrentSceneIndex(index);
-  }
+  // const switchScene = (index: number) => {
+  //   setCurrentSceneIndex(index);
+  // }
 
   // const showAlert = () => {
   //   alert('Hello, this is your message!');
@@ -64,7 +66,7 @@ const MarzipanoPage: React.FC = () => {
           // basePrefix="react-marzipano"
           sceneObjects={sceneObjects as SceneObjects[]}
           currentSceneIndex={currentSceneIndex}
-          switchScene={switchScene}
+          // switchScene={switchScene}
         />
       )}
     </div>

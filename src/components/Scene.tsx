@@ -11,13 +11,13 @@ interface SceneProps {
   // basePrefix: string;
   sceneObjects: Marzipano.Scene[];
   currentSceneIndex: number;
-  switchScene: (index: number) => void;
+  // switchScene: (index: number) => void;
 }
 
 // viewer ??
 // It saves previous scene location. remove it?
 
-const Scene: React.FC<SceneProps> = ({ data, sceneObjects, currentSceneIndex, switchScene }) => {
+const Scene: React.FC<SceneProps> = ({ data, sceneObjects, currentSceneIndex/*, switchScene*/ }) => {
   // const { switchScene } = useSceneStore();
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const Scene: React.FC<SceneProps> = ({ data, sceneObjects, currentSceneIndex, sw
         linkHotspots={data.linkHotspots}
         sceneObjects={sceneObjects}
         currentSceneIndex={currentSceneIndex}
-        switchScene={switchScene}  // Pass switchScene to HotspotContainer
+        // switchScene={switchScene}  // Pass switchScene to HotspotContainer
       />
     </div>
   );
