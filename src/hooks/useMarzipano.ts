@@ -2,7 +2,7 @@ import { RefObject, useEffect, useState } from 'react';
 import { AppData } from '@/types/marzipano-types';
 import { createViewer } from '@hooks/marzipanoViewer';
 import { createScene } from '@hooks/marzipanoScene';
-import Marzipano from 'marzipano';
+import Marzipano, { autorotate } from 'marzipano';
 
 export const useMarzipano = (panoRef: RefObject<HTMLDivElement>, appData: AppData, currentSceneIndex: number) => {
   const [sceneObjects, setSceneObjects] = useState<Marzipano.Scene[]>([]);
@@ -28,6 +28,17 @@ export const useMarzipano = (panoRef: RefObject<HTMLDivElement>, appData: AppDat
 
     if (newSceneObjects[currentSceneIndex]) {
       newSceneObjects[currentSceneIndex].switchTo();
+    }
+
+    // Configure autorotation
+    if (settings.autorotateEnabled) {
+      const autorotateSettings = {
+        yawSpeed: 0.03, // Rotation speed in radians per second
+        targetPitch: 0, // Target pitch angle in radians
+        targetFov: Math.PI / 4 // Target field of view in radians
+      };
+      const autorotateControl = autorotate(autorotateSettings);
+      viewer.setIdleMovement(3000, autorotateControl); // 3000ms idle time before starting rotation
     }
 
     return () => {
