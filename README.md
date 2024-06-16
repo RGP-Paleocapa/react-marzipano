@@ -1,34 +1,71 @@
-# Site
-- [React Marzipano](https://rgp-paleocapa.github.io/react-marzipano/)
+# Vite + React + TypeScript + Marzipano + TailwindCSS Project
 
+This project is a setup for developing a modern web application using Vite, React, TypeScript, Marzipano, and TailwindCSS.
 
-# React + TypeScript + Vite
+## Table of Contents
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- [Getting Started](#getting-started)
+- [Scripts](#scripts)
+- [Dependencies](#dependencies)
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To get started with this project, follow these steps:
 
-## Expanding the ESLint configuration
+1. **Clone the repository**:
+    ```bash
+    git clone https://github.com/rgp-paleocapa/react-marzipano.git
+    cd react-marzipano
+    ```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-- Configure the top-level `parserOptions` property like this:
+3. **Start the development server**:
+    ```bash
+    npm run dev
+    ```
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+This will start the development server and you can view the application in your browser at `http://localhost:5173`.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Scripts
+
+Here are the common scripts you can run for this project:
+
+- **Development**: Start the development server.
+    ```bash
+    npm run dev
+    ```
+
+- **Build**: Build the project for production.
+    ```bash
+    npm run build
+    ```
+
+- **Preview**: Preview the production build locally.
+    ```bash
+    npm run preview
+    ```
+
+- **Lint**: Check for code style issues using ESLint.
+    ```bash
+    npm run lint
+    ```
+
+## Dependencies
+
+### Core Dependencies
+
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A superset of JavaScript that adds static types.
+- **Vite**: A build tool that aims to provide a faster and leaner development experience for modern web projects.
+- **TailwindCSS**: A utility-first CSS framework for rapidly building custom designs.
+- **Marzipano**: A 360° media viewer for the web.
+
+### Dev Dependencies
+
+- **ESLint**: A tool for identifying and fixing problems in JavaScript code.
+- **Prettier**: An opinionated code formatter.
+- **Stylelint**: A linter for CSS and other related languages.
