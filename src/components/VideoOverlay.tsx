@@ -12,15 +12,15 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
   };
 
   const getYouTubeEmbedUrl = (url: string) => {
-    const videoIdMatch = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/);
+    const videoIdMatch = url.match(/(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?/\\s]{11})/);
     return videoIdMatch ? `https://www.youtube.com/embed/${videoIdMatch[1]}` : '';
   };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
       <div className="relative w-screen lg:w-fit max-w-5xl px-24 lg:p-4 bg-gray-800 rounded-lg">
-        <button 
-          onClick={onClose} 
+        <button
+          onClick={onClose}
           className="absolute top-4 right-4 lg:-top-20 lg:-right-20 bg-red-600 text-white rounded-full w-14 h-14 flex items-center justify-center animate-pulse"
         >
           X

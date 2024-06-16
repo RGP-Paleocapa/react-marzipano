@@ -10,10 +10,10 @@ declare module 'marzipano' {
   export class Viewer {
     constructor(element: HTMLElement, opts?: ViewerOptions);
     lookTo(params: ViewParameters, transitionDuration?: number): void;
-    stopMovement(): void; // Method to stop any ongoing movement or animation
+    stopMovement(): void;
     createScene(data: SceneData): Scene;
-    setIdleMovement(delay: number, movementFunction: any): void; // Add this line for idle movement
-    startMovement(movementFunction: any): void; // Add this line for starting movement
+    setIdleMovement(delay: number, movementFunction: (deltaTime: number) => void): void;
+    startMovement(movementFunction: (deltaTime: number) => void): void;
     destroy(): void;
   }
 
@@ -33,7 +33,7 @@ declare module 'marzipano' {
   }
 
   export class ImageUrlSource {
-    static fromString(url: string, opts?: any): ImageUrlSource;
+    static fromString(url: string, opts?: Record<string, unknown>): ImageUrlSource;
   }
 
   export class CubeGeometry {
@@ -61,6 +61,5 @@ declare module 'marzipano' {
 
   export interface ViewLimiter {}
 
-  // Add the autorotate function
-  export function autorotate(params: { yawSpeed: number; targetPitch: number; targetFov: number }): any;
+  export function autorotate(params: { yawSpeed: number; targetPitch: number; targetFov: number }): (deltaTime: number) => void;
 }
