@@ -26,10 +26,10 @@ const MapOverlay = () => {
   return (
     <div>
       {isFullScreen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40" onClick={closeFullScreen}></div>
+        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-10" onClick={closeFullScreen}></div>
       )}
       <div
-        className={`z-50 rounded-lg transition-all duration-300 ease-in-out cursor-pointer max-w-full max-h-full ${isFullScreen ? 'fixed inset-0 m-auto flex items-center justify-center w-full h-full' : 'absolute bottom-10 right-10 w-[150px] lg:w-[250px] h-[150px] lg:h-[250px]'}`}
+        className={`z-10 rounded-lg transition-all duration-300 ease-in-out cursor-pointer max-w-full max-h-full ${isFullScreen ? 'fixed inset-0 m-auto flex items-center justify-center w-full h-full' : 'absolute bottom-10 right-10 w-[150px] lg:w-[250px] h-[150px] lg:h-[250px]'}`}
         onClick={!isFullScreen ? toggleFullScreen : undefined}
       >
         <div className="relative w-full h-full bg-blue-600 rounded-3xl transition-transform transform hover:scale-105">

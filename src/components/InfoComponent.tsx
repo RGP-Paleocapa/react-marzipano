@@ -7,7 +7,7 @@ interface InfoComponentProps {
 
 const InfoComponent: React.FC<InfoComponentProps> = ({ setInfoVisible }) => {
   return (
-    <div className="z-10 absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4">
+    <div className="z-20 absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4">
       <div className="w-full max-w-5xl bg-gray-800 bg-opacity-90 p-8 rounded-md shadow-md text-white overflow-auto max-h-full border-4 border-blue-600">
         <div className="text-center mb-6">
           <h1 className="text-4xl font-extrabold mb-4 text-blue-300 text-justify">Nevera Virtual Tour</h1>
