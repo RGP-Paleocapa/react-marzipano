@@ -20,7 +20,7 @@ const MapOverlay = () => {
     { index: 8, x: 40, y: 38 },
     { index: 2, x: 58, y: 44 },
     { index: 0, x: 69, y: 63 },
-    { index: 0, x: 76, y: 35 },
+    { index: 1, x: 76, y: 35 },
   ];
 
   return (
@@ -29,15 +29,14 @@ const MapOverlay = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40" onClick={closeFullScreen}></div>
       )}
       <div
-        className={`z-50 rounded-lg ${isFullScreen ? 'fixed inset-0 m-auto flex items-center justify-center' : 'absolute bottom-10 right-10'}`}
-        style={{ width: isFullScreen ? '100%' : '250px', height: isFullScreen ? '100%' : '250px', maxWidth: '100vw', maxHeight: '100vh', cursor: 'pointer', transition: 'all 0.3s ease-in-out' }}
+        className={`z-50 rounded-lg transition-all duration-300 ease-in-out cursor-pointer max-w-full max-h-full ${isFullScreen ? 'fixed inset-0 m-auto flex items-center justify-center w-full h-full' : 'absolute bottom-10 right-10 w-[150px] lg:w-[250px] h-[150px] lg:h-[250px]'}`}
         onClick={!isFullScreen ? toggleFullScreen : undefined}
       >
         <div className="relative w-full h-full bg-blue-600 rounded-3xl">
           <img
             src={map}
             alt="Map"
-            className={`w-full h-full object-contain ${!isFullScreen ? 'hover:opacity-75' : ''}`}
+            className={`w-full h-full object-contain ${!isFullScreen ? 'hover:opacity-75 rounded-inherit' : 'rounded-none'}`}
             style={{ borderRadius: isFullScreen ? '0' : 'inherit' }}
           />
           {isFullScreen && (

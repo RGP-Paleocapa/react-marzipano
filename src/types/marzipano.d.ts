@@ -12,7 +12,7 @@ declare module 'marzipano' {
     lookTo(params: ViewParameters, transitionDuration?: number): void;
     stopMovement(): void;
     createScene(data: SceneData): Scene;
-    setIdleMovement(delay: number, movementFunction: (deltaTime: number) => void): void;
+    setIdleMovement(delay: number | typeof Infinity, movementFunction?: (deltaTime: number) => void): void;
     startMovement(movementFunction: (deltaTime: number) => void): void;
     destroy(): void;
   }
@@ -61,5 +61,11 @@ declare module 'marzipano' {
 
   export interface ViewLimiter {}
 
-  export function autorotate(params: { yawSpeed: number; targetPitch: number; targetFov: number }): (deltaTime: number) => void;
+  export interface SceneData {
+    // Define properties relevant to scene data if needed
+  }
+
+  export type Autorotate = (deltaTime: number) => void;
+
+  export function autorotate(params: { yawSpeed: number; targetPitch: number; targetFov: number }): Autorotate;
 }
