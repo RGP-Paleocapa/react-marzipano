@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useMarzipano } from '@hooks/useMarzipano';
 import APP_DATA from '@data/config.json';
 import Scene from '@components/Scene';
@@ -9,6 +9,7 @@ import { useSceneStore } from '@/context/useSceneStore';
 import MapOverlay from './MapOverlay';
 import { useVideoStore } from '@/context/useVideoStore';
 import VideoOverlay from './VideoOverlay';
+import InfoComponent from './InfoComponent';
 
 const MarzipanoPage: React.FC = () => {
   const panoRef = useRef<HTMLDivElement>(null);
@@ -27,12 +28,27 @@ const MarzipanoPage: React.FC = () => {
     }
   };
 
+  const [isInfoVisible, setInfoVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    const isFirstVisit = localStorage.getItem('isFirstVisit');
+    if (!isFirstVisit) {
+      setInfoVisible(true);
+      localStorage.setItem('isFirstVisit', 'false');
+    }
+  }, []);
+
+  function handleShowInfo(): void {
+    setInfoVisible(!isInfoVisible);
+  }
+
   return (
     <div id='pano' ref={panoRef} className="relative w-full h-full overflow-hidden">
       <Navbar
         onToggleAutorotation={toggleAutorotation}
         isAutorotating={isAutorotating}
         onToggleFullscreen={toggleFullscreen}
+        onShowInfo={handleShowInfo}
       />
       {viewer && sceneObjects.length > 0 && (
         <Scene
@@ -45,6 +61,7 @@ const MarzipanoPage: React.FC = () => {
       )}
       <MapOverlay />
       {isVideoVisible && videoLink && <VideoOverlay videoLink={videoLink} onClose={closeVideo} />}
+      {isInfoVisible && <InfoComponent setInfoVisible={setInfoVisible} />}
     </div>
   );
 };

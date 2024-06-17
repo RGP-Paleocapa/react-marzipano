@@ -36,7 +36,9 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
           ></iframe>
         ) : (
           <video controls className="relative w-full max-w-3xl p-4 bg-gray-800 rounded-lg">
-            <source src={`${baseUrl}/${videoLink}`} type="video/mp4" />
+            <source src={`${baseUrl}/${encodeURIComponent(videoLink)}`} type="video/mp4" />
+            <source src={`${baseUrl}/${encodeURIComponent(videoLink.replace('.mp4', '.webm'))}`} type="video/webm" />
+            <source src={`${baseUrl}/${encodeURIComponent(videoLink.replace('.mp4', '.ogv'))}`} type="video/ogg" />
             Your browser does not support the video tag.
           </video>
         )}

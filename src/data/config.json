@@ -39,14 +39,13 @@
           "yaw": 0.47983935090504026,
           "pitch": -0.24488264090410183,
           "title": "Museo Valdimagnino di Amagno",
-          "videoLink": "https://www.youtube.com/watch?v=0_rLz7WHAJo"
+          "videoLink": "contadino parlante (macchima del gelato).mp4"
         },
         {
           "yaw": -0.47983935090504026,
           "pitch": 0.24488264090410183,
           "title": "Museo Valdimagnino di Amagno",
-          "infoText": "Entrata",
-          "videoLink": "SCP-5688 - THE HAND.mp4"
+          "infoText": "Entrata"
         }
       ]
     },
@@ -158,7 +157,8 @@
           "yaw": 0.6602894520743341,
           "pitch": 0.3955729112845354,
           "title": "Oggetti entrata i2",
-          "infoText": "0"
+          "infoText": "0",
+          "videoLink": "VID-20230510-WA0000.mp4"
         },
         {
           "yaw": 1.2722730725212834,
