@@ -11,7 +11,7 @@ interface LinkHotspotElementProps {
 const LinkHotspotElement: React.FC<LinkHotspotElementProps> = ({ switchToScene, hotspot }) => {
   return (
     <div
-      className="w-14 p-0 m-0 rounded-3xl flex items-center justify-center cursor-pointer"
+      className="w-16 p-0 m-0 rounded-3xl flex items-center justify-center cursor-pointer transition-transform transform hover:scale-110"
       style={{ transform: `rotate(${hotspot.rotation}deg)` }}
       onClick={(e) => {
         e.stopPropagation();
@@ -22,7 +22,7 @@ const LinkHotspotElement: React.FC<LinkHotspotElementProps> = ({ switchToScene, 
       aria-label={hotspot.text || 'Link hotspot'}
       title={hotspot.text}
     >
-      <img src={hotspot.isRed ? linkRedImage : linkImage} alt="Link Icon" className="w-14 h-14" />
+      <img src={hotspot.isRed ? linkRedImage : linkImage} alt="Link Icon" className="w-16 h-16 transition-transform transform hover:scale-110" />
     </div>
   );
 };

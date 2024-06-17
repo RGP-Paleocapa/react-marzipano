@@ -30,7 +30,7 @@ const InfoHotspotElement: React.FC<InfoHotspotElementProps> = ({ hotspot }) => {
   };
 
   return (
-    <div className="relative p-2 bg-blue-500 rounded-lg shadow-md transition-transform transform hover:scale-105">
+    <div className="relative p-2 bg-blue-500 rounded-lg shadow-md transition-transform transform hover:scale-110">
       <div
         className="cursor-pointer flex items-center justify-center w-8 h-8"
         onClick={toggleContentVisibility}
