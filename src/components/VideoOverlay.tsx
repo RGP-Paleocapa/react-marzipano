@@ -17,7 +17,7 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-50">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-20">
       <div className="relative w-screen lg:w-fit max-w-5xl px-24 lg:p-4 bg-gray-800 rounded-lg">
         <button
           onClick={onClose}
