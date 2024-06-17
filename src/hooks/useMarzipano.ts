@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useState } from 'react';
+import { RefObject, useEffect, useState, useRef } from 'react';
 import { AppData } from '@/types/marzipano-types';
 import { createViewer } from '@hooks/marzipanoViewer';
 import { createScene } from '@hooks/marzipanoScene';
@@ -7,6 +7,8 @@ import Marzipano, { autorotate } from 'marzipano';
 export const useMarzipano = (panoRef: RefObject<HTMLDivElement>, appData: AppData, currentSceneIndex: number) => {
   const [sceneObjects, setSceneObjects] = useState<Marzipano.Scene[]>([]);
   const [viewer, setViewer] = useState<Marzipano.Viewer | null>(null);
+  const [isAutorotating, setIsAutorotating] = useState<boolean>(appData.settings.autorotateEnabled);
+  const autorotateControlRef = useRef<ReturnType<typeof autorotate> | null>(null);
 
   useEffect(() => {
     if (!panoRef.current) return;
@@ -19,43 +21,49 @@ export const useMarzipano = (panoRef: RefObject<HTMLDivElement>, appData: AppDat
     const newSceneObjects = scenes.map(data => createScene(viewer, data, common, basePrefix));
     setSceneObjects(newSceneObjects);
 
-    panoRef.current.addEventListener('click', () => {
-      const contents = document.querySelectorAll('.hotspot__content');
-      contents.forEach(content => {
-        content.classList.add('hidden');
-      });
-    });
-
     if (newSceneObjects[currentSceneIndex]) {
       newSceneObjects[currentSceneIndex].switchTo();
     }
 
-    // Configure autorotation
-    if (settings.autorotateEnabled) {
+    // Initialize autorotation if enabled
+    if (isAutorotating) {
       const autorotateSettings = {
-        yawSpeed: 0.03, // Rotation speed in radians per second
-        targetPitch: 0, // Target pitch angle in radians
-        targetFov: Math.PI / 4 // Target field of view in radians
+        yawSpeed: 0.03,
+        targetPitch: 0,
+        targetFov: Math.PI / 4
       };
-      const autorotateControl = autorotate(autorotateSettings);
-      viewer.setIdleMovement(3000, autorotateControl); // 3000ms idle time before starting rotation
+      autorotateControlRef.current = autorotate(autorotateSettings);
+      viewer.setIdleMovement(3000, autorotateControlRef.current);
+      viewer.startMovement(autorotateControlRef.current);
     }
 
     return () => {
-      panoRef.current?.removeEventListener('click', () => {
-        const contents = document.querySelectorAll('.hotspot__content');
-        contents.forEach(content => {
-          content.classList.add('hidden');
-        });
-      });
+      viewer.stopMovement(); // Stop any movement when component unmounts
+      viewer.setIdleMovement(Infinity); // Prevent any idle movement from restarting
     };
-  }, [panoRef, appData]);
+  }, [panoRef, appData, currentSceneIndex]);
 
   useEffect(() => {
-    if (sceneObjects[currentSceneIndex]) {
-      sceneObjects[currentSceneIndex].switchTo();
+    if (viewer) {
+      if (isAutorotating) {
+        const autorotateSettings = {
+          yawSpeed: 0.03,
+          targetPitch: 0,
+          targetFov: Math.PI / 4
+        };
+        autorotateControlRef.current = autorotate(autorotateSettings);
+        viewer.setIdleMovement(3000, autorotateControlRef.current);
+        viewer.startMovement(autorotateControlRef.current);
+      } else {
+        viewer.stopMovement();
+        viewer.setIdleMovement(Infinity); // Prevent any idle movement from restarting
+      }
     }
-  }, [currentSceneIndex, sceneObjects]);
+  }, [isAutorotating, viewer]);
 
-  return { viewer, sceneObjects };
+  const toggleAutorotation = () => {
+    setIsAutorotating(!isAutorotating);
+  };
+
+  return { viewer, sceneObjects, isAutorotating, toggleAutorotation };
 };
