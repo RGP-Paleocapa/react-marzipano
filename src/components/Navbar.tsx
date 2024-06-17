@@ -1,4 +1,5 @@
 import React from 'react';
+import infoImage from '@/assets/icons/info.png';
 
 interface NavbarProps {
   onToggleAutorotation: () => void;
@@ -14,7 +15,7 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleAutorotation, isAutorotating, o
         className="bg-blue-800 text-white w-10 h-10 flex items-center justify-center hover:opacity-80"
         onClick={onShowInfo}
       >
-        i
+        <img src={infoImage} alt="Info" className="w-6 h-6" />
       </button>
       <div className="flex space-x-4">
         <button className="bg-green-800 text-white px-4 py-2 hover:opacity-80" onClick={onToggleAutorotation}>
