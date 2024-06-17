@@ -6,10 +6,14 @@ import { AppData } from '@/types/marzipano-types';
 import { Viewer, Scene as SceneObjects } from 'marzipano';
 import Navbar from '@components/Navbar';
 import { useSceneStore } from '@/context/useSceneStore';
+import MapOverlay from './MapOverlay';
+import { useVideoStore } from '@/context/useVideoStore';
+import VideoOverlay from './VideoOverlay';
 
 const MarzipanoPage: React.FC = () => {
   const panoRef = useRef<HTMLDivElement>(null);
   const { currentSceneIndex } = useSceneStore();
+  const { closeVideo, isVideoVisible, videoLink } = useVideoStore();
 
   const { viewer, sceneObjects, isAutorotating, toggleAutorotation } = useMarzipano(panoRef, APP_DATA as AppData, currentSceneIndex);
 
@@ -39,6 +43,8 @@ const MarzipanoPage: React.FC = () => {
           currentSceneIndex={currentSceneIndex}
         />
       )}
+      <MapOverlay />
+      {isVideoVisible && videoLink && <VideoOverlay videoLink={videoLink} onClose={closeVideo} />}
     </div>
   );
 };
