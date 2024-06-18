@@ -32,7 +32,7 @@ const MapOverlay = () => {
         className={`z-10 rounded-lg transition-all duration-300 ease-in-out cursor-pointer max-w-full max-h-full ${isFullScreen ? 'fixed inset-0 m-auto flex items-center justify-center w-full h-full' : 'absolute bottom-10 right-10 w-[150px] lg:w-[250px] h-[150px] lg:h-[250px]'}`}
         onClick={!isFullScreen ? toggleFullScreen : undefined}
       >
-        <div className="relative w-full h-full bg-blue-600 rounded-3xl transition-transform transform hover:scale-105">
+        <div className={`relative w-full h-full bg-blue-600 ${isFullScreen ? 'rounded-none' : 'rounded-3xl'} transition-transform transform ${!isFullScreen ? 'hover:scale-105' : ''}`}>
           <img
             src={map}
             alt="Map"
