@@ -28,7 +28,7 @@ const Dot: React.FC<DotProps> = ({ index, closeFullScreen, isFullScreen, x, y })
       style={{ top: `${y}%`, left: `${x}%` }} // Use the passed x and y positions
       onClick={handleClick}
     >
-      {index}
+      {/* {index} */}
     </div>
   );
 };
