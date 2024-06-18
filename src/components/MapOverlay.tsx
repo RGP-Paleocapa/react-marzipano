@@ -15,18 +15,18 @@ const MapOverlay = () => {
 
   // Example array of dot positions (in percentages) with index
   const dotPositions = [
-    { index: 10, x: 23, y: 24 },
-    { index: 11, x: 23, y: 52 },
+    { index: 11, x: 23, y: 24 },
+    { index: 10, x: 23, y: 52 },
     { index: 8, x: 40, y: 38 },
     { index: 2, x: 58, y: 44 },
     { index: 0, x: 69, y: 63 },
-    { index: 1, x: 76, y: 35 },
+    { index: 5, x: 76, y: 35 },
   ];
 
   return (
     <div>
       {isFullScreen && (
-        <div className="fixed inset-0 bg-blue-600 bg-opacity-50 backdrop-blur-sm z-10" onClick={closeFullScreen}></div>
+        <div className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-10" onClick={closeFullScreen}></div>
       )}
       <div
         className={`z-10 rounded-lg transition-all duration-300 ease-in-out cursor-pointer max-w-full max-h-full ${isFullScreen ? 'fixed inset-0 m-auto flex items-center justify-center w-full h-full' : 'absolute bottom-10 right-10 w-[150px] lg:w-[250px]'}`}
