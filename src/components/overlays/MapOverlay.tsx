@@ -17,10 +17,10 @@ const MapOverlay = () => {
   const dotPositions = [
     { index: 11, x: 23, y: 24 },
     { index: 10, x: 23, y: 52 },
-    { index: 8, x: 40, y: 38 },
-    { index: 2, x: 58, y: 44 },
+    { index: 8, x: 40, y: 34 },
+    { index: 2, x: 58, y: 42 },
     { index: 0, x: 69, y: 63 },
-    { index: 5, x: 76, y: 35 },
+    { index: 5, x: 76, y: 30 },
   ];
 
   return (
