@@ -1,15 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useMarzipano } from '@hooks/useMarzipano';
 import APP_DATA from '@data/config.json';
-import Scene from '@components/Scene';
+import Scene from '@components/common/Scene';
 import { AppData } from '@/types/marzipano-types';
 import { Viewer, Scene as SceneObjects } from 'marzipano';
-import Navbar from '@components/Navbar';
+import Navbar from '@components/common/Navbar';
 import { useSceneStore } from '@/context/useSceneStore';
-import MapOverlay from './MapOverlay';
+import MapOverlay from './overlays/MapOverlay';
 import { useVideoStore } from '@/context/useVideoStore';
-import VideoOverlay from './VideoOverlay';
-import InfoComponent from './InfoComponent';
+import VideoOverlay from './overlays/VideoOverlay';
+import InfoComponent from './common/InfoComponent';
 
 const MarzipanoPage: React.FC = () => {
   const panoRef = useRef<HTMLDivElement>(null);

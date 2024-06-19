@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import map from '@/assets/images/image.jpg';
-import Dot from './Dot';
+import Dot from '../hotspots/Dot';
 
 const MapOverlay = () => {
   const [isFullScreen, setIsFullScreen] = useState(false);

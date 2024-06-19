@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { AppData } from '@/types/marzipano-types';
-import HotspotContainer from '@components/HotspotContainer';
+import HotspotContainer from '@components/hotspots/HotspotContainer';
 import Marzipano from 'marzipano';
 
 interface SceneProps {
