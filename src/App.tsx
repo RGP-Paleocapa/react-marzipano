@@ -1,5 +1,5 @@
 // App.tsx
-import MarzipanoPage from "./components/MarzipanoPage";
+import MarzipanoPage from "@/pages/MarzipanoPage";
 import VideoOverlay from "@/components/overlays/VideoOverlay";
 import { useVideoStore } from "@/context/useVideoStore";
 
