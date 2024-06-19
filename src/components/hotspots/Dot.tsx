@@ -23,7 +23,7 @@ const Dot: React.FC<DotProps> = ({ index, closeFullScreen, isFullScreen, x, y })
   return (
     <div
       className={`absolute bg-red-500 text-white flex items-center justify-center rounded-full cursor-pointer border-2 ${
-        isFullScreen ? 'w-8 h-8' : 'w-4 h-4 text-xs'
+        isFullScreen ? 'w-6 h-6 lg:w-8 lg:h-8' : 'w-3 h-3 text-xs'
       }`}
       style={{ top: `${y}%`, left: `${x}%` }} // Use the passed x and y positions
       onClick={handleClick}
