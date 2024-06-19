@@ -2,6 +2,8 @@ import React from 'react';
 import { InfoHotspot } from '@/types/marzipano-types';
 import infoImage from '@/assets/icons/info.png';
 import { useVideoStore } from '@/context/useVideoStore';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faVideo } from '@fortawesome/free-solid-svg-icons';
 
 interface InfoHotspotElementProps {
   hotspot: InfoHotspot;
@@ -29,25 +31,29 @@ const InfoHotspotElement: React.FC<InfoHotspotElementProps> = ({ hotspot }) => {
   };
 
   return (
-    <div className="relative p-2 bg-blue-500 rounded-lg shadow-md transition-transform transform hover:scale-110">
+    <div className={`relative p-2 rounded-lg shadow-md transition-transform transform hover:scale-110 ${hotspot.videoLink ? 'bg-red-500' : 'bg-blue-500'}`}>
       <div
         className="cursor-pointer flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8"
         onClick={toggleContentVisibility}
       >
-        <img src={infoImage} alt="Info Icon" className="w-6 h-6 sm:w-8 sm:h-8 transition-transform transform hover:scale-110" />
+        {hotspot.videoLink ? (
+          <FontAwesomeIcon icon={faVideo} className="text-white w-6 h-6 sm:w-8 sm:h-8 transition-transform transform hover:scale-110" />
+        ) : (
+          <img src={infoImage} alt="Info Icon" className="w-6 h-6 sm:w-8 sm:h-8 transition-transform transform hover:scale-110" />
+        )}
       </div>
-      <div className={`absolute top-10 left-0 bg-blue-400 p-2 sm:p-4 rounded-lg shadow-md transition-opacity duration-300 ${isContentVisible ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+      <div className={`absolute top-10 left-0 p-2 sm:p-4 rounded-lg shadow-md transition-opacity duration-300 ${isContentVisible ? 'opacity-100 visible' : 'opacity-0 invisible'} ${hotspot.videoLink ? 'bg-red-400' : 'bg-blue-400'}`}>
         <div className="flex justify-between items-center mb-2">
-          <div className="text-sm sm:text-lg font-bold text-white">{hotspot.title}</div>
+          <div className={`text-sm sm:text-lg font-bold ${hotspot.videoLink ? 'text-yellow-200' : 'text-white'}`}>{hotspot.title}</div>
           <button onClick={closeContent} className="ml-4 bg-red-500 text-white px-1 sm:px-2 py-0.5 sm:py-1 rounded-full hover:bg-red-700">X</button>
         </div>
         <hr className="border-blue-300 mb-2" />
         {hotspot.infoText && (
-          <div className="mt-2 text-xs sm:text-sm text-white">{hotspot.infoText}</div>
+          <div className={`mt-2 text-xs sm:text-sm ${hotspot.videoLink ? 'text-yellow-100' : 'text-white'}`}>{hotspot.infoText}</div>
         )}
         {hotspot.videoLink && (
           <div className="mt-2">
-            <button onClick={handleShowVideo} className="bg-white text-blue-500 text-xs sm:text-base px-2 sm:px-4 py-1 sm:py-2 rounded-lg shadow-md hover:bg-blue-100">Watch Video</button>
+            <button onClick={handleShowVideo} className="bg-white text-red-500 text-xs sm:text-base px-2 sm:px-4 py-1 sm:py-2 rounded-lg shadow-md hover:bg-red-100">Watch Video</button>
           </div>
         )}
       </div>
