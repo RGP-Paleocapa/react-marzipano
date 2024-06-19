@@ -1,6 +1,6 @@
 // App.tsx
 import MarzipanoPage from "./components/MarzipanoPage";
-import VideoOverlay from "@components/VideoOverlay";
+import VideoOverlay from "@/components/overlays/VideoOverlay";
 import { useVideoStore } from "@/context/useVideoStore";
 
 const App = () => {

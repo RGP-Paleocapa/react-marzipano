@@ -1,5 +1,5 @@
 import React from 'react';
-import '@/styles/button-style.css';
+import '@/styles/buttons/button-style.css';
 
 interface InfoComponentProps {
   setInfoVisible: (visible: boolean) => void;
