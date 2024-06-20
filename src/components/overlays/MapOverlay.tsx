@@ -25,12 +25,12 @@ const MapOverlay = () => {
 
   // Example array of dot positions (in percentages) with index
   const dotPositions = [
-    { index: 11, x: 23, y: 24 },
-    { index: 10, x: 23, y: 52 },
-    { index: 8, x: 40, y: 34 },
-    { index: 2, x: 58, y: 42 },
-    { index: 0, x: 69, y: 63 },
-    { index: 5, x: 76, y: 30 },
+    { index: 11, x: 23, y: 24, roomIndexes: [] },
+    { index: 10, x: 23, y: 52, roomIndexes: [] },
+    { index: 8, x: 40, y: 34, roomIndexes: [7, 9, 12, 13, 14, 15, 16, 17] },
+    { index: 2, x: 58, y: 42, roomIndexes: [3, 4] },
+    { index: 0, x: 69, y: 63, roomIndexes: [1] },
+    { index: 5, x: 76, y: 30, roomIndexes: [6] },
   ];
 
   return (
@@ -62,7 +62,7 @@ const MapOverlay = () => {
               X
             </button>
           )}
-          {dotPositions.map(({ index, x, y }) => (
+          {dotPositions.map(({ index, x, y, roomIndexes }) => (
             <Dot
               key={index}
               index={index}
@@ -70,6 +70,7 @@ const MapOverlay = () => {
               y={y}
               closeFullScreen={() => closeFullScreen(false)} // Disable animation when a dot is clicked
               isFullScreen={isFullScreen}
+              roomIndexes={roomIndexes}
             />
           ))}
         </div>

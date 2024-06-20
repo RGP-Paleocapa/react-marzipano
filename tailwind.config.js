@@ -12,6 +12,9 @@ export default {
       backgroundColor: {
         'black-opaque': 'rgba(0, 0, 0, 0.8)',
       },
+      animation: {
+        'ping-slow': 'ping 3s linear infinite',
+      }
     },
   },
   plugins: [],

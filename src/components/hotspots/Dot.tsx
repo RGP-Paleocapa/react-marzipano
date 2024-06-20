@@ -7,9 +7,10 @@ interface DotProps {
   isFullScreen: boolean;
   x: number;
   y: number;
+  roomIndexes: number[]
 }
 
-const Dot: React.FC<DotProps> = ({ index, closeFullScreen, isFullScreen, x, y }) => {
+const Dot: React.FC<DotProps> = ({ index, closeFullScreen, isFullScreen, x, y, roomIndexes }) => {
   const { switchScene, currentSceneIndex } = useSceneStore();
 
   const handleClick = (e: React.MouseEvent) => {
@@ -20,12 +21,14 @@ const Dot: React.FC<DotProps> = ({ index, closeFullScreen, isFullScreen, x, y })
     }
   };
 
+  const isActive = currentSceneIndex === index || roomIndexes.includes(currentSceneIndex);
+
   return (
     <div
-      className={`absolute bg-red-500 text-white flex items-center justify-center rounded-full cursor-pointer border-2 ${
+      className={`absolute text-white flex items-center justify-center rounded-full cursor-pointer border-2 ${
         isFullScreen ? 'w-6 h-6 lg:w-8 lg:h-8' : 'w-3 h-3 text-xs'
       } ${
-        currentSceneIndex === index ? 'bg-green-500' : 'bg-red-500'
+        isActive ? 'bg-green-500' : 'bg-red-500'
       }`}
       style={{ top: `${y}%`, left: `${x}%` }} // Use the passed x and y positions
       onClick={handleClick}
