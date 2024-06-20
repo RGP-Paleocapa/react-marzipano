@@ -69,6 +69,7 @@ const MapOverlay = () => {
               x={x}
               y={y}
               closeFullScreen={() => closeFullScreen(false)} // Disable animation when a dot is clicked
+              toggleFullScreen={toggleFullScreen}
               isFullScreen={isFullScreen}
               roomIndexes={roomIndexes}
             />
