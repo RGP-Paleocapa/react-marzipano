@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { AppData } from '@/types/marzipano-types';
 import HotspotContainer from '@components/hotspots/HotspotContainer';
 import Marzipano from 'marzipano';
@@ -11,19 +11,7 @@ interface SceneProps {
   currentSceneIndex: number;
 }
 
-// viewer ??
-// It saves previous scene location. remove it?
-
 const Scene: React.FC<SceneProps> = ({ data, sceneObjects, currentSceneIndex }) => {
-
-  useEffect(() => {
-    const currentScene = sceneObjects[currentSceneIndex];
-    if (currentScene) {
-      console.log(`Switching to scene ${currentSceneIndex}`);
-      currentScene.switchTo();
-    }
-  }, [currentSceneIndex, sceneObjects]);
-
   return (
     <div>
       <HotspotContainer
