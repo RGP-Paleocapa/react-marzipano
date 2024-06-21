@@ -11,9 +11,6 @@ interface SceneProps {
   currentSceneIndex: number;
 }
 
-// viewer ??
-// It saves previous scene location. remove it?
-
 const Scene: React.FC<SceneProps> = ({ data, sceneObjects, currentSceneIndex }) => {
 
   useEffect(() => {
