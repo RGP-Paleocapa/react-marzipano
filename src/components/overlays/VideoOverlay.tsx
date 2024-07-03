@@ -37,7 +37,7 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
             ></iframe>
           </div>
         ) : (
-          <div className="w-full h-auto aspect-w-16 aspect-h-9 max-w-full max-h-full bg-gray-800 rounded-lg overflow-hidden">
+          <div className="w-full h-auto aspect-square max-w-full max-h-full bg-gray-800 rounded-lg overflow-hidden">
             <video controls className="w-full h-full">
               <source src={`${baseUrl}/${encodeURIComponent(videoLink)}`} type="video/mp4" />
               <source src={`${baseUrl}/${encodeURIComponent(videoLink.replace('.mp4', '.webm'))}`} type="video/webm" />
