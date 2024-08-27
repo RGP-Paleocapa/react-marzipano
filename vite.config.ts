@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import * as path from 'path';
+import { BASE_URL } from './src/globalConfig'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,7 +16,7 @@ export default defineConfig({
     }
   },
   plugins: [react()],
-  base: "/react-marzipano/",
+  base: `/${BASE_URL}/`,
   server: {
     open: true,
   }
