@@ -1,10 +1,11 @@
 import Marzipano, { Viewer } from 'marzipano';
 import { AppData } from '@/types/marzipano-types';
+import { BASE_URL } from '@/globalConfig';
 
-export const createScene = (viewer: Viewer, data: AppData['scenes'][0], common: AppData['common'], basePrefix: string) => {
+export const createScene = (viewer: Viewer, data: AppData['scenes'][0], common: AppData['common']) => {
   const source = Marzipano.ImageUrlSource.fromString(
-    `/${basePrefix}/assets/tiles/${data.id}/{z}/{f}/{y}/{x}.jpg`,
-    { cubeMapPreviewUrl: `/${basePrefix}/assets/tiles/${data.id}/preview.jpg` }
+    `/${BASE_URL}/assets/tiles/${data.id}/{z}/{f}/{y}/{x}.jpg`,
+    { cubeMapPreviewUrl: `/${BASE_URL}/assets/tiles/${data.id}/preview.jpg` }
   );
 
   const levels = common.levels;

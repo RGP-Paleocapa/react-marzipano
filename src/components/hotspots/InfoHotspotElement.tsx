@@ -4,6 +4,7 @@ import infoImage from '@/assets/icons/info.png';
 import { useVideoStore } from '@/context/useVideoStore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVideo } from '@fortawesome/free-solid-svg-icons';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 interface InfoHotspotElementProps {
   hotspot: InfoHotspot;
@@ -37,7 +38,7 @@ const InfoHotspotElement: React.FC<InfoHotspotElementProps> = ({ hotspot }) => {
         onClick={toggleContentVisibility}
       >
         {hotspot.videoLink ? (
-          <FontAwesomeIcon icon={faVideo} className="text-white w-6 h-6 sm:w-8 sm:h-8 transition-transform transform hover:scale-110" />
+          <FontAwesomeIcon icon={faVideo as IconProp} className="text-white w-6 h-6 sm:w-8 sm:h-8 transition-transform transform hover:scale-110" />
         ) : (
           <img src={infoImage} alt="Info Icon" className="w-6 h-6 sm:w-8 sm:h-8 transition-transform transform hover:scale-110" />
         )}

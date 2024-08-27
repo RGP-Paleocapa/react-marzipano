@@ -16,9 +16,8 @@ export const useMarzipano = (panoRef: RefObject<HTMLDivElement>, appData: AppDat
     const { settings, scenes, common } = appData;
     const viewer = createViewer(panoRef, settings);
     setViewer(viewer);
-    const basePrefix = "react-marzipano";
 
-    const newSceneObjects = scenes.map(data => createScene(viewer, data, common, basePrefix));
+    const newSceneObjects = scenes.map(data => createScene(viewer, data, common));
     setSceneObjects(newSceneObjects);
 
     if (newSceneObjects[currentSceneIndex]) {
