@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import * as path from 'path';
+import removeConsole from 'vite-plugin-remove-console';
 import { BASE_URL } from './src/globalConfig'
 
 // https://vitejs.dev/config/
@@ -15,7 +16,13 @@ export default defineConfig({
       '@public': path.resolve(__dirname, './public')
     }
   },
-  plugins: [react()],
+  plugins: [
+    react(),
+    removeConsole()
+  ],
+  build: {
+    minify: 'esbuild',
+  },
   base: `/${BASE_URL}/`,
   server: {
     open: true,
