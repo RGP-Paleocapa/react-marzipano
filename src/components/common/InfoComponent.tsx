@@ -13,7 +13,11 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ setInfoVisible }) => {
           <h1 className="text-4xl font-extrabold mb-4 text-blue-300 text-justify">Nevera Virtual Tour</h1>
           <p className="text-xl mb-6 text-justify">
             Benvenuto. Per navigare all'interno del museo e visitare la nevera trascina il cursore per muovere le immagini a 360° e clicca sugli
-            hotspot con le frecce per spostarti in un altro scenario. Puoi spostarti utilizzando anche la mappa in basso a destra.
+            hotspot con le frecce per spostarti in un altro scenario. <br></br>Sono presenti due tipi di hotspot:
+            <br></br>- quelli rossi indicano il percorso principale all'interno del museo;
+            <br></br>- quelli bianchi stanno ad indicare dei percorsi secondari.
+            <br></br>Nelle scene potresti trovare dei punti infospot segnati con una "i". Questi punti presentano delle informazioni di un determinato oggetto o luogo del museo; essi possono essere accompagnati da dei video esplicativi.
+            <br></br>Puoi spostarti utilizzando anche la mappa in basso a destra.
           </p>
           <div className="flex justify-center">
             <button
