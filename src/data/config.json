@@ -116,8 +116,10 @@
         {
           "yaw": -2.8455095414426914,
           "pitch": 0.6174025152499762,
-          "title": "cose entrata",
-          "infoText": "Text"
+          "title": "Oggetti entrata 1o locale",
+          "infoText": "-Allevamento in valle con la produzione dello stracchino. \n -Attrezzi del falegname con pialle e trapani di vario genere. \n -Attrezzi del fabbro con la fucina e l'incudine per la produzione dei chiodi utili per le coperture degli edifici.",
+          "videoLink": "video 3-1 1o locale ingresso nevera.mp4"
+
         }
       ]
     },
@@ -156,21 +158,18 @@
         {
           "yaw": 0.6602894520743341,
           "pitch": 0.3955729112845354,
-          "title": "Oggetti entrata i2",
-          "infoText": "0",
+          "title": "Macchina del gelato",
           "videoLink": "VID-20230510-WA0000.mp4"
         },
         {
           "yaw": 1.2722730725212834,
           "pitch": -0.18766926510757997,
-          "title": "mappa su oggeto",
-          "infoText": "Text"
+          "title": "Illustrazione della ghiaccia"
         },
         {
           "yaw": -2.617942912404178,
           "pitch": -0.224065436581661,
-          "title": "oggetti entrata i2",
-          "infoText": "1"
+          "title": "Utensili ed attrezzi per il lavoro"
         }
       ]
     },
@@ -248,14 +247,13 @@
         {
           "yaw": 0.567023140974122,
           "pitch": -0.35435380978542597,
-          "title": "Title",
-          "infoText": "Text"
+          "title": "2° Locale del museo",
+          "videoLink": "video 3-2 2o locale.mp4"
         },
         {
           "yaw": -2.9003265388186144,
           "pitch": -0.03171791431554638,
-          "title": "Oggetti seconda stanza",
-          "infoText": "1"
+          "title": "Oggetti di uso quotidiano casalingo e per il lavoro"
         }
       ]
     },
@@ -433,13 +431,15 @@
           "yaw": 2.57093305124663,
           "pitch": 0.30190122157420163,
           "title": "Vini",
-          "infoText": "tenuti al fresco, d'inverno venivano sommersi con la neve per tenerli buoni"
+          "infoText": "tenuti al fresco, d'inverno venivano sommersi con la neve per tenerli buoni",
+          "videoLink": "video 2 nevera.mp4"
         },
         {
           "yaw": -2.7752216618608756,
           "pitch": -0.585480331577072,
           "title": "Botola",
-          "infoText": "Chissà dove porta?"
+          "infoText": "Chissà dove porta?",
+          "videoLink": "video 1 botola.mp4"
         }
       ]
     },
@@ -507,6 +507,13 @@
           "title": "Cosa c'è in quel riquadro bianco?",
           "infoText": "Vai avanti per scoprire il mistero",
           "isRed": false
+        },
+        {
+          "yaw": 1.3921980901382035,
+          "pitch": 0.0123224212032427,
+          "isRed": false,
+          "title": "Ca' d'Amamgn",
+          "videoLink": "video 4 casa torre.mp4"
         }
       ]
     },
