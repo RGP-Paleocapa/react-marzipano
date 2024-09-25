@@ -521,8 +521,8 @@
       "id": "13-piazzetta-esterna-3",
       "name": "Piazzetta esterna",
       "initialViewParameters": {
-        "yaw": 3.048399731506681,
-        "pitch": 0.3647925166301711,
+        "yaw": -6.048399731506681,
+        "pitch": -0.1647925166301711,
         "fov": 1.4550425388027854
       },
       "linkHotspots": [
