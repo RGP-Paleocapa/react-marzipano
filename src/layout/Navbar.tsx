@@ -13,7 +13,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ onToggleAutorotation, isAutorotating, onToggleFullscreen, onShowInfo }) => {
   return (
-    <div className="absolute top-0 left-0 w-full bg-gray-800 flex justify-between items-center z-10 h-12">
+    <div className="absolute top-0 left-0 w-full bg-gray-800 flex justify-between items-center z-10 h-10 md:h-12">
       <button
         className="bg-blue-800 text-white flex items-center justify-center hover:bg-blue-700 transition-colors duration-200 ease-in-out h-full w-12"
         onClick={onShowInfo}
