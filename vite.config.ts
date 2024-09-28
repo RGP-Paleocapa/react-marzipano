@@ -2,7 +2,6 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import * as path from 'path';
 import removeConsole from 'vite-plugin-remove-console';
-import { BASE_URL } from './src/globalConfig'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -23,7 +22,7 @@ export default defineConfig({
   build: {
     minify: 'esbuild',
   },
-  base: `${BASE_URL}/`,
+  base: './',
   server: {
     open: true,
   }
