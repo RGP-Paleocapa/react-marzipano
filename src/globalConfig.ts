@@ -1,1 +1,1 @@
-export const BASE_URL = "react-marzipano";
+export const BASE_URL = ".";

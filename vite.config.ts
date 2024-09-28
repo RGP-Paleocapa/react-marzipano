@@ -23,7 +23,7 @@ export default defineConfig({
   build: {
     minify: 'esbuild',
   },
-  base: `/${BASE_URL}/`,
+  base: `${BASE_URL}/`,
   server: {
     open: true,
   }
