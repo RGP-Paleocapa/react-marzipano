@@ -4,7 +4,7 @@ import { BASE_URL } from '@/globalConfig';
 
 export const createScene = (viewer: Viewer, data: AppData['scenes'][0], common: AppData['common']) => {
   const source = Marzipano.ImageUrlSource.fromString(
-    `/${BASE_URL}/assets/tiles/${data.id}/{z}/{f}/{y}/{x}.jpg`,
+    `${BASE_URL}/assets/tiles/${data.id}/{z}/{f}/{y}/{x}.jpg`,
     { cubeMapPreviewUrl: `/${BASE_URL}/assets/tiles/${data.id}/preview.jpg` }
   );
 
