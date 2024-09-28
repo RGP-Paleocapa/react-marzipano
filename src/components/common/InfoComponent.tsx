@@ -29,15 +29,21 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ setInfoVisible }) => {
             </button>
           </div>
         </div>
-        <div className="text-center mt-8 bg-gray-800 bg-opacity-50 p-4 rounded-md">
-          <div className="credits text-xs mb-2 opacity-75">
-            <span className="font-semibold">Autore:</span> Nicola Invernizzi,
-            <span className="font-semibold"> Sviluppatori Attuali:</span> Puiu Rares Gabriel, Faye Kenowa
+        <div className="flex flex-col items-center mt-8 bg-gray-800 bg-opacity-50 p-4 rounded-md">
+          <div className="max-w-lg text-xs text-justify opacity-75 space-y-2">
+            <div>
+              <span>Visita Virtuale alla Nevera del Museo Valdimagnino</span>
+            </div>
+            <div className="credits">
+              <span className="font-semibold">Autori:</span> Rares Gabriel Puiu, Faye Kenowa Diop, Nicola Invernizzi.
+            </div>
+            <div>
+              Progetto sviluppato nel contesto delle attività Computing for Social Good di Renato Cortinovis, con materiali forniti da Giuseppe Ghidorzi.
+            </div>
+            <div className="copyright opacity-75">
+              CC BY-NC-SA 4.0{/*}, 2023 - {new Date().getFullYear()} */}
+            </div>
           </div>
-          <div className="text-xs mb-2 opacity-75">
-            Progetto sviluppato nel contesto delle attività Computing for Social Good di Renato Cortinovis
-          </div>
-          <div className="copyright text-xs opacity-75">CC BY-NC-SA 4.0</div>
         </div>
       </div>
     </div>

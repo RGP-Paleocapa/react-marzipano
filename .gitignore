@@ -28,3 +28,5 @@ merge_dependabot_prs.sh
 
 # PlantUML
 test_uml.wsd
+# Local Netlify folder
+.netlify
