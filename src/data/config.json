@@ -19,7 +19,7 @@
       },
       "linkHotspots": [
         {
-          "yaw": -0.23817464724527682,
+          "yaw": -0.28817464724527682,
           "pitch": 0.10231538244980953,
           "rotation": 720,
           "target": "2-ingresso-museo-primo-locale-1",
@@ -39,13 +39,12 @@
           "yaw": 0.47983935090504026,
           "pitch": -0.24488264090410183,
           "title": "Museo Valdimagnino di Amagno",
-          "videoLink": "video 2 nevera.mp4"
+          "videoLink": "video introduttivo museo.mp4"
         },
         {
-          "yaw": -0.47983935090504026,
-          "pitch": 0.24488264090410183,
-          "title": "Museo Valdimagnino di Amagno",
-          "infoText": "Entrata"
+          "yaw": -0.67983935090504026,
+          "pitch": -0.24488264090410183,
+          "title": "Entrata del museo"
         }
       ]
     },
@@ -53,7 +52,7 @@
       "id": "1-museo-2",
       "name": "Museo",
       "initialViewParameters": {
-        "yaw": -0.33247259182996913,
+        "yaw": -1.33247259182996913,
         "pitch": 0.15215586630126765,
         "fov": 1.4550425388027854
       },
@@ -77,8 +76,7 @@
         {
           "yaw": -1.3964035004162216,
           "pitch": -0.2144186852938219,
-          "title": "Museo Valdimagnino di Amagno",
-          "infoText": "Text"
+          "title": "Museo Valdimagnino di Amagno"
         }
       ]
     },
@@ -110,16 +108,14 @@
         {
           "yaw": 2.0696263665191124,
           "pitch": -0.23645498179391033,
-          "title": "Campane",
-          "infoText": "campane e campanelle antiche"
+          "title": "Attrezzi per allevamento",
+          "infoText": "Attrezzi usati per l'allevamento in valle, con successiva produzione dello strachino"
         },
         {
-          "yaw": -2.8455095414426914,
-          "pitch": 0.6174025152499762,
-          "title": "Oggetti entrata 1o locale",
-          "infoText": "-Allevamento in valle con la produzione dello stracchino. \n -Attrezzi del falegname con pialle e trapani di vario genere. \n -Attrezzi del fabbro con la fucina e l'incudine per la produzione dei chiodi utili per le coperture degli edifici.",
+          "yaw": -2.4455095414426914,
+          "pitch": 0.0174025152499762,
+          "title": "1° Locale museo Valdimagnino",
           "videoLink": "video 3-1 1o locale ingresso nevera.mp4"
-
         }
       ]
     },
@@ -133,8 +129,8 @@
       },
       "linkHotspots": [
         {
-          "yaw": -1,
-          "pitch": 0.5,
+          "yaw": -1.052,
+          "pitch": 0.2,
           "rotation": 114.6,
           "target": "2-ingresso-museo-primo-locale-1",
           "isRed": false
@@ -156,20 +152,39 @@
       ],
       "infoHotspots": [
         {
-          "yaw": 0.6602894520743341,
-          "pitch": 0.3955729112845354,
+          "yaw": 0.1902894520743341,
+          "pitch": 0.2955729112845354,
+          "title": "Libreria del museo",
+          "infoText": "Riviste, libri ed illustrazione del museo stesso, la sua storia, la storia della valle di imagno e tanto altro ancora."
+        },
+        {
+          "yaw": 0.6902894520743341,
+          "pitch": 0.0055729112845354,
+          "title": "Verso la ghiacciaia"
+        },
+        {
+          "yaw": 0.9902894520743341,
+          "pitch": 0.2955729112845354,
           "title": "Macchina del gelato",
           "videoLink": "VID-20230510-WA0000.mp4"
         },
         {
           "yaw": 1.2722730725212834,
           "pitch": -0.18766926510757997,
-          "title": "Illustrazione della ghiaccia"
+          "title": "Illustrazione della ghiaccia",
+          "infoText": "Cartina orizzontale della ghiacciaia insieme a informazioni storiche sulla sua costruzione e uso passato."
+        },
+        {
+          "yaw": -1.9722730725212834,
+          "pitch": -0.20766926510757997,
+          "title": "Utensili per preparazione di legumi",
+          "infoText": "Venivano usati in valle per la preparazione di verdure, legumi e pane."
         },
         {
           "yaw": -2.617942912404178,
           "pitch": -0.224065436581661,
-          "title": "Utensili ed attrezzi per il lavoro"
+          "title": "Attrezzi del fabbro",
+          "infoText": "Questi erano alcuni degli attrezzi usati dal fabbro per la produzione di chiodi usando un incudine nella sua fucina. \n Questi chiodi venivano usati per esempio per tenere unite le coperture degli edifici."
         }
       ]
     },
@@ -206,16 +221,16 @@
       ],
       "infoHotspots": [
         {
-          "yaw": -1.2306920914586392,
-          "pitch": -0.1948963292575865,
-          "title": "Oggetti seconda stanza",
-          "infoText": "0"
+          "yaw": -3.283657100488371,
+        "pitch": 0.01433160168152412,
+          "title": "Verso la ghiaccia",
+          "infoText": "Tunnel che orta alla famosa ghiacciaia"
         },
         {
           "yaw": 1.208816503897357,
           "pitch": -0.3406714748726614,
-          "title": "Omaggio",
-          "infoText": "Le persone che hanno conrtribuito alla costruzione di questo museo"
+          "title": "Omaggi",
+          "infoText": "Omaggi alle persone che hanno contribuito alla costruzione del museo valdimagnino insieme al'attuale procuratore del museo."
         }
       ]
     },
@@ -251,6 +266,18 @@
           "videoLink": "video 3-2 2o locale.mp4"
         },
         {
+          "yaw": 0.0003265388186144,
+          "pitch": -0.00435380978542597,
+          "title": "Nicchia",
+          "infoText": "Luogo in cui vi si adagiava Pierino."
+        },
+        {
+          "yaw": -2.3003265388186144,
+          "pitch": 0.35171791431554638,
+          "title": "Gioco per bambini",
+          "infoText": "Questo gioco serviva per insegnare agli infanti come camminare: \nIl pambino veniva posizionato all'interno del cerchio, e quest'ultimo, sostenuto dalle sbarre, camminava avanti ed indietro esercitandosi dunque nella camminata"
+        },
+        {
           "yaw": -2.9003265388186144,
           "pitch": -0.03171791431554638,
           "title": "Oggetti di uso quotidiano casalingo e per il lavoro"
@@ -277,9 +304,8 @@
       "infoHotspots": [
         {
           "yaw": -2.86482781122937,
-          "pitch": 0.037348969514427566,
-          "title": "cantina vini",
-          "infoText": "Text"
+          "pitch": 0.737348969514427566,
+          "title": "Tessuti per la fasciatura dei bambini"
         }
       ]
     },
@@ -311,8 +337,12 @@
         {
           "yaw": 0.05126875333364467,
           "pitch": 0.01875466431265771,
-          "title": "Aula museo",
-          "infoText": "Text"
+          "title": "Aula museo"
+        },
+        {
+          "yaw": 3.4060420809943405,
+          "pitch": 0.3208542954131417,
+          "title": "Verso la ghiacciaia"
         }
       ]
     },
@@ -349,16 +379,14 @@
       ],
       "infoHotspots": [
         {
-          "yaw": -0.8869616198976615,
-          "pitch": -0.23188891911749288,
-          "title": "Title",
-          "infoText": "Text"
+          "yaw": -2.6842312723738512,
+          "pitch": 0.3399539928291748,
+          "title": "Verso il museo"
         },
         {
           "yaw": 2.5533413390312987,
           "pitch": -0.19230845110633332,
-          "title": "Museo",
-          "infoText": "Text"
+          "title": "Verso il museo"
         }
       ]
     },
@@ -390,8 +418,13 @@
         {
           "yaw": 0.13748274379255676,
           "pitch": 0.03552663226146535,
-          "title": "Vini vari",
-          "infoText": "Text"
+          "title": "Vini nella nicchia",
+          "infoText": "Vini pronti pre-stagionati, ricavati dalla ghiacciaia"
+        },
+        {
+          "yaw": -1.65,
+          "pitch": 0,
+          "title": "Sporgenza Nevera"
         }
       ]
     },
@@ -428,11 +461,17 @@
       ],
       "infoHotspots": [
         {
-          "yaw": 2.57093305124663,
-          "pitch": 0.30190122157420163,
-          "title": "Vini",
-          "infoText": "tenuti al fresco, d'inverno venivano sommersi con la neve per tenerli buoni",
+          "yaw": 2.97093305124663,
+          "pitch": 0.20190122157420163,
+          "title": "La Nevera",
+          "infoText": "Ecco la ghiacciaia",
           "videoLink": "video 2 nevera.mp4"
+        },
+        {
+          "yaw": 2.37093305124663,
+          "pitch": 0.50190122157420163,
+          "title": "Derrate alimentari",
+          "infoText": "I cibi e le bevande posati qui, venivano sommersi dalla neve tramite la botola, conservandoli dunque in un luogo chiuso e fresco. "
         },
         {
           "yaw": -2.7752216618608756,
@@ -467,7 +506,13 @@
           "isRed": true
         }
       ],
-      "infoHotspots": []
+      "infoHotspots": [
+        {
+          "yaw": 0.8,
+          "pitch": 2.0,
+          "title": "Botola"
+        }
+      ]
     },
     {
       "id": "12-piazzetta-esterna-2",
@@ -495,7 +540,7 @@
         {
           "yaw": -0.2921980901382035,
           "pitch": 0.3223224212032427,
-          "rotation": 90,
+          "rotation": 270,
           "target": "13-piazzetta-esterna-3",
           "isRed": false
         }
@@ -505,15 +550,19 @@
           "yaw": -0.4921980901382035,
           "pitch": -0.3223224212032427,
           "title": "Cosa c'è in quel riquadro bianco?",
-          "infoText": "Vai avanti per scoprire il mistero",
-          "isRed": false
+          "infoText": "Vai avanti per scoprire il mistero"
         },
         {
-          "yaw": 1.3921980901382035,
-          "pitch": 0.0123224212032427,
-          "isRed": false,
-          "title": "Ca' d'Amamgn",
+          "yaw": -1.4921980901382035,
+          "pitch": -0.3223224212032427,
+          "title": "La casa torre",
           "videoLink": "video 4 casa torre.mp4"
+        },
+        {
+          "yaw": 1.5921980901382035,
+          "pitch": 0.0123224212032427,
+          "title": "Ca' d'Amagn",
+          "videoLink": "video 5 ca d amagn.mp4"
         }
       ]
     },
@@ -527,6 +576,13 @@
       },
       "linkHotspots": [
         {
+          "yaw": 2.420318991846152,
+          "pitch": 0.25095531570031326,
+          "rotation": 45,
+          "target": "1-museo-2",
+          "isRed": true
+        },
+        {
           "yaw": 4.6,
           "pitch": 0.2,
           "rotation": 630,
@@ -534,19 +590,18 @@
           "isRed": false
         },
         {
-          "yaw": 2.420318991846152,
-          "pitch": 0.25095531570031326,
+          "yaw": -2.832283050143341,
+          "pitch": -0.049574861929396974,
           "rotation": 45,
-          "target": "1-museo-2",
-          "isRed": true
+          "target": "14-porticato-1",
+          "isRed": false
         }
       ],
       "infoHotspots": [
         {
-          "yaw": -3.132283050143341,
+          "yaw": -2.632283050143341,
           "pitch": -0.049574861929396974,
-          "title": "Title",
-          "infoText": "Text"
+          "title": "Ca' d'Amagn"
         },
         {
           "yaw": 0.31532392460437464,
@@ -555,10 +610,9 @@
           "infoText": "Contadino"
         },
         {
-          "yaw": -4.00000090034368578,
+          "yaw": -3.70000090034368578,
           "pitch": 0.12600622227910918,
-          "title": "Ritorniamo all'inizio",
-          "infoText": "Text"
+          "title": "Ritorniamo all'inizio"
         }
       ]
     },
@@ -586,7 +640,14 @@
           "isRed": false
         }
       ],
-      "infoHotspots": []
+      "infoHotspots": [
+        {
+          "yaw": 0.206518183541572853,
+          "pitch": -0.10133365880838774,
+          "title": "Scale",
+          "infoText": "Sali verso la casa di amagno"
+        }
+      ]
     },
     {
       "id": "15-porticato-2",
@@ -629,14 +690,21 @@
           "rotation": 90,
           "target": "17-casa-del-maestro",
           "isRed": true
+        },
+        {
+          "yaw": 1.1,
+          "pitch": 0.59458640795051494,
+          "rotation": 90,
+          "target": "14-porticato-1",
+          "isRed": false
         }
       ],
       "infoHotspots": [
         {
-          "yaw": 0.15439878530581552,
-          "pitch": -0.25511697907968767,
-          "title": "Piano superiore",
-          "infoText": "Text"
+          "yaw": -0.15439878530581552,
+          "pitch": 0.35511697907968767,
+          "title": "Insediamento di una porta",
+          "infoText": "Qui un avolta vi era presente un apertura, la quale portava ad un gabinetto pensile"
         }
       ]
     },
@@ -652,7 +720,7 @@
         {
           "yaw": 2.35,
           "pitch": 0.2,
-          "rotation": 570,
+          "rotation": 120,
           "target": "16-porticato-3",
           "isRed": false
         },
@@ -664,7 +732,18 @@
           "isRed": true
         }
       ],
-      "infoHotspots": []
+      "infoHotspots": [
+        {
+          "yaw": 1.580864005166174,
+          "pitch": 0.2367534292801828,
+          "title": "Pierino"
+        },
+        {
+          "yaw": 0.280864005166174,
+          "pitch": 0.0367534292801828,
+          "title": "Casa torre in lontananza"
+        }
+      ]
     }
   ],
   "settings": {
