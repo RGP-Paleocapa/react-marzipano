@@ -4,10 +4,6 @@ on:
   push:
     tags:
       - 'v*.*.*' # Triggers on tags that follow the VX.X.X pattern
-  workflow_run:
-    workflows: ["Deploy"]  # Name of the first workflow to wait for
-    types:
-      - completed  # Trigger this workflow only when the "Deploy" workflow is completed
 
 jobs:
   build-and-deploy:
