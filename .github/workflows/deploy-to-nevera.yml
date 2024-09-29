@@ -52,11 +52,13 @@ jobs:
           token: ${{ secrets.NEVERA_GRAINED_TOKEN }}  # Fallback token
           path: ./nevera
 
+      - name: Ensure target directory exists
+        run: mkdir -p ./nevera  # Ensure the nevera directory exists, even if checkout fails
+
       - name: Clear target repo and prepare for copying files
         run: |
           find ./nevera -type f ! -name 'LICENSE' ! -name 'README.md' -delete  # Delete all files except LICENSE and README.md
           find ./nevera -type d -empty -delete  # Optionally, delete any empty directories
-
 
       - name: Copy rebuilt files to target repository
         run: |
