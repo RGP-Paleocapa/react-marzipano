@@ -3,6 +3,8 @@ import infoImage from '@/assets/icons/info.png';
 import playIcon from '@/assets/icons/play.png';
 import pauseIcon from '@/assets/icons/pause.png';
 import fullscreenIcon from '@/assets/icons/fullscreen.png';
+import AutomaticButton from '@/components/common/AutomaticButton';
+import { useSceneStore } from '@/context/useSceneStore';
 
 interface NavbarProps {
   onToggleAutorotation: () => void;
@@ -12,6 +14,9 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onToggleAutorotation, isAutorotating, onToggleFullscreen, onShowInfo }) => {
+
+  const { autoSwitch } = useSceneStore();
+
   return (
     <div className="absolute top-0 left-0 w-full bg-gray-800 flex justify-between items-center z-10 h-10 md:h-12">
       <button
@@ -22,10 +27,12 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleAutorotation, isAutorotating, o
         <img src={infoImage} alt="Info" className="w-6 h-6" />
       </button>
       <div className="flex h-full space-x-2">
+        <AutomaticButton />
         <button
           className={`text-white flex items-center justify-center h-full w-36 transition-colors duration-200 ease-in-out ${isAutorotating ? 'bg-red-600 hover:bg-red-500' : 'bg-green-600 hover:bg-green-500'}`}
           onClick={onToggleAutorotation}
           aria-label={isAutorotating ? 'Stop Autorotation' : 'Start Autorotation'}
+          disabled={autoSwitch}
         >
           <img src={isAutorotating ? pauseIcon : playIcon} alt={isAutorotating ? 'Stop Autorotation' : 'Start Autorotation'} className="w-6 h-6" />
         </button>

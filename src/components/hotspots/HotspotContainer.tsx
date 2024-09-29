@@ -20,9 +20,8 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
   linkHotspots,
   sceneObjects,
   currentSceneIndex,
-  /*switchScene,*/
 }) => {
-  const { switchScene } = useSceneStore();
+  const { setSceneIndex } = useSceneStore();
   const containerRef = useRef<HTMLDivElement>(null);
   const hotspotsRef = useRef<Marzipano.Hotspot[]>([]);
   const [prevSceneIndex, setPrevSceneIndex] = useState<number | null>(null);
@@ -39,7 +38,7 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
             console.log(`Destroying hotspot ${index} from previous scene`);
             hotspotContainer.destroyHotspot(hotspot);
           } else {
-            console.warn(`Hotspot ${index} does not exist in the container of previous scene`);
+            // console.warn(`Hotspot ${index} does not exist in the container of previous scene`);
           }
         } catch (error) {
           console.error(`Error destroying hotspot ${index} from previous scene:`, error);
@@ -82,9 +81,9 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
         <LinkHotspotElement
           hotspot={hotspot}
           key={index}
-          switchToScene={() => {
+          setSceneIndex={() => {
             console.log(`Switching to target scene ${targetSceneIndex}`);
-            switchScene(targetSceneIndex);
+            setSceneIndex(targetSceneIndex);
           }}
         />
       );
@@ -94,7 +93,7 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
     });
 
     setPrevSceneIndex(currentSceneIndex);
-  }, [currentSceneIndex, sceneObjects, infoHotspots, linkHotspots, switchScene]);
+  }, [currentSceneIndex, sceneObjects, infoHotspots, linkHotspots, setSceneIndex]);
 
   useEffect(() => {
     const closeAllHotspotContents = () => {
