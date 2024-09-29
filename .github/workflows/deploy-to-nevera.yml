@@ -41,7 +41,6 @@ jobs:
           ref: ${{ github.ref == 'refs/heads/main' && 'main' || 'master' }}  # Specify the branch in the target repo
           token: ${{ secrets.NEVERA_GRAINED_TOKEN }}  # Use the personal access token
           path: ./nevera  # Checkout the target repository to a specified path
-        continue-on-error: true
 
       - name: Clear target repo and prepare for copying files
         run: |
