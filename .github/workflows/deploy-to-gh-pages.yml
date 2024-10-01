@@ -1,0 +1,57 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+    name: Build and Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'  # Specify the Node.js version to use
+
+      - name: Install dependencies
+        run: npm install  # Install the project's dependencies
+
+      - name: Build project for primary repo
+        run: |
+          echo "Building project..."
+          npm run build  # Build the project to generate the dist directory
+
+      - name: Check dist contents before upload
+        run: ls -la ./dist  # List files to ensure they were built successfully
+
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-files  # Name for the artifact
+          path: ./dist  # Path to the files to upload
+
+  deploy:
+    name: Deploy to gh-pages
+    needs: build  # Ensure this job runs after the build job
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'  # Only run on main or master branches
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: production-files  # Name of the artifact to download
+          path: ./dist  # Path where the artifact will be downloaded
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # Token for authentication
+          publish_dir: ./dist  # Directory to publish to GitHub Pages

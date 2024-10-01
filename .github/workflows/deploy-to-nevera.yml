@@ -1,0 +1,62 @@
+name: Build and Deploy to Nevera
+
+on:
+  push:
+    tags:
+      - 'v*.*.*' # Triggers on tags that follow the VX.X.X pattern
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy to Nevera
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'  # Specify the Node.js version to use
+
+      - name: Install dependencies
+        run: npm install  # Install the project's dependencies
+
+      - name: Build project
+        run: |
+          echo "Building project..."
+          npm run build  # Build the project to generate the dist directory
+
+      - name: Check dist contents before upload
+        run: ls -la ./dist  # List files to ensure they were built successfully
+
+      - name: Checkout the target repository
+        uses: actions/checkout@v4
+        with:
+          repository: nicolainve/nevera  # Change to the target repo's name
+          ref: main
+          token: ${{ secrets.NEVERA_GRAINED_TOKEN }}
+          path: ./nevera  # Checkout the target repository to a specified path
+
+      - name: Clear target repo and prepare for copying files
+        run: |
+          find ./nevera -type f ! -name 'LICENSE' ! -name 'README.md' -delete  # Delete all files except LICENSE and README.md
+          find ./nevera -type d -empty -delete  # Optionally, delete any empty directories
+
+      - name: Copy rebuilt files to target repository
+        run: |
+          if [ -d "./dist" ] && [ "$(ls -A ./dist)" ]; then
+            cp -r ./dist/* ./nevera/  # Copy all files and subdirectories from dist to the target repo
+          else
+            echo "No files found in dist."  # Log an error if no files were found
+            exit 1  # Fail the step if no files were found
+          fi
+
+      - name: Push to target repository
+        run: |
+          cd ./nevera
+          git config user.name "GitHub Actions"  # Set the commit author name
+          git config user.email "actions@github.com"  # Set the commit author email
+          git add .  # Stage all changes
+          git commit -m "Deploy from source repo" || echo "No changes to commit"  # Commit changes or skip if none
+          git push origin main
