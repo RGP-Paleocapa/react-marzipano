@@ -7,15 +7,15 @@ import AutomaticButton from '@/components/common/AutomaticButton';
 import { useSceneStore } from '@/context/useSceneStore';
 
 interface NavbarProps {
-  onToggleAutorotation: () => void;
-  isAutorotating: boolean;
+  // onToggleAutorotation: () => void;
+  // isAutorotating: boolean;
   onToggleFullscreen: () => void;
   onShowInfo: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onToggleAutorotation, isAutorotating, onToggleFullscreen, onShowInfo }) => {
+const Navbar: React.FC<NavbarProps> = ({ /* onToggleAutorotation, isAutorotating,*/ onToggleFullscreen, onShowInfo }) => {
 
-  const { autoSwitch } = useSceneStore();
+  const { autoSwitch, isRotating, toggleRotation } = useSceneStore();
 
   return (
     <div className="absolute top-0 left-0 w-full bg-gray-800 flex justify-between items-center z-10 h-10 md:h-12">
@@ -29,12 +29,12 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleAutorotation, isAutorotating, o
       <div className="flex h-full space-x-2">
         <AutomaticButton />
         <button
-          className={`text-white flex items-center justify-center h-full w-36 transition-colors duration-200 ease-in-out ${isAutorotating ? 'bg-red-600 hover:bg-red-500' : 'bg-green-600 hover:bg-green-500'}`}
-          onClick={onToggleAutorotation}
-          aria-label={isAutorotating ? 'Stop Autorotation' : 'Start Autorotation'}
+          className={`text-white flex items-center justify-center h-full w-36 transition-colors duration-200 ease-in-out ${autoSwitch ? `bg-gray-600` : isRotating ? 'bg-red-600 hover:bg-red-500' : 'bg-green-600 hover:bg-green-500'}`}
+          onClick={() => toggleRotation(!isRotating)}
+          aria-label={isRotating ? 'Stop Autorotation' : 'Start Autorotation'}
           disabled={autoSwitch}
         >
-          <img src={isAutorotating ? pauseIcon : playIcon} alt={isAutorotating ? 'Stop Autorotation' : 'Start Autorotation'} className="w-6 h-6" />
+          <img src={isRotating ? pauseIcon : playIcon} alt={isRotating ? 'Stop Autorotation' : 'Start Autorotation'} className="w-6 h-6" />
         </button>
         <button
           className="bg-yellow-600 text-gray-800 flex items-center justify-center hover:bg-yellow-500 transition-colors duration-200 ease-in-out h-full w-12"

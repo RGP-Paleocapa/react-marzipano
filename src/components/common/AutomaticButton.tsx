@@ -2,7 +2,7 @@ import { useSceneStore } from '@/context/useSceneStore';
 import { useState, useEffect } from 'react';
 
 const AutomaticButton = () => {
-  const { setSceneIndex, toggleMapEnabled, toggleAutoSwitch } = useSceneStore();
+  const { setSceneIndex, toggleMapEnabled, toggleAutoSwitch, hotspotVisible, toggleHotspotVisibility, toggleRotation } = useSceneStore();
   const [index, setIndex] = useState<number>(0);
   const [isRunning, setIsRunning] = useState<boolean>(false); // Track whether the process is running
   const [message, setMessage] = useState<string>('Click to Start');
@@ -18,6 +18,7 @@ const AutomaticButton = () => {
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
+    toggleRotation(false); // Toggle rotation
 
     if (isRunning) {
       // Start automatic scene switching every second
@@ -43,6 +44,7 @@ const AutomaticButton = () => {
     setIsRunning(prevState => !prevState);
     toggleAutoSwitch();
     toggleMapEnabled();
+    toggleHotspotVisibility(!hotspotVisible);
 
     if (!isRunning) {
       setIndex(0); // Reset the index when starting

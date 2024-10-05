@@ -16,7 +16,7 @@ const MarzipanoPage: React.FC = () => {
   const { currentSceneIndex } = useSceneStore();
   const { closeVideo, isVideoVisible, videoLink } = useVideoStore();
 
-  const { viewer, sceneObjects, isAutorotating, toggleAutorotation } = useMarzipano(panoRef, APP_DATA as AppData, currentSceneIndex);
+  const { viewer, sceneObjects } = useMarzipano(panoRef, APP_DATA as AppData, currentSceneIndex);
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
@@ -45,8 +45,8 @@ const MarzipanoPage: React.FC = () => {
   return (
     <div id='pano' ref={panoRef} className="relative w-full h-full overflow-hidden">
       <Navbar
-        onToggleAutorotation={toggleAutorotation}
-        isAutorotating={isAutorotating}
+        // onToggleAutorotation={toggleAutorotation}
+        // isAutorotating={isAutorotating}
         onToggleFullscreen={toggleFullscreen}
         onShowInfo={handleShowInfo}
       />
