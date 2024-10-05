@@ -12,7 +12,6 @@ interface HotspotContainerProps {
   linkHotspots: LinkHotspot[];
   sceneObjects: Marzipano.Scene[];
   currentSceneIndex: number;
-  // switchScene: (index: number) => void;
 }
 
 const HotspotContainer: React.FC<HotspotContainerProps> = ({
@@ -94,20 +93,6 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
 
     setPrevSceneIndex(currentSceneIndex);
   }, [currentSceneIndex, sceneObjects, infoHotspots, linkHotspots, setSceneIndex]);
-
-  useEffect(() => {
-    const closeAllHotspotContents = () => {
-      const contents = document.querySelectorAll('.hotspot__content');
-      contents.forEach(content => {
-        content.classList.add('hidden');
-      });
-    };
-
-    document.addEventListener('click', closeAllHotspotContents);
-    return () => {
-      document.removeEventListener('click', closeAllHotspotContents);
-    };
-  }, []);
 
   return <div ref={containerRef}></div>;
 };
