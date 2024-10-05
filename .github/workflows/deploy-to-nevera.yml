@@ -3,11 +3,11 @@ name: Build and Deploy to Nevera
 on:
   push:
     tags:
-      - 'v*.*.*' # Triggers on tags that follow the VX.X.X pattern
+      - 'v*.*.*'  # Trigger on any tag push
 
 jobs:
   build-and-deploy:
-    name: Build and Deploy to Nevera
+    name: Build and Deploy to Second Repo
     runs-on: ubuntu-latest
 
     steps:
@@ -34,14 +34,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: nicolainve/nevera  # Change to the target repo's name
-          ref: main
-          token: ${{ secrets.NEVERA_GRAINED_TOKEN }}
+          ref: main  # Specify the branch in the target repo
+          token: ${{ secrets.NEVERA_GRAINED_TOKEN }}  # Use the personal access token
           path: ./nevera  # Checkout the target repository to a specified path
 
       - name: Clear target repo and prepare for copying files
-        run: |
-          find ./nevera -type f ! -name 'LICENSE' ! -name 'README.md' -delete  # Delete all files except LICENSE and README.md
-          find ./nevera -type d -empty -delete  # Optionally, delete any empty directories
+        run: rm -rf ./nevera/*  # Clear all files in the target repo
 
       - name: Copy rebuilt files to target repository
         run: |
@@ -54,9 +52,9 @@ jobs:
 
       - name: Push to target repository
         run: |
-          cd ./nevera
+          cd ./nevera  # Change to the target repo directory
           git config user.name "GitHub Actions"  # Set the commit author name
           git config user.email "actions@github.com"  # Set the commit author email
           git add .  # Stage all changes
-          git commit -m "Deploy from source repo" || echo "No changes to commit"  # Commit changes or skip if none
-          git push origin main
+          git commit -m "Deploy from source repo with updated VITE_BASE_URL" || echo "No changes to commit"  # Commit changes or skip if none
+          git push origin main  # Push to the main branch
