@@ -20,7 +20,7 @@ const LinkHotspotElement: React.FC<LinkHotspotElementProps> = ({ setSceneIndex, 
       tabIndex={0}
       role="button"
       aria-label={hotspot.text || 'Link hotspot'}
-      title={hotspot.text}
+      title={hotspot.text || `Link hotspot`}
     >
       <img src={hotspot.isRed ? linkRedImage : linkImage} alt="Link Icon" className="w-10 h-10 sm:w-16 sm:h-16 transition-transform transform hover:scale-110" />
     </div>
