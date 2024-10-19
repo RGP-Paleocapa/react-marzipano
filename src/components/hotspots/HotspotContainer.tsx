@@ -6,6 +6,7 @@ import { createRoot } from 'react-dom/client';
 import appData from '@data/config.json';
 import Marzipano from 'marzipano';
 import { useSceneStore } from '@/context/useSceneStore';
+import { useHotspotStore } from '@/context/useHotspotStore';
 
 interface HotspotContainerProps {
   infoHotspots: InfoHotspot[];
@@ -20,7 +21,8 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
   sceneObjects,
   currentSceneIndex,
 }) => {
-  const { setSceneIndex, hotspotVisible } = useSceneStore();
+  const { setSceneIndex } = useSceneStore();
+  const { hotspotVisible } = useHotspotStore();
   const containerRef = useRef<HTMLDivElement>(null);
   const hotspotsRef = useRef<Marzipano.Hotspot[]>([]);
   const [prevSceneIndex, setPrevSceneIndex] = useState<number | null>(null);

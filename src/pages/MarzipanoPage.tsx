@@ -4,7 +4,7 @@ import APP_DATA from '@data/config.json';
 import Scene from '@components/common/Scene';
 import { AppData } from '@/types/marzipano-types';
 import { Viewer, Scene as SceneObjects } from 'marzipano';
-import Navbar from '@/layout/Navbar';
+import Navbar from '@/components/layout/header';
 import { useSceneStore } from '@/context/useSceneStore';
 import MapOverlay from '@components/overlays/MapOverlay';
 import { useVideoStore } from '@/context/useVideoStore';

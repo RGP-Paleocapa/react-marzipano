@@ -3,19 +3,19 @@ import infoImage from '@/assets/icons/info.png';
 import playIcon from '@/assets/icons/play.png';
 import pauseIcon from '@/assets/icons/pause.png';
 import fullscreenIcon from '@/assets/icons/fullscreen.png';
-import AutomaticButton from '@/components/common/AutomaticButton';
+import AutomaticButton from '@/components/layout/header/AutomaticButton';
 import { useSceneStore } from '@/context/useSceneStore';
+import { useViewStore } from '@/context/useViewerStore';
 
 interface NavbarProps {
-  // onToggleAutorotation: () => void;
-  // isAutorotating: boolean;
   onToggleFullscreen: () => void;
   onShowInfo: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ /* onToggleAutorotation, isAutorotating,*/ onToggleFullscreen, onShowInfo }) => {
+const Navbar: React.FC<NavbarProps> = ({ onToggleFullscreen, onShowInfo }) => {
 
-  const { autoSwitch, isRotating, toggleRotation } = useSceneStore();
+  const { autoSwitch } = useSceneStore();
+  const { isRotating, toggleRotation } = useViewStore();
 
   return (
     <div className="absolute top-0 left-0 w-full bg-gray-800 flex justify-between items-center z-10 h-10 md:h-12">

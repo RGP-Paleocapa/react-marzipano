@@ -3,14 +3,14 @@ import { AppData } from '@/types/marzipano-types';
 import { createViewer } from '@hooks/marzipanoViewer';
 import { createScene } from '@hooks/marzipanoScene';
 import Marzipano, { autorotate } from 'marzipano';
-import { useSceneStore } from '@/context/useSceneStore'; // Import the global store
+import { useViewStore } from '@/context/useViewerStore';
 
 export const useMarzipano = (panoRef: RefObject<HTMLDivElement>, appData: AppData, currentSceneIndex: number) => {
   const [sceneObjects, setSceneObjects] = useState<Marzipano.Scene[]>([]);
   const [viewer, setViewer] = useState<Marzipano.Viewer | null>(null);
 
   // Access autorotation state and actions from the context
-  const { isRotating, setAutorotateEnabled } = useSceneStore();
+  const { isRotating, setAutorotateEnabled } = useViewStore();
   const autorotateControlRef = useRef<ReturnType<typeof autorotate> | null>(null);
 
   // Effect to initialize Marzipano viewer and scene objects

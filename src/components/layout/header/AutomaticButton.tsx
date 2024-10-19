@@ -1,8 +1,12 @@
+import { useHotspotStore } from '@/context/useHotspotStore';
 import { useSceneStore } from '@/context/useSceneStore';
+import { useViewStore } from '@/context/useViewerStore';
 import { useState, useEffect } from 'react';
 
 const AutomaticButton = () => {
-  const { setSceneIndex, toggleMapEnabled, toggleAutoSwitch, hotspotVisible, toggleHotspotVisibility, toggleRotation } = useSceneStore();
+  const { setSceneIndex, toggleAutoSwitch } = useSceneStore();
+  const { toggleMapEnabled, toggleRotation } = useViewStore();
+  const { hotspotVisible, toggleHotspotVisibility } = useHotspotStore();
   const [index, setIndex] = useState<number>(0);
   const [isRunning, setIsRunning] = useState<boolean>(false); // Track whether the process is running
   const [message, setMessage] = useState<string>('Click to Start');
@@ -28,8 +32,7 @@ const AutomaticButton = () => {
       }, 1000);
 
       setMessage('Automatic switching started');
-    } else if (interval) {
-      clearInterval(interval);
+    } else {
       setMessage('Automatic switching stopped');
     }
 
@@ -52,7 +55,7 @@ const AutomaticButton = () => {
   };
 
   return (
-    <div>
+    <div className="flex items-center justify-evenly w-96">
       <button
         className={`bg-blue-700 text-gray-white flex items-center justify-center
                     hover:bg-yellow-500 transition-colors duration-200 ease-in-out h-full w-24`}
@@ -60,7 +63,7 @@ const AutomaticButton = () => {
       >
         {isRunning ? 'Stop' : 'Start'}
       </button>
-      <p>{message}</p>
+      <p className={`${isRunning ? "text-red-400" : "text-green-400"}`}>{message}</p>
     </div>
   );
 };
