@@ -3,7 +3,7 @@ import infoImage from '@/assets/icons/info.png';
 import playIcon from '@/assets/icons/play.png';
 import pauseIcon from '@/assets/icons/pause.png';
 import fullscreenIcon from '@/assets/icons/fullscreen.png';
-import AutomaticButton from '@/components/layout/header/AutomaticButton';
+// import AutomaticButton from '@/components/layout/header/AutomaticButton';
 import { useSceneStore } from '@/context/useSceneStore';
 import { useViewStore } from '@/context/useViewerStore';
 
@@ -27,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleFullscreen, onShowInfo }) => {
         <img src={infoImage} alt="Info" className="w-6 h-6" />
       </button>
       <div className="flex h-full space-x-2">
-        <AutomaticButton />
+        {/* <AutomaticButton /> */}
         <button
           className={`text-white flex items-center justify-center h-full w-36 transition-colors duration-200 ease-in-out ${autoSwitch ? `bg-gray-600` : isRotating ? 'bg-red-600 hover:bg-red-500' : 'bg-green-600 hover:bg-green-500'}`}
           onClick={() => toggleRotation(!isRotating)}
