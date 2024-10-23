@@ -2,12 +2,6 @@
 
 import { RefObject } from "react";
 
-export interface SceneState {
-  currentSceneIndex: number;
-  switchScene: (index: number) => void;
-}
-
-
 export interface VideoState {
   videoLink: string | null;
   isVideoVisible: boolean;

@@ -4,7 +4,7 @@ import APP_DATA from '@data/config.json';
 import Scene from '@components/common/Scene';
 import { AppData } from '@/types/marzipano-types';
 import { Viewer, Scene as SceneObjects } from 'marzipano';
-import Navbar from '@/layout/Navbar';
+import Navbar from '@/components/layout/header';
 import { useSceneStore } from '@/context/useSceneStore';
 import MapOverlay from '@components/overlays/MapOverlay';
 import { useVideoStore } from '@/context/useVideoStore';
@@ -16,7 +16,7 @@ const MarzipanoPage: React.FC = () => {
   const { currentSceneIndex } = useSceneStore();
   const { closeVideo, isVideoVisible, videoLink } = useVideoStore();
 
-  const { viewer, sceneObjects, isAutorotating, toggleAutorotation } = useMarzipano(panoRef, APP_DATA as AppData, currentSceneIndex);
+  const { viewer, sceneObjects } = useMarzipano(panoRef, APP_DATA as AppData, currentSceneIndex);
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
@@ -45,8 +45,8 @@ const MarzipanoPage: React.FC = () => {
   return (
     <div id='pano' ref={panoRef} className="relative w-full h-full overflow-hidden">
       <Navbar
-        onToggleAutorotation={toggleAutorotation}
-        isAutorotating={isAutorotating}
+        // onToggleAutorotation={toggleAutorotation}
+        // isAutorotating={isAutorotating}
         onToggleFullscreen={toggleFullscreen}
         onShowInfo={handleShowInfo}
       />
