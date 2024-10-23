@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import map from '@/assets/images/image.jpg';
 import Dot from '../hotspots/Dot';
-import { useSceneStore } from '@/context/useSceneStore';
+import { useViewStore } from '@/context/useViewerStore';
 
 const MapOverlay = () => {
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -34,7 +34,7 @@ const MapOverlay = () => {
     { index: 5, x: 76, y: 30, roomIndexes: [6] },
   ];
 
-  const { mapEnabled } = useSceneStore();
+  const { mapEnabled } = useViewStore();
   if (!mapEnabled) { return null;}
 
   return (
