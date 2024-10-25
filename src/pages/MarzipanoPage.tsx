@@ -15,8 +15,15 @@ const MarzipanoPage: React.FC = () => {
   const panoRef = useRef<HTMLDivElement>(null);
   const { currentSceneIndex } = useSceneStore();
   const { closeVideo, isVideoVisible, videoLink } = useVideoStore();
-
   const { viewer, sceneObjects } = useMarzipano(panoRef, APP_DATA as AppData, currentSceneIndex);
+  const [visibleContent, setVisibleContent] = useState<'info' | 'credits' | null>(null);
+
+  useEffect(() => {
+    if (!localStorage.getItem('isFirstVisit')) {
+      setVisibleContent('info');
+      localStorage.setItem('isFirstVisit', 'false');
+    }
+  }, []);
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
@@ -28,27 +35,21 @@ const MarzipanoPage: React.FC = () => {
     }
   };
 
-  const [isInfoVisible, setInfoVisible] = useState<boolean>(false);
-
-  useEffect(() => {
-    const isFirstVisit = localStorage.getItem('isFirstVisit');
-    if (!isFirstVisit) {
-      setInfoVisible(true);
-      localStorage.setItem('isFirstVisit', 'false');
-    }
-  }, []);
-
-  function handleShowInfo(): void {
-    setInfoVisible(!isInfoVisible);
-  }
+  const handleContentChange = (content: 'info' | 'credits' | null) => {
+    setVisibleContent(content);
+  };
 
   return (
     <div id='pano' ref={panoRef} className="relative w-full h-full overflow-hidden">
+      {visibleContent && (
+        <InfoComponent
+          onClose={() => handleContentChange(null)}
+          isCredits={visibleContent === 'credits'}
+        />
+      )}
       <Navbar
-        // onToggleAutorotation={toggleAutorotation}
-        // isAutorotating={isAutorotating}
         onToggleFullscreen={toggleFullscreen}
-        onShowInfo={handleShowInfo}
+        onShowContent={handleContentChange}
       />
       {viewer && sceneObjects.length > 0 && (
         <Scene
@@ -61,7 +62,6 @@ const MarzipanoPage: React.FC = () => {
       )}
       <MapOverlay />
       {isVideoVisible && videoLink && <VideoOverlay videoLink={videoLink} onClose={closeVideo} />}
-      {isInfoVisible && <InfoComponent setInfoVisible={setInfoVisible} />}
     </div>
   );
 };
