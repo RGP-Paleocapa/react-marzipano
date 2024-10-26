@@ -36,7 +36,8 @@ const MarzipanoPage: React.FC = () => {
   };
 
   const handleContentChange = (content: 'info' | 'credits' | null) => {
-    setVisibleContent(content);
+    // Toggle the content if the same content is clicked again
+    setVisibleContent(prevContent => (prevContent === content ? null : content));
   };
 
   return (
