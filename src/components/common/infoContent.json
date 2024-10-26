@@ -1,0 +1,40 @@
+{
+  "info": {
+    "title": "Nevera Virtual Tour",
+    "paragraphs": [
+      {
+        "text": "Benvenuto. Per navigare all'interno del museo e visitare la nevera, trascina il cursore per muovere le immagini a 360° e clicca sugli hotspot con le frecce per spostarti in un altro scenario.",
+        "icon": "/icons/info-icon.svg"
+      },
+      {
+        "text": "Sono presenti due tipi di hotspot:",
+        "icon": "/icons/info-icon.svg"
+      },
+      {
+        "text": "- I **linkspot** rossi indicano il percorso principale all'interno del museo e consentono di spostarsi tra diverse scene.",
+        "icon": "/icons/linkspot-icon.svg"
+      },
+      {
+        "text": "- Gli **infospot** bianchi mostrano informazioni su oggetti o luoghi del museo e possono includere anche video esplicativi per approfondire il contenuto.",
+        "icon": "/icons/infospot-icon.svg"
+      }
+    ]
+  },
+  "credits": {
+    "title": "Visita Virtuale alla Nevera del Museo Valdimagnino",
+    "paragraphs": [
+      {
+        "text": "Autori: Rares Gabriel Puiu, Faye Kenowa Diop, Nicola Invernizzi."
+      },
+      {
+        "text": "Progetto sviluppato nel contesto delle attività Computing for Social Good di Renato Cortinovis, con materiali forniti da Giuseppe Ghidorzi."
+      }
+    ],
+    "additionalContent": {
+      "copyright": {
+        "text": "CC BY-NC-SA 4.0",
+        "icon": "/icons/copyright-icon.svg"
+      }
+    }
+  }
+}

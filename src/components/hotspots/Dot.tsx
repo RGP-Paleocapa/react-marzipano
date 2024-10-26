@@ -20,12 +20,12 @@ const Dot: React.FC<DotProps> = ({
   y,
   roomIndexes,
 }) => {
-  const { switchScene, currentSceneIndex } = useSceneStore();
+  const { setSceneIndex, currentSceneIndex } = useSceneStore();
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     if (window.innerWidth > 1024 || isFullScreen) {
-      switchScene(index);
+      setSceneIndex(index);
       closeFullScreen();
     } else {
       toggleFullScreen();

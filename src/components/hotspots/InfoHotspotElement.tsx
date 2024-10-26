@@ -37,7 +37,8 @@ const InfoHotspotElement: React.FC<InfoHotspotElementProps> = ({ hotspot }) => {
   const infoTextColor = hotspot.videoLink ? 'text-yellow-100' : 'text-white';
 
   return (
-    <article className={`relative p-2 rounded-lg shadow-md transition-transform transform hover:scale-110 ${bgColor}`}>
+    <article className={`relative p-2 rounded-lg shadow-md transition-transform transform hover:scale-110 ${bgColor}`}
+    >
       <button
         className="cursor-pointer flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8"
         onClick={toggleContentVisibility}

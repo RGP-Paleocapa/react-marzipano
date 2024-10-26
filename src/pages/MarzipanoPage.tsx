@@ -4,7 +4,7 @@ import APP_DATA from '@data/config.json';
 import Scene from '@components/common/Scene';
 import { AppData } from '@/types/marzipano-types';
 import { Viewer, Scene as SceneObjects } from 'marzipano';
-import Navbar from '@/layout/Navbar';
+import Navbar from '@/components/layout/header';
 import { useSceneStore } from '@/context/useSceneStore';
 import MapOverlay from '@components/overlays/MapOverlay';
 import { useVideoStore } from '@/context/useVideoStore';
@@ -15,8 +15,15 @@ const MarzipanoPage: React.FC = () => {
   const panoRef = useRef<HTMLDivElement>(null);
   const { currentSceneIndex } = useSceneStore();
   const { closeVideo, isVideoVisible, videoLink } = useVideoStore();
+  const { viewer, sceneObjects } = useMarzipano(panoRef, APP_DATA as AppData, currentSceneIndex);
+  const [visibleContent, setVisibleContent] = useState<'info' | 'credits' | null>(null);
 
-  const { viewer, sceneObjects, isAutorotating, toggleAutorotation } = useMarzipano(panoRef, APP_DATA as AppData, currentSceneIndex);
+  useEffect(() => {
+    if (!localStorage.getItem('isFirstVisit')) {
+      setVisibleContent('info');
+      localStorage.setItem('isFirstVisit', 'false');
+    }
+  }, []);
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
@@ -28,27 +35,22 @@ const MarzipanoPage: React.FC = () => {
     }
   };
 
-  const [isInfoVisible, setInfoVisible] = useState<boolean>(false);
-
-  useEffect(() => {
-    const isFirstVisit = localStorage.getItem('isFirstVisit');
-    if (!isFirstVisit) {
-      setInfoVisible(true);
-      localStorage.setItem('isFirstVisit', 'false');
-    }
-  }, []);
-
-  function handleShowInfo(): void {
-    setInfoVisible(!isInfoVisible);
-  }
+  const handleContentChange = (content: 'info' | 'credits' | null) => {
+    // Toggle the content if the same content is clicked again
+    setVisibleContent(prevContent => (prevContent === content ? null : content));
+  };
 
   return (
     <div id='pano' ref={panoRef} className="relative w-full h-full overflow-hidden">
+      {visibleContent && (
+        <InfoComponent
+          onClose={() => handleContentChange(null)}
+          isCredits={visibleContent === 'credits'}
+        />
+      )}
       <Navbar
-        onToggleAutorotation={toggleAutorotation}
-        isAutorotating={isAutorotating}
         onToggleFullscreen={toggleFullscreen}
-        onShowInfo={handleShowInfo}
+        onShowContent={handleContentChange}
       />
       {viewer && sceneObjects.length > 0 && (
         <Scene
@@ -61,7 +63,6 @@ const MarzipanoPage: React.FC = () => {
       )}
       <MapOverlay />
       {isVideoVisible && videoLink && <VideoOverlay videoLink={videoLink} onClose={closeVideo} />}
-      {isInfoVisible && <InfoComponent setInfoVisible={setInfoVisible} />}
     </div>
   );
 };
