@@ -165,7 +165,7 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
           {/* Play/Pause Button */}
           <button
             onClick={togglePlayPause}
-            className={`flex items-center justify-center bg-${isPlaying ? 'red-500' : 'green-500'} text-white rounded-lg px-4 py-2 shadow-lg hover:bg-opacity-80 transform transition-transform duration-150 ease-in-out`}
+            className={`hidden lg:flex items-center justify-center bg-${isPlaying ? 'red-500' : 'green-500'} text-white rounded-lg px-4 py-2 shadow-lg hover:bg-opacity-80 transform transition-transform duration-150 ease-in-out`}
             aria-label={isPlaying ? 'Pause video' : 'Play video'}
           >
             <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} className="mr-2" />
@@ -174,7 +174,7 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
           {/* Reset Button */}
           <button
             onClick={resetVideo}
-            className="flex items-center justify-center bg-blue-500 text-white rounded-lg px-4 py-2 shadow-lg hover:bg-opacity-80 transform transition-transform duration-150 ease-in-out"
+            className="hidden lg:flex items-center justify-center bg-blue-500 text-white rounded-lg px-4 py-2 shadow-lg hover:bg-opacity-80 transform transition-transform duration-150 ease-in-out"
             aria-label="Reset video"
           >
             <FontAwesomeIcon icon={faRedo} className="mr-2" />
