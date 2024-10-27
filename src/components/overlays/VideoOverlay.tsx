@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faPause, faRedo, faSearchPlus, faSearchMinus } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faPause, faRedo } from '@fortawesome/free-solid-svg-icons';
 
 interface VideoOverlayProps {
   videoLink: string;
@@ -22,7 +22,6 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [isZoomed, setIsZoomed] = useState(false);
   const [longPressTimeout, setLongPressTimeout] = useState<NodeJS.Timeout | null>(null);
 
   // Handle progress update
@@ -99,11 +98,6 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
     };
   }, [handleKeyDown]);
 
-  // Toggle zoom
-  const toggleZoom = () => {
-    setIsZoomed(prev => !prev);
-  };
-
   // Handle long press to close the overlay
   const handleLongPressStart = () => {
     const timeout = setTimeout(() => {
@@ -120,10 +114,10 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
   };
 
   return (
-    <div className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-20 transition-opacity duration-300 ease-in-out ${isZoomed ? 'overflow-hidden' : ''}`}>
+    <div className={`fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-20 transition-opacity duration-300 ease-in-out`}>
       <div
         ref={containerRef}
-        className={`relative w-full h-full max-w-5xl max-h-full flex items-center justify-center p-4 ${isZoomed ? 'transform scale-125' : ''}`}
+        className={`relative w-full h-full max-w-5xl max-h-full flex items-center justify-center p-4 bg-black`}
         onTouchStart={handleLongPressStart}
         onTouchEnd={handleLongPressEnd}
         onMouseDown={handleLongPressStart} // For desktop long press
@@ -136,6 +130,7 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
         >
           X
         </button>
+
         <div className="w-full h-auto aspect-w-16 aspect-h-9 max-w-full max-h-full bg-gray-800 rounded-lg overflow-hidden relative">
           {isYouTubeLink(videoLink) ? (
             <iframe
@@ -150,7 +145,7 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
             <video
               ref={videoRef}
               controls={false}
-              className="w-full h-full"
+              className="object-contain w-full h-full"
               onClick={togglePlayPause}
               onTimeUpdate={updateProgress}
             >
@@ -165,33 +160,45 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
           </div>
         </div>
 
-        {/* Control Buttons Outside the Video Box */}
-        <div className="absolute bottom-8 flex justify-center space-x-4 z-50">
+        {/* Control Buttons Inside the Video Box */}
+        <div className="absolute z-50 bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-4">
+          {/* Play/Pause Button */}
           <button
             onClick={togglePlayPause}
-            className={`flex items-center justify-center bg-${isPlaying ? 'red-500' : 'green-500'} text-white px-6 py-2 rounded-lg shadow-lg hover:bg-opacity-80 transform transition-transform duration-150 ease-in-out`}
+            className={`flex items-center justify-center bg-${isPlaying ? 'red-500' : 'green-500'} text-white rounded-lg px-4 py-2 shadow-lg hover:bg-opacity-80 transform transition-transform duration-150 ease-in-out`}
             aria-label={isPlaying ? 'Pause video' : 'Play video'}
-            style={{ minWidth: '100px' }} // Keeps button width consistent
           >
             <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} className="mr-2" />
             {isPlaying ? 'Pause' : 'Play'}
           </button>
+          {/* Reset Button */}
           <button
             onClick={resetVideo}
-            className="flex items-center justify-center bg-blue-500 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-opacity-80 transform transition-transform duration-150 ease-in-out"
+            className="flex items-center justify-center bg-blue-500 text-white rounded-lg px-4 py-2 shadow-lg hover:bg-opacity-80 transform transition-transform duration-150 ease-in-out"
             aria-label="Reset video"
-            style={{ minWidth: '100px' }} // Keeps button width consistent
           >
             <FontAwesomeIcon icon={faRedo} className="mr-2" />
             Reset
           </button>
-          {/* Zoom Button */}
+        </div>
+
+        {/* Mobile Control Buttons */}
+        <div className="absolute top-4 left-4 flex flex-col space-y-2 z-50 md:hidden">
+          {/* Play/Pause Button */}
           <button
-            onClick={toggleZoom}
-            className="flex items-center justify-center bg-gray-700 text-white rounded-lg p-2 shadow-lg hover:bg-opacity-80 transform transition-transform duration-150 ease-in-out"
-            aria-label={isZoomed ? 'Zoom Out' : 'Zoom In'}
+            onClick={togglePlayPause}
+            className={`flex items-center justify-center bg-${isPlaying ? 'red-500' : 'green-500'} text-white rounded-lg p-2 shadow-lg hover:bg-opacity-80 transform transition-transform duration-150 ease-in-out`}
+            aria-label={isPlaying ? 'Pause video' : 'Play video'}
           >
-            <FontAwesomeIcon icon={isZoomed ? faSearchMinus : faSearchPlus} />
+            <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
+          </button>
+          {/* Reset Button */}
+          <button
+            onClick={resetVideo}
+            className="flex items-center justify-center bg-blue-500 text-white rounded-lg p-2 shadow-lg hover:bg-opacity-80 transform transition-transform duration-150 ease-in-out"
+            aria-label="Reset video"
+          >
+            <FontAwesomeIcon icon={faRedo} />
           </button>
         </div>
       </div>
