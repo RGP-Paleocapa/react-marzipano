@@ -39,6 +39,7 @@ const InfoHotspotElement: React.FC<InfoHotspotElementProps> = ({ hotspot }) => {
   return (
     <article className={`relative p-2 rounded-lg shadow-md transition-transform transform hover:scale-110 ${bgColor}`}
     >
+      {/* Hotspot Button */}
       <button
         className="cursor-pointer flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8"
         onClick={toggleContentVisibility}
@@ -51,8 +52,9 @@ const InfoHotspotElement: React.FC<InfoHotspotElementProps> = ({ hotspot }) => {
         )}
       </button>
 
+      {/* Main Section */}
       <section
-        className={`absolute top-10 lg:top-12 left-0 p-2 sm:p-4 rounded-lg shadow-md transition-opacity duration-300 ${isContentVisible ? 'opacity-100 visible' : 'opacity-0 invisible'} ${contentBgColor} w-64`}
+        className={`absolute top-10 lg:top-12 left-0 p-2 sm:p-4 rounded-lg shadow-md transition-opacity duration-300 ${isContentVisible ? 'opacity-100 visible' : 'opacity-0 invisible'} ${contentBgColor} w-36 lg:w-64`}
         aria-hidden={!isContentVisible}
       >
         <header className="flex justify-between items-center mb-2">
@@ -76,6 +78,7 @@ const InfoHotspotElement: React.FC<InfoHotspotElementProps> = ({ hotspot }) => {
           </p>
         )}
 
+        {/* Video Button */}
         {hotspot.videoLink && (
           <div className="mt-2">
             <button

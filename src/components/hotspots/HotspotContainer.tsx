@@ -38,8 +38,6 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
           if (hotspotContainer.hasHotspot(hotspot)) {
             console.log(`Destroying hotspot ${index} from previous scene`);
             hotspotContainer.destroyHotspot(hotspot);
-          } else {
-            // console.warn(`Hotspot ${index} does not exist in the container of previous scene`);
           }
         } catch (error) {
           console.error(`Error destroying hotspot ${index} from previous scene:`, error);
@@ -55,17 +53,6 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
     }
 
     const hotspotContainer = scene.hotspotContainer();
-
-    // Add info hotspots
-    infoHotspots.forEach((hotspot, index) => {
-      const element = document.createElement('div');
-      containerRef.current?.appendChild(element);
-      const root = createRoot(element);
-      root.render(<InfoHotspotElement key={index} hotspot={hotspot} />);
-      const marzipanoHotspot = hotspotContainer.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
-      console.log(`Creating info hotspot ${index}`, marzipanoHotspot);
-      hotspotsRef.current.push(marzipanoHotspot);
-    });
 
     // Add link hotspots
     linkHotspots.forEach((hotspot, index) => {
@@ -90,6 +77,17 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
       );
       const marzipanoHotspot = hotspotContainer.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
       console.log(`Creating link hotspot ${index}`, marzipanoHotspot);
+      hotspotsRef.current.push(marzipanoHotspot);
+    });
+
+    // Add info hotspots
+    infoHotspots.forEach((hotspot, index) => {
+      const element = document.createElement('div');
+      containerRef.current?.appendChild(element);
+      const root = createRoot(element);
+      root.render(<InfoHotspotElement key={index} hotspot={hotspot} />);
+      const marzipanoHotspot = hotspotContainer.createHotspot(element, { yaw: hotspot.yaw, pitch: hotspot.pitch });
+      console.log(`Creating info hotspot ${index}`, marzipanoHotspot);
       hotspotsRef.current.push(marzipanoHotspot);
     });
 
