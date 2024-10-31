@@ -58,7 +58,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({ videoLink }) => {
   };
 
   return (
-    <div className="relative w-full h-auto aspect-w-16 aspect-h-9 max-w-full max-h-full bg-gray-800 rounded-lg overflow-hidden">
+    <div className="relative w-auto h-full aspect-w-16 aspect-h-9 max-w-full max-h-full bg-gray-800 rounded-lg overflow-hidden">
       {isYouTubeLink(videoLink) ? (
         <iframe
           className="w-full h-full"
