@@ -1,5 +1,7 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
 import VideoPlayer from './VideoPlayer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faVolumeUp, faVolumeDown, faVolumeMute, faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
 
 interface VideoOverlayProps {
   videoLink: string;
@@ -12,6 +14,14 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [volumeIndicator, setVolumeIndicator] = useState<'up' | 'down' | 'muted' | null>(null);
+  const [playPauseIndicator, setPlayPauseIndicator] = useState<'play' | 'pause' | null>(null);
+  const [volumeLevel, setVolumeLevel] = useState<number>(10); // Volume level from 0 to 10
+
+  const displayTemporaryIndicator = (setter: React.Dispatch<React.SetStateAction<any>>, value: any) => {
+    setter(value);
+    setTimeout(() => setter(null), 500); // Display indicator for 500 ms
+  };
 
   const handleClickOutside = useCallback((event: MouseEvent) => {
     if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
@@ -31,19 +41,35 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
       if (videoRef.current.paused) {
         videoRef.current.play();
         setIsPlaying(true);
+        displayTemporaryIndicator(setPlayPauseIndicator, 'play');
       } else {
         videoRef.current.pause();
         setIsPlaying(false);
+        displayTemporaryIndicator(setPlayPauseIndicator, 'pause');
       }
     }
   };
 
-  const resetVideo = () => {
+  const adjustVolume = (direction: 'up' | 'down') => {
     if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-      setProgress(0);
-      setIsPlaying(false);
+      const volumeStep = 1; // Change volume by 1 level (0-10)
+      if (direction === 'up') {
+        if (volumeLevel < 10) {
+          videoRef.current.volume = Math.min(videoRef.current.volume + 0.1, 1);
+          setVolumeLevel(prev => Math.min(prev + volumeStep, 10));
+          displayTemporaryIndicator(setVolumeIndicator, 'up');
+        }
+      } else {
+        if (volumeLevel > 0) {
+          videoRef.current.volume = Math.max(videoRef.current.volume - 0.1, 0);
+          setVolumeLevel(prev => Math.max(prev - volumeStep, 0));
+          if (videoRef.current.volume === 0) {
+            displayTemporaryIndicator(setVolumeIndicator, 'muted');
+          } else {
+            displayTemporaryIndicator(setVolumeIndicator, 'down');
+          }
+        }
+      }
     }
   };
 
@@ -58,6 +84,12 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
           event.preventDefault();
           togglePlayPause();
           break;
+        case 'arrowup':
+          adjustVolume('up');
+          break;
+        case 'arrowdown':
+          adjustVolume('down');
+          break;
         case 'x':
           onClose();
           break;
@@ -65,8 +97,17 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
           break;
       }
     },
-    [onClose]
+    [togglePlayPause, adjustVolume, onClose]
   );
+
+  const resetVideo = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+      setProgress(0);
+      setIsPlaying(false);
+    }
+  };
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
@@ -89,6 +130,7 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
         >
           X
         </button>
+
         <VideoPlayer
           videoLink={videoLink}
           videoRef={videoRef}
@@ -100,6 +142,31 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
           resetVideo={resetVideo}
           onClose={onClose}
         />
+
+        {/* Volume and Play/Pause Indicator */}
+        <div className="absolute inset-0 flex items-center justify-center text-white text-3xl z-50">
+          {volumeIndicator && (
+            <div className="relative p-2 bg-black rounded-full border border-white flex items-center justify-center gap-10">
+              {volumeIndicator === 'up' && <FontAwesomeIcon icon={faVolumeUp} />}
+              {volumeIndicator === 'down' && <FontAwesomeIcon icon={faVolumeDown} />}
+              {volumeIndicator === 'muted' && <FontAwesomeIcon icon={faVolumeMute} />}
+              {/* Volume Level Display */}
+              <span className="text-white text-sm">
+                {volumeLevel}
+              </span>
+            </div>
+          )}
+          {playPauseIndicator && (
+            <div className="relative p-2 bg-black rounded-full border border-white flex items-center justify-center">
+              {playPauseIndicator === 'play' && <FontAwesomeIcon icon={faPlay} />}
+              {playPauseIndicator === 'pause' && <FontAwesomeIcon icon={faPause} />}
+              {/* Play/Pause Indicator */}
+              <span className="text-white text-sm ml-2">
+                {playPauseIndicator === 'play' ? 'Play' : 'Pause'}
+              </span>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
