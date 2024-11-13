@@ -16,6 +16,7 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
   const [volumeIndicator, setVolumeIndicator] = useState<'up' | 'down' | 'muted' | null>(null);
   const [playPauseIndicator, setPlayPauseIndicator] = useState<'play' | 'pause' | null>(null);
   const [volumeLevel, setVolumeLevel] = useState<number>(10); // Volume level from 0 to 10
+  const [longPressTimeout, setLongPressTimeout] = useState<NodeJS.Timeout | null>(null);
 
   const displayTemporaryIndicator = (setter: React.Dispatch<React.SetStateAction<any>>, value: any) => {
     setter(value);
@@ -119,11 +120,32 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
     setProgress(newProgress);
   };
 
+  const handleLongPressStart = () => {
+    const timeout = setTimeout(() => {
+      onClose();
+    }, 500);
+    setLongPressTimeout(timeout);
+  }
+
+  const handleLongPressEnd = () => {
+    if (longPressTimeout) {
+      clearTimeout(longPressTimeout);
+      setLongPressTimeout(null);
+    }
+  }
+
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-20"
       onClick={togglePlayPause}
     >
-      <div ref={containerRef} className="relative w-full h-full max-w-5xl max-h-full flex items-center justify-center p-4 bg-black">
+      <div
+        ref={containerRef}
+        className="relative w-full h-full max-w-5xl max-h-full flex items-center justify-center p-4 bg-black"
+        onTouchStart={handleLongPressStart}
+        onTouchEnd={handleLongPressEnd}
+        onMouseDown={handleLongPressStart}
+        onMouseUp={handleLongPressEnd}
+      >
         {/* Close Button */}
         <button
           onClick={onClose}
