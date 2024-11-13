@@ -12,7 +12,7 @@ const VideoControls: React.FC<VideoControlsProps> = ({ isPlaying, togglePlayPaus
   return (
     <div>
       {/* Desktop Control Buttons */}
-      <div className="absolute z-50 top-4 left-1/2 transform -translate-x-1/2 space-x-4 lg:flex hidden">
+      <div className="absolute z-50 top-4 left-1/2 transform -translate-x-1/2 space-x-4 md:flex hidden">
         <VideoControlButton
           onClick={togglePlayPause}
           icon={isPlaying ? faPause : faPlay}
