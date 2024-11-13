@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import VideoControls from './VideoControls';
+import ProgressBar from './ProgressBar';
 
 interface VideoPlayerProps {
   videoLink: string;
@@ -46,30 +47,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   const handleKeyDown = (event: KeyboardEvent) => {
     if (videoRef.current) {
       const step = 5; // seconds to jump forward or backward
-      const volumeStep = 0.1; // volume adjustment step
       switch (event.key) {
         case 'ArrowRight':
           videoRef.current.currentTime = Math.min(videoRef.current.currentTime + step, videoRef.current.duration);
           break;
         case 'ArrowLeft':
           videoRef.current.currentTime = Math.max(videoRef.current.currentTime - step, 0);
-          break;
-        case 'ArrowUp':
-          videoRef.current.volume = Math.min(videoRef.current.volume + volumeStep, 1);
-          break;
-        case 'ArrowDown':
-          videoRef.current.volume = Math.max(videoRef.current.volume - volumeStep, 0);
-          break;
-        case 'r':
-          resetVideo();
-          break;
-        case ' ':
-        case 'p':
-          event.preventDefault(); // Prevent scrolling
-          togglePlayPause();
-          break;
-        case 'x':
-          onClose();
           break;
         default:
           break;
@@ -114,16 +97,11 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       >
         <source src={`${baseUrl}/${encodeURIComponent(videoLink)}`} type="video/mp4" />
       </video>
-      <div className="absolute bottom-0 left-0 w-full h-2 bg-gray-600 cursor-pointer" onClick={event => {
-        const rect = event.currentTarget.getBoundingClientRect();
-        const offsetX = event.clientX - rect.left;
-        if (videoRef.current) {
-          const newTime = (offsetX / rect.width) * videoRef.current.duration;
-          videoRef.current.currentTime = newTime;
-        }
-      }}>
-        <div className="h-full bg-red-500" style={{ width: `${progress}%` }}></div>
-      </div>
+
+      {/* ProgressBar */}
+      <ProgressBar videoRef={videoRef} progress={progress} />
+
+      {/* Control Buttons */}
       <VideoControls isPlaying={isPlaying} togglePlayPause={togglePlayPause} resetVideo={resetVideo} />
     </div>
   );

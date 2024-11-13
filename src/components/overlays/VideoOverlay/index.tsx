@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useCallback, useState } from 'react';
 import VideoPlayer from './VideoPlayer';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faVolumeUp, faVolumeDown, faVolumeMute, faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
+import IndicatorComponent from './IndicatorComponent';
 
 interface VideoOverlayProps {
   videoLink: string;
@@ -121,8 +120,11 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-20">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-20"
+      onClick={togglePlayPause}
+    >
       <div ref={containerRef} className="relative w-full h-full max-w-5xl max-h-full flex items-center justify-center p-4 bg-black">
+        {/* Close Button */}
         <button
           onClick={onClose}
           className="absolute top-4 right-4 bg-red-600 text-white rounded-full w-14 h-14 flex items-center justify-center z-40"
@@ -131,6 +133,7 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
           X
         </button>
 
+        {/* Video Player */}
         <VideoPlayer
           videoLink={videoLink}
           videoRef={videoRef}
@@ -144,27 +147,23 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
         />
 
         {/* Volume and Play/Pause Indicator */}
-        <div className="absolute inset-0 flex items-center justify-center text-white text-3xl z-50">
+        <div className="absolute inset-0 flex items-center justify-center text-white text-3xl z-10">
           {volumeIndicator && (
-            <div className="relative p-2 bg-black rounded-full border border-white flex items-center justify-center gap-10">
-              {volumeIndicator === 'up' && <FontAwesomeIcon icon={faVolumeUp} />}
-              {volumeIndicator === 'down' && <FontAwesomeIcon icon={faVolumeDown} />}
-              {volumeIndicator === 'muted' && <FontAwesomeIcon icon={faVolumeMute} />}
-              {/* Volume Level Display */}
-              <span className="text-white text-sm">
-                {volumeLevel}
-              </span>
-            </div>
-          )}
+            <IndicatorComponent
+              indicatorType="volume"
+              volumeParams={{
+                volumeIndicator,
+                volumeLevel
+              }}
+            />
+            )}
           {playPauseIndicator && (
-            <div className="relative p-2 bg-black rounded-full border border-white flex items-center justify-center">
-              {playPauseIndicator === 'play' && <FontAwesomeIcon icon={faPlay} />}
-              {playPauseIndicator === 'pause' && <FontAwesomeIcon icon={faPause} />}
-              {/* Play/Pause Indicator */}
-              <span className="text-white text-sm ml-2">
-                {playPauseIndicator === 'play' ? 'Play' : 'Pause'}
-              </span>
-            </div>
+            <IndicatorComponent
+              indicatorType={`playPause`}
+              playPauseParams={{
+                playPauseIndicator,
+              }}
+            />
           )}
         </div>
       </div>
