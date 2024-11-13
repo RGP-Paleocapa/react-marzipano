@@ -8,7 +8,7 @@ import Navbar from '@/components/layout/header';
 import { useSceneStore } from '@/context/useSceneStore';
 import MapOverlay from '@components/overlays/MapOverlay';
 import { useVideoStore } from '@/context/useVideoStore';
-import VideoOverlay from '@components/overlays/VideoOverlay';
+import VideoOverlay from '@/components/overlays/VideoOverlay';
 import InfoComponent from '@components/common/InfoComponent';
 
 const MarzipanoPage: React.FC = () => {
