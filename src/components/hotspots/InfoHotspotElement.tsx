@@ -24,10 +24,10 @@ const InfoHotspotElement: React.FC<InfoHotspotElementProps> = ({ hotspot }) => {
     setContentVisibility(false);
   };
 
-  const handleShowVideo = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleShowVideoWithDelay = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     if (hotspot.videoLink) {
-      showVideo(hotspot.videoLink);
+      setTimeout(() => showVideo(hotspot.videoLink!), 200); // 2ms delay
     }
   };
 
@@ -82,7 +82,8 @@ const InfoHotspotElement: React.FC<InfoHotspotElementProps> = ({ hotspot }) => {
         {hotspot.videoLink && (
           <div className="mt-2">
             <button
-              onClick={handleShowVideo}
+              onClick={handleShowVideoWithDelay}
+              onMouseOver={handleShowVideoWithDelay}
               className="bg-white text-red-500 text-xs sm:text-base px-2 sm:px-4 py-1 sm:py-2 rounded-lg shadow-md hover:bg-red-100"
             >
               Watch Video
