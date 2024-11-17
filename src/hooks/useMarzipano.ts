@@ -33,7 +33,10 @@ export const useMarzipano = (panoRef: RefObject<HTMLDivElement>, appData: AppDat
     }
 
     // Initialize autorotation state from appData settings only on mount
-    setAutorotateEnabled(settings.autorotateEnabled);
+    if (isRotating == null) {
+      console.log("Setting initial viewer state=" + settings.autorotateEnabled);
+      setAutorotateEnabled(settings.autorotateEnabled);
+    }
 
     return () => {
       // Cleanup the viewer movement on unmount
