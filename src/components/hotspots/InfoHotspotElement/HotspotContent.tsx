@@ -10,6 +10,8 @@ interface HotspotContentProps {
   videoLink: string | null;
   onClose: (event: React.MouseEvent<HTMLButtonElement>) => void;
   onShowVideo: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseOver: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseOut: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const HotspotContent: React.FC<HotspotContentProps> = ({
@@ -22,18 +24,24 @@ const HotspotContent: React.FC<HotspotContentProps> = ({
   videoLink,
   onClose,
   onShowVideo,
+  onMouseOver,
+  onMouseOut,
 }) => {
   return (
     <section
       className={`absolute top-10 lg:top-12 left-0 p-2 sm:p-4 rounded-lg shadow-md transition-opacity duration-300 ${isVisible ? 'opacity-100 visible' : 'opacity-0 invisible'} ${contentBgColor} w-36 lg:w-64`}
       aria-hidden={!isVisible}
+      onMouseOver={onMouseOver}
+      onMouseOut={onMouseOut}
     >
       <header className="flex justify-between items-center mb-2">
         <h2 className={`text-sm sm:text-lg font-bold ${textColor}`}>
           {title}
         </h2>
+        {/* X close */}
         <button
           onClick={onClose}
+          onMouseOver={onClose}
           className="ml-4 bg-red-500 text-white px-1 sm:px-2 py-0.5 sm:py-1 rounded-full hover:bg-red-700"
           aria-label="Close content"
         >
@@ -49,6 +57,7 @@ const HotspotContent: React.FC<HotspotContentProps> = ({
         </p>
       )}
 
+      {/* Video Button */}
       {videoLink && (
         <div className="mt-2">
           <button

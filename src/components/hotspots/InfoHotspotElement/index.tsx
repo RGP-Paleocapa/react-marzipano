@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVideo } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
@@ -13,12 +13,36 @@ interface InfoHotspotElementProps {
 
 const InfoHotspotElement: React.FC<InfoHotspotElementProps> = ({ hotspot }) => {
   const { showVideo } = useVideoStore();
-  const [isContentVisible, setContentVisibility] = useState(false);
+  const [isHovered, setHovered] = useState(false);
+  const [isContentVisible, setContentVisibility] = useState<boolean>(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const toggleContentVisibility = (event: React.MouseEvent<HTMLButtonElement>) => {
+  useEffect(() => {
+    if (isHovered) {
+      setContentVisibility(true);
+    } else {
+      timeoutRef.current = setTimeout(() => {
+        setContentVisibility(false);
+      }, 200);
+    }
+
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [isHovered]);
+
+  const handleMouseOver = () => {
+    setHovered(true);
+  };
+
+  const handleMouseOut = () => {
+    setHovered(false);
+  };
+
+  const handleFocusOrClick = (event: React.MouseEvent<HTMLButtonElement> | React.FocusEvent<HTMLButtonElement>) => {
     event.stopPropagation();
     setContentVisibility(prev => !prev);
-  };
+  }
 
   const closeContent = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -40,23 +64,26 @@ const InfoHotspotElement: React.FC<InfoHotspotElementProps> = ({ hotspot }) => {
   return (
     <article
       className={`relative p-2 rounded-lg shadow-md transition-transform transform hover:scale-110 ${bgColor}`}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
     >
       {/* Hotspot Button */}
       <button
         className="cursor-pointer flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8"
-        onClick={toggleContentVisibility}
+        onClick={handleFocusOrClick}
+        onFocus={handleFocusOrClick}
         aria-label={hotspot.videoLink ? 'Play video' : 'Show information'}
       >
         {hotspot.videoLink ? (
           <FontAwesomeIcon
             icon={faVideo as IconProp}
-            className="text-white w-6 h-6 sm:w-8 sm:h-8 transition-transform transform hover:scale-110"
+            className="text-white w-6 h-6 sm:w-8 sm:h-8"
           />
         ) : (
           <img
             src={infoImage}
             alt="Info Icon"
-            className="w-6 h-6 sm:w-8 sm:h-8 transition-transform transform hover:scale-110"
+            className="w-6 h-6 sm:w-8 sm:h-8"
           />
         )}
       </button>
@@ -72,6 +99,8 @@ const InfoHotspotElement: React.FC<InfoHotspotElementProps> = ({ hotspot }) => {
         videoLink={hotspot.videoLink!}
         onClose={closeContent}
         onShowVideo={handleShowVideoWithDelay}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
       />
     </article>
   );
