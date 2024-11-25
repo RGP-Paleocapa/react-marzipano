@@ -18,6 +18,44 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
   const [volumeLevel, setVolumeLevel] = useState<number>(10); // Volume level from 0 to 10
   const [longPressTimeout, setLongPressTimeout] = useState<NodeJS.Timeout | null>(null);
 
+  useEffect(() => {
+    if (videoRef.current) {
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.error('Autoplay failed:', error);
+          setIsPlaying(false);
+        });
+      } else {
+        setIsPlaying(true);
+      }
+    }
+  }, []);
+
+  const handleAction = async (
+    action: 'play' | 'pause' | 'reset',
+    video: HTMLVideoElement
+  ): Promise<boolean> => {
+
+    if (!video) return false;
+
+    try {
+      if (action === 'play') {
+        const playPromise = video.play();
+        if (playPromise) await playPromise;
+      } else if (action === 'pause') {
+        video.pause();
+      } else if (action === 'reset') {
+        video.pause();
+        video.currentTime = 0;
+      }
+      return true;
+    } catch (error) {
+      console.error(`Failed to ${action} the video:`, error);
+      return false;
+    }
+  }
+
   const displayTemporaryIndicator = (setter: React.Dispatch<React.SetStateAction<any>>, value: any) => {
     setter(value);
     setTimeout(() => setter(null), 500); // Display indicator for 500 ms
@@ -36,16 +74,23 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
     };
   }, [handleClickOutside]);
 
-  const togglePlayPause = () => {
+  const togglePlayPause = async () => {
     if (videoRef.current) {
-      if (videoRef.current.paused) {
-        videoRef.current.play();
+      const isPaused = videoRef.current.paused;
+      const success = await handleAction(isPaused ? 'play' : 'pause', videoRef.current);
+      if (success) {
         setIsPlaying(true);
-        displayTemporaryIndicator(setPlayPauseIndicator, 'play');
-      } else {
-        videoRef.current.pause();
+        displayTemporaryIndicator(setPlayPauseIndicator, isPaused ? 'play' : 'pause');
+      }
+    }
+  };
+
+  const resetVideo = async () => {
+    if (videoRef.current) {
+      const success = await handleAction('reset', videoRef.current);
+      if (success) {
+        setProgress(0);
         setIsPlaying(false);
-        displayTemporaryIndicator(setPlayPauseIndicator, 'pause');
       }
     }
   };
@@ -99,15 +144,6 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
     },
     [togglePlayPause, adjustVolume, onClose]
   );
-
-  const resetVideo = () => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-      setProgress(0);
-      setIsPlaying(false);
-    }
-  };
 
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);

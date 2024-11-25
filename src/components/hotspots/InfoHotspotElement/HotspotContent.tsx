@@ -41,7 +41,6 @@ const HotspotContent: React.FC<HotspotContentProps> = ({
         {/* X close */}
         <button
           onClick={onClose}
-          onMouseOver={onClose}
           className="ml-4 bg-red-500 text-white px-1 sm:px-2 py-0.5 sm:py-1 rounded-full hover:bg-red-700"
           aria-label="Close content"
         >
@@ -62,7 +61,6 @@ const HotspotContent: React.FC<HotspotContentProps> = ({
         <div className="mt-2">
           <button
             onClick={onShowVideo}
-            onMouseOver={onShowVideo}
             className="bg-white text-red-500 text-xs sm:text-base px-2 sm:px-4 py-1 sm:py-2 rounded-lg shadow-md hover:bg-red-100"
           >
             Watch Video
