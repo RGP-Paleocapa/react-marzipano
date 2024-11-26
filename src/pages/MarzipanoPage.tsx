@@ -10,6 +10,7 @@ import MapOverlay from '@components/overlays/MapOverlay';
 import { useVideoStore } from '@/context/useVideoStore';
 import VideoOverlay from '@/components/overlays/VideoOverlay';
 import InfoComponent from '@components/common/InfoComponent';
+import { useFullScreen } from '@hooks/useFullscreen';
 
 const MarzipanoPage: React.FC = () => {
   const panoRef = useRef<HTMLDivElement>(null);
@@ -17,6 +18,7 @@ const MarzipanoPage: React.FC = () => {
   const { closeVideo, isVideoVisible, videoLink } = useVideoStore();
   const { viewer, sceneObjects } = useMarzipano(panoRef, APP_DATA as AppData, currentSceneIndex);
   const [visibleContent, setVisibleContent] = useState<'info' | 'credits' | null>(null);
+  const { toggleFullscreen } = useFullScreen(panoRef);
 
   useEffect(() => {
     if (!localStorage.getItem('isFirstVisit')) {
@@ -24,16 +26,6 @@ const MarzipanoPage: React.FC = () => {
       localStorage.setItem('isFirstVisit', 'false');
     }
   }, []);
-
-  const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      panoRef.current?.requestFullscreen().catch(err => {
-        alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
-      });
-    } else {
-      document.exitFullscreen();
-    }
-  };
 
   const handleContentChange = (content: 'info' | 'credits' | null) => {
     // Toggle the content if the same content is clicked again
