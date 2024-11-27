@@ -29,7 +29,7 @@ const HotspotContent: React.FC<HotspotContentProps> = ({
 }) => {
   return (
     <section
-      className={`absolute top-10 lg:top-12 left-0 p-2 sm:p-4 rounded-lg shadow-md transition-opacity duration-300 ${isVisible ? 'opacity-100 visible' : 'opacity-0 invisible'} ${contentBgColor} w-36 lg:w-64`}
+      className={`absolute top-10 lg:top-14 left-0 p-2 sm:p-4 rounded-lg shadow-md transition-opacity duration-300 ${isVisible ? 'opacity-100 visible' : 'opacity-0 invisible'} ${contentBgColor} w-36 lg:w-64`} // same infospot button height
       aria-hidden={!isVisible}
       onMouseOver={onMouseOver}
       onMouseOut={onMouseOut}

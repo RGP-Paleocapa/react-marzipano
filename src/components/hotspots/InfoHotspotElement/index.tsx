@@ -63,13 +63,13 @@ const InfoHotspotElement: React.FC<InfoHotspotElementProps> = ({ hotspot }) => {
 
   return (
     <article
-      className={`relative p-2 rounded-lg shadow-md transition-transform transform hover:scale-110 ${bgColor}`}
+      className={`relative rounded-lg shadow-md transition-transform transform hover:scale-110 ${bgColor}`}
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
     >
       {/* Hotspot Button */}
       <button
-        className="cursor-pointer flex items-center justify-center w-6 h-6 sm:w-8 sm:h-8"
+        className="cursor-pointer flex items-center justify-center w-10 h-10 md:w-14 md:h-14"
         onClick={handleFocusOrClick}
         onFocus={handleFocusOrClick}
         aria-label={hotspot.videoLink ? 'Play video' : 'Show information'}
@@ -77,13 +77,13 @@ const InfoHotspotElement: React.FC<InfoHotspotElementProps> = ({ hotspot }) => {
         {hotspot.videoLink ? (
           <FontAwesomeIcon
             icon={faVideo as IconProp}
-            className="text-white w-6 h-6 sm:w-8 sm:h-8"
+            className="text-white w-8 md:w-11 h-full" // button width and height -2
           />
         ) : (
           <img
             src={infoImage}
             alt="Info Icon"
-            className="w-6 h-6 sm:w-8 sm:h-8"
+            className="h-full w-full"
           />
         )}
       </button>
