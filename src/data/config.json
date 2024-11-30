@@ -24,7 +24,7 @@
           "rotation": 720,
           "target": "2-ingresso-museo-primo-locale-1",
           "isRed": true,
-          "text": "Hover Message"
+          "text": "Cliccami per entrare nel Museo Valdimagnino e visitare la Nevera"
         },
         {
           "yaw": 1.5088723555172425,
@@ -118,7 +118,8 @@
           "title": "1° Locale museo Valdimagnino",
           "videoLink": "1o locale museo.mp4"
         }
-      ]
+      ],
+      "introAudio": "audio_intro.mp3"
     },
     {
       "id": "3-ingresso-museo-primo-locale-2",
@@ -208,7 +209,7 @@
         {
           "yaw": -0.6,
           "pitch": 0.2,
-          "rotation": 230.20,
+          "rotation": 230.2,
           "target": "3-ingresso-museo-primo-locale-2",
           "isRed": false
         },
@@ -223,7 +224,7 @@
       "infoHotspots": [
         {
           "yaw": -3.283657100488371,
-        "pitch": 0.01433160168152412,
+          "pitch": 0.01433160168152412,
           "title": "Verso la ghiacciaia",
           "infoText": "Tunnel che orta alla famosa ghiacciaia"
         },
