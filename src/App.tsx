@@ -5,6 +5,7 @@ import InfoComponent from "@components/common/InfoComponent";
 import Navbar from "@components/layout/header";
 import MapOverlay from "@components/overlays/MapOverlay";
 import VideoOverlay from "@components/overlays/VideoOverlay";
+import AudioOverlay from "./components/overlays/AudioOverlay";
 import { useSceneStore } from "@/context/useSceneStore";
 import { useVideoStore } from "@/context/useVideoStore";
 import { useFullScreen } from "@hooks/useFullscreen";
@@ -16,6 +17,7 @@ const App = () => {
   const panoRef = useRef<HTMLDivElement>(null);
   const { currentSceneIndex } = useSceneStore();
   const { closeVideo, isVideoVisible, videoLink } = useVideoStore();
+  const [audioSrc, setAudioSrc] = useState<string | null>(null);
   const { viewer, sceneObjects } = useMarzipano(
     panoRef,
     APP_DATA as AppData,
@@ -63,12 +65,14 @@ const App = () => {
           common={APP_DATA.common as AppData["common"]}
           sceneObjects={sceneObjects as SceneObjects[]}
           currentSceneIndex={currentSceneIndex}
+          setAudioSrc={setAudioSrc}
         />
       )}
       <MapOverlay />
       {isVideoVisible && videoLink && (
         <VideoOverlay videoLink={videoLink} onClose={closeVideo} />
       )}
+      <AudioOverlay introAudio={audioSrc} />
     </div>
   );
 };

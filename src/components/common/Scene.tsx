@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { AppData } from "@/types/marzipano-types";
 import HotspotContainer from "@components/hotspots/HotspotContainer";
 import Marzipano from "marzipano";
+import { log } from "console";
 
 interface SceneProps {
   viewer: Marzipano.Viewer;
@@ -9,6 +10,7 @@ interface SceneProps {
   common: AppData["common"];
   sceneObjects: Marzipano.Scene[];
   currentSceneIndex: number;
+  setAudioSrc: (audioLink: string) => void;
 }
 
 const Scene: React.FC<SceneProps> = ({
@@ -16,6 +18,7 @@ const Scene: React.FC<SceneProps> = ({
   data,
   sceneObjects,
   currentSceneIndex,
+  setAudioSrc,
 }) => {
   useEffect(() => {
     const currentScene = sceneObjects[currentSceneIndex];
@@ -40,7 +43,14 @@ const Scene: React.FC<SceneProps> = ({
     };
   }, [currentSceneIndex, sceneObjects, viewer]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (data.introAudio) {
+      setAudioSrc(data.introAudio);
+    } else {
+      setAudioSrc("");
+    }
+    console.log(data.introAudio);
+  }, [data]);
 
   return (
     <div className="relative">
@@ -50,12 +60,6 @@ const Scene: React.FC<SceneProps> = ({
         sceneObjects={sceneObjects}
         currentSceneIndex={currentSceneIndex}
       />
-      {data.introAudio && (
-        <audio autoPlay controls className="absolute left-0 bottom-0 z-50">
-          <source src={"/assets/audio/" + data.introAudio} type="audio/mpeg" />
-          Your browser does not support the audio element.
-        </audio>
-      )}
     </div>
   );
 };
