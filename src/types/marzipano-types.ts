@@ -17,15 +17,15 @@ export interface BaseHotspot {
 }
 
 export interface LinkHotspot extends BaseHotspot {
-  rotation?: number;  
-  target: string;  
-  isRed: boolean;  
+  rotation?: number;
+  target: string;
+  isRed: boolean;
 }
 
 export interface InfoHotspot extends BaseHotspot {
-  title: string;  
+  title: string;
   infoText?: string;
-  videoLink?: string;  
+  videoLink?: string;
 }
 
 export interface Scene {
@@ -34,6 +34,7 @@ export interface Scene {
   initialViewParameters: InitialViewParameters;
   linkHotspots: LinkHotspot[];
   infoHotspots: InfoHotspot[];
+  introAudio?: string;
 }
 
 export interface Settings {
