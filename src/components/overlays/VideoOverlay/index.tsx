@@ -176,7 +176,7 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
     >
       <div
         ref={containerRef}
-        className="relative w-full h-full max-w-5xl max-h-full flex items-center justify-center p-4 bg-black"
+        className="relative h-full w-full max-w-5xl flex items-center justify-center lg:p-4 bg-black"
         onTouchStart={handleLongPressStart}
         onTouchEnd={handleLongPressEnd}
         onMouseDown={handleLongPressStart}
