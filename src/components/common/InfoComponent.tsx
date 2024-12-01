@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import '@/styles/buttons/button-style.css';
 import { useViewStore } from '@/context/useViewerStore';
 // import { useSceneStore } from '@/context/useSceneStore';
@@ -14,6 +14,7 @@ interface InfoComponentProps {
 
 const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits }) => {
   const { isRotating, toggleRotation } = useViewStore();
+  const initialRotationState = useRef<boolean>(isRotating);
 
   useEffect(() => {
     if (isRotating) {
@@ -21,11 +22,11 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits }) => 
     }
 
     return () => {
-      if (!isRotating) {
-        toggleRotation(true);
+      if (initialRotationState.current) {
+        toggleRotation(initialRotationState.current);
       }
     };
-  }, [isRotating, toggleRotation]);
+  }, [toggleRotation]);
 
   const contentTitle = isCredits
     ? 'Visita Virtuale alla Nevera del Museo Valdimagnino'
