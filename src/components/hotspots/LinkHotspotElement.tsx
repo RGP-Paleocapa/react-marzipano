@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import linkImage from "@/assets/icons/link.png";
 import linkRedImage from "@/assets/icons/linkred.png";
 import { LinkHotspot } from "@/types/marzipano-types";

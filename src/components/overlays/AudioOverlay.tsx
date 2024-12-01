@@ -1,7 +1,4 @@
-import { useState, useEffect } from "react";
-import map from "@/assets/images/image.jpg";
-import Dot from "../hotspots/Dot";
-import { useViewStore } from "@/context/useViewerStore";
+import { useEffect } from "react";
 
 interface AudioOverlayProps {
   introAudio: string | null;

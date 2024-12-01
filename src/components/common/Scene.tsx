@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { AppData } from "@/types/marzipano-types";
 import HotspotContainer from "@components/hotspots/HotspotContainer";
 import Marzipano from "marzipano";
-import { log } from "console";
 
 interface SceneProps {
   viewer: Marzipano.Viewer;
