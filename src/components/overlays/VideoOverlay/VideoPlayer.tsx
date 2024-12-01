@@ -80,14 +80,16 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
   };
 
   return (
+    <div className="flex justify-center w-full lg:w-fit h-full lg:min-w-64 bg-gray-800">
+
     <div
-      className="relative w-auto h-full aspect-w-16 aspect-h-9 max-w-full max-h-full bg-gray-800 rounded-lg overflow-hidden flex flex-col justify-center"
+      className="relative w-fit h-full aspect-w-16 aspect-h-9 max-w-full max-h-full bg-inherit overflow-hidden flex flex-col justify-center"
       onMouseDown={startHoldToClose}
       onTouchStart={startHoldToClose}
       onMouseUp={cancelHoldToClose}
       onTouchEnd={cancelHoldToClose}
       onMouseLeave={cancelHoldToClose} // Cancels if mouse leaves the container
-    >
+      >
       <div>
         <video
           ref={videoRef}
@@ -106,6 +108,7 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       {/* Control Buttons */}
       <VideoControls isPlaying={isPlaying} togglePlayPause={togglePlayPause} resetVideo={resetVideo} />
     </div>
+            </div>
   );
 };
 
