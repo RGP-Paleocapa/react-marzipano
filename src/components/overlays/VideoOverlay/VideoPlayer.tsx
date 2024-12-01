@@ -81,25 +81,27 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
 
   return (
     <div
-      className="relative w-auto h-full aspect-w-16 aspect-h-9 max-w-full max-h-full bg-gray-800 rounded-lg overflow-hidden"
+      className="relative w-auto h-full aspect-w-16 aspect-h-9 max-w-full max-h-full bg-gray-800 rounded-lg overflow-hidden flex flex-col justify-center"
       onMouseDown={startHoldToClose}
       onTouchStart={startHoldToClose}
       onMouseUp={cancelHoldToClose}
       onTouchEnd={cancelHoldToClose}
       onMouseLeave={cancelHoldToClose} // Cancels if mouse leaves the container
     >
-      <video
-        ref={videoRef}
-        controls={false}
-        className="object-contain w-full h-full pb-2"
-        onClick={togglePlayPause}
-        onTimeUpdate={handleTimeUpdate}
-      >
-        <source src={`${baseUrl}/${encodeURIComponent(videoLink)}`} type="video/mp4" />
-      </video>
+      <div>
+        <video
+          ref={videoRef}
+          controls={false}
+          className="object-contain w-full h-full"
+          // onClick={togglePlayPause}
+          onTimeUpdate={handleTimeUpdate}
+          >
+          <source src={`${baseUrl}/${encodeURIComponent(videoLink)}`} type="video/mp4" />
+        </video>
 
-      {/* ProgressBar */}
-      <ProgressBar videoRef={videoRef} progress={progress} />
+        {/* ProgressBar */}
+        <ProgressBar videoRef={videoRef} progress={progress} />
+      </div>
 
       {/* Control Buttons */}
       <VideoControls isPlaying={isPlaying} togglePlayPause={togglePlayPause} resetVideo={resetVideo} />

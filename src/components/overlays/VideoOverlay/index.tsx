@@ -205,7 +205,7 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
         />
 
         {/* Volume and Play/Pause Indicator */}
-        <div className="absolute inset-0 flex items-center justify-center text-white text-3xl z-10">
+        <div className="absolute inset-0 flex items-center justify-center text-white text-3xl -z-10">
           {volumeIndicator && (
             <IndicatorComponent
               indicatorType="volume"
