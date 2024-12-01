@@ -5,7 +5,7 @@ interface AudioOverlayProps {
 }
 
 const AudioOverlay: React.FC<AudioOverlayProps> = ({ introAudio }) => {
-  const locationAudio = "/assets/audio/" + introAudio;
+  const locationAudio = `./assets/audio/${introAudio}`;
 
   useEffect(() => {}, [introAudio]);
 
