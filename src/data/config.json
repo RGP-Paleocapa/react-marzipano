@@ -110,7 +110,7 @@
           "yaw": 2.0696263665191124,
           "pitch": -0.23645498179391033,
           "title": "Attrezzi per allevamento",
-          "infoText": "Attrezzi usati per l'allevamento in valle, con successiva produzione dello strachino"
+          "infoText": "Strumenti tradizionali utilizzati per le attività di allevamento praticate nella valle, fondamentali per le fasi di lavorazione e trasformazione del latte che portano alla produzione dello strachino, uno dei prodotti tipici della zona."
         },
         {
           "yaw": -2.4455095414426914,
@@ -156,7 +156,7 @@
           "yaw": 0.1902894520743341,
           "pitch": 0.2955729112845354,
           "title": "Libreria del museo",
-          "infoText": "Riviste, libri ed illustrazione del museo stesso, la sua storia, la storia della valle di imagno e tanto altro ancora."
+          "infoText": "Riviste, libri e illustrazioni legate al museo stesso, alla sua storia, alla storia della Valle Imagna e a molti altri aspetti di interesse culturale e storico."
         },
         {
           "yaw": 0.6902894520743341,
@@ -179,7 +179,7 @@
           "yaw": -1.9722730725212834,
           "pitch": -0.20766926510757997,
           "title": "Utensili per preparazione di legumi",
-          "infoText": "Venivano usati in valle per la preparazione di verdure, legumi e pane."
+          "infoText": "Questi strumenti, usati nella vita quotidiana della valle, servivano per preparare verdure, legumi e pane, che erano alla base dell’alimentazione locale. Ogni attrezzo aveva una funzione precisa, dimostrando la creatività e la praticità delle tradizioni contadine di un tempo."
         },
         {
           "yaw": -2.617942912404178,
@@ -225,13 +225,13 @@
           "yaw": -3.283657100488371,
         "pitch": 0.01433160168152412,
           "title": "Verso la ghiacciaia",
-          "infoText": "Tunnel che orta alla famosa ghiacciaia"
+          "infoText": "Tunnel che porta alla famosa ghiacciaia, un luogo storico molto conosciuto nella valle."
         },
         {
           "yaw": 1.208816503897357,
           "pitch": -0.3406714748726614,
           "title": "Omaggi",
-          "infoText": "Omaggi alle persone che hanno contribuito alla costruzione del museo valdimagnino insieme al'attuale procuratore del museo."
+          "infoText": "Un omaggio alle persone che hanno contribuito alla creazione del Museo Valdimagnino, in collaborazione con l'attuale curatore, accompagnato da una selezione di immagini evocative che raccontano la storia e la bellezza senza tempo della valle."
         }
       ]
     },
@@ -276,7 +276,7 @@
           "yaw": -2.3003265388186144,
           "pitch": 0.35171791431554638,
           "title": "Gioco per bambini",
-          "infoText": "Questo gioco serviva per insegnare agli infanti come camminare: \nIl pambino veniva posizionato all'interno del cerchio, e quest'ultimo, sostenuto dalle sbarre, camminava avanti ed indietro esercitandosi dunque nella camminata"
+          "infoText": "Questo gioco era ideato per aiutare i bambini a sviluppare le capacità motorie necessarie per imparare a camminare. Il bambino veniva collocato all'interno del cerchio, che, sorretto dalle sbarre, consentiva di muoversi avanti e indietro, favorendo così l’esercizio della camminata."
         },
         {
           "yaw": -2.9003265388186144,
@@ -313,7 +313,8 @@
         {
           "yaw": -2.86482781122937,
           "pitch": 0.737348969514427566,
-          "title": "Tessuti per la fasciatura dei bambini"
+          "title": "Tessuti per la fasciatura dei bambini",
+          "infoText": "Tessuti utilizzati per la fasciatura dei bambini, una pratica tradizionale che risale a tempi antichi e che rifletteva l’attenzione e la cura verso i più piccoli nella vita quotidiana delle famiglie locali."
         }
       ]
     },
@@ -345,12 +346,14 @@
         {
           "yaw": 0.05126875333364467,
           "pitch": 0.01875466431265771,
-          "title": "Aula museo"
+          "title": "Ritorno al museo!",
+          "infoText": "Per tornare al museo, usa questa freccia qui a fianco"
         },
         {
           "yaw": 3.4060420809943405,
           "pitch": 0.3208542954131417,
-          "title": "Verso la ghiacciaia"
+          "title": "Verso la Nevera!",
+          "infoText": "Per andare verso la ghiacciaia, usa questa freccia qui a fianco"
         }
       ]
     },
@@ -389,12 +392,14 @@
         {
           "yaw": -2.6842312723738512,
           "pitch": 0.3399539928291748,
-          "title": "Verso il museo"
+          "title": "Verso la Nevera!",
+          "infoText": "Per andare verso la ghiacciaia, usa questa freccia qui a fianco"
         },
         {
           "yaw": 2.5533413390312987,
           "pitch": -0.19230845110633332,
-          "title": "Verso il museo"
+          "title": "Ritorno al museo!",
+          "infoText": "Per tornare al museo, usa questa freccia qui a fianco"
         }
       ]
     },
@@ -427,12 +432,13 @@
           "yaw": 0.13748274379255676,
           "pitch": 0.03552663226146535,
           "title": "Vini nella nicchia",
-          "infoText": "Vini pronti pre-stagionati, ricavati dalla ghiacciaia"
+          "infoText": "Vini pre-stagionati, affinati inizialmente grazie al clima fresco e costante della ghiacciaia, che contribuiva a preservarne la qualità e a esaltarne le caratteristiche."
         },
         {
           "yaw": -1.65,
           "pitch": 0,
-          "title": "Sporgenza Nevera"
+          "title": "Sporgenza Nevera",
+          "infoText": "Per andare verso la ghiacciaia, usa questa freccia qui a fianco"
         }
       ]
     },
@@ -479,13 +485,13 @@
           "yaw": 2.37093305124663,
           "pitch": 0.50190122157420163,
           "title": "Derrate alimentari",
-          "infoText": "I cibi e le bevande posati qui, venivano sommersi dalla neve tramite la botola, conservandoli dunque in un luogo chiuso e fresco. "
+          "infoText": "Le derrate alimentari e le bevande qui custodite venivano introdotte attraverso la botola e ricoperte di neve, garantendone la conservazione in un ambiente chiuso e costantemente fresco."
         },
         {
           "yaw": -2.7752216618608756,
           "pitch": -0.585480331577072,
-          "title": "Botola",
-          "infoText": "Chissà dove porta?",
+          "title": "Una botola, chissà dove porta?",
+          "infoText": "Usa la freccia qui a fianco per uscire dalla botola",
           "videoLink": "video 1 botola.mp4"
         }
       ]
@@ -518,7 +524,14 @@
         {
           "yaw": 0.8,
           "pitch": 2.0,
-          "title": "Botola"
+          "title": "Ecco la botola!",
+          "infoText": "Usa la la freccia qui di fianco per tornare alla Nevera"
+        },
+        {
+          "yaw": 3.7,
+          "pitch": 0.3,
+          "title": "Esploriamo ancora!",
+          "infoText": "Usa questa freccia per esplorare nuovi luoghi più avanti e scoprire cosa c'è da vedere."
         }
       ]
     },
@@ -562,10 +575,22 @@
       ],
       "infoHotspots": [
         {
+          "yaw": 3.1,
+          "pitch": -0.1023224212032427,
+          "title": "Ritorna alla botola",
+          "infoText": "Usa la freccia qui in basso ritornare alla botola, dunque alla Nevera"
+        },
+        {
+          "yaw": 4.7,
+          "pitch": 4.0,
+          "title": "Primo piano della casa di Amagno",
+          "infoText": "Usa la freccia qui di fianco per salire al primo piano della casa del maestro"
+        },
+        {
           "yaw": -0.4921980901382035,
           "pitch": -0.3223224212032427,
           "title": "Cosa c'è in quel riquadro bianco?",
-          "infoText": "Vai avanti per scoprire il mistero"
+          "infoText": "Usa la freccia qui in basso per andare avanti e scoprire il mistero"
         },
         {
           "yaw": -1.4921980901382035,
@@ -621,20 +646,34 @@
       ],
       "infoHotspots": [
         {
+          "yaw": 0.6,
+          "pitch": -2.4023224212032427,
+          "title": "Primo piano della casa di Amagno",
+          "infoText": "Usa la freccia qui accanto per salire nella casa di Amagno e scoprire cosa ti aspetta."
+        },
+        {
+          "yaw": -1.5,
+          "pitch": -0.1023224212032427,
+          "title": "Ritorna alla botola",
+          "infoText": "Usa la freccia qui in basso ritornare alla botola, dunque alla Nevera"
+        },
+        {
           "yaw": -2.632283050143341,
           "pitch": -0.049574861929396974,
-          "title": "Ca' d'Amagn"
+          "title": "Ca' d'Amagn",
+          "infoText": "Usa la freccia qui di fianco per entrare nella casa del maestro"
         },
         {
           "yaw": 0.31532392460437464,
           "pitch": -0.2952245705925769,
           "title": "U-UN... UN FANTASMA!!!?",
-          "infoText": "Contadino"
+          "infoText": "Ecco Pierino, il fantasma del museo, nonchè la nostra guida, presente nei video del museo"
         },
         {
           "yaw": -3.70000090034368578,
           "pitch": 0.12600622227910918,
-          "title": "Ritorniamo all'inizio"
+          "title": "Ritorniamo all'inizio",
+          "infoText": "Usa la freccia qui di fianco per ritornare all'entrata del museo"
         }
       ]
     },
@@ -666,8 +705,14 @@
         {
           "yaw": 0.206518183541572853,
           "pitch": -0.10133365880838774,
-          "title": "Scale",
-          "infoText": "Sali verso la casa di amagno"
+          "title": "Scale per la casa di Amagno",
+          "infoText": "Usa la freccia qui di fianco per salire al primo piano della casa"
+        },
+        {
+          "yaw": -1.506518183541572853,
+          "pitch": 0.03133365880838774,
+          "title": "PIazzetta esterna",
+          "infoText": "Usa la freccia qui di fianco tornare alla piazzetta esterna"
         }
       ]
     },
@@ -726,7 +771,19 @@
           "yaw": -0.15439878530581552,
           "pitch": 0.35511697907968767,
           "title": "Insediamento di una porta",
-          "infoText": "Qui un avolta vi era presente un apertura, la quale portava ad un gabinetto pensile"
+          "infoText": "Un tempo, qui c'era un'apertura che conduceva a un gabinetto pensile, un piccolo spazio sopraelevato utilizzato come wc, tipico delle vecchie case rurali. Questa soluzione era comune nelle abitazioni di un tempo, dove si cercava di sfruttare al meglio lo spazio disponibile."
+        },
+        {
+          "yaw": -1.8,
+          "pitch": 2.6,
+          "title": "Scendi con le scale",
+          "infoText": "Usa la freccia qui accanto per scendere verso il prato usando le scale"
+        },
+        {
+          "yaw": -0.4,
+          "pitch": 2.89,
+          "title": "Terrazza",
+          "infoText": "Usa la freccia qui accanto per osservare il primo piano della casa e goderti la vista sulla terrazza"
         }
       ]
     },
@@ -758,12 +815,20 @@
         {
           "yaw": 1.580864005166174,
           "pitch": 0.2367534292801828,
-          "title": "Pierino"
+          "title": "Pierino",
+          "infoText": "Usa la freccia qui di fianco per ritornare da Pierino"
         },
         {
           "yaw": 0.280864005166174,
           "pitch": 0.0367534292801828,
-          "title": "Casa torre in lontananza"
+          "title": "Casa torre in lontananza",
+          "infoText": "Usa la freccia qui di fianco per ritornare al piano terra"
+        },
+        {
+          "yaw": 2.500864005166174,
+          "pitch": 0.0367534292801828,
+          "title": "Scendi dalle scale",
+          "infoText": "Usa la freccia qui accanto per scendere al piano inferiore tramite le scale."
         }
       ]
     }
