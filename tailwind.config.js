@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        verdana: ['Verdana', 'Geneva', 'sans-serif'],
       },
       backgroundColor: {
         'black-opaque': 'rgba(0, 0, 0, 0.8)',
