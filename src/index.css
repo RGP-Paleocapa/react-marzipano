@@ -26,6 +26,10 @@ html, body {
   @apply text-sm;
 }
 
+.btn-77 {
+  @apply mb-8 px-8 py-5 text-white text-sm uppercase animate-pulse rounded-full border-2 font-extrabold font-verdana bg-gradient-to-r from-cyan-500 to-blue-700 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg hover:from-cyan-600 hover:to-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300
+}
+
 
 /* Add this to your global CSS file or within a <style> tag in your HTML */
 .iframe-custom-size {

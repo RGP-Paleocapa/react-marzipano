@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react';
-import '@/styles/buttons/button-style.css';
 import { useViewStore } from '@/context/useViewerStore';
 // import { useSceneStore } from '@/context/useSceneStore';
 import info from '@/assets/icons/info.png';
