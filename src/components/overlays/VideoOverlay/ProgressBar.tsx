@@ -6,9 +6,9 @@ interface ProgressBarProps {
 const ProgressBar: React.FC<ProgressBarProps> = ({ videoRef, progress }) => {
   return (
     <div
-      className="absolute bottom-0 left-0 w-full h-2 bg-gray-600 cursor-pointer z-20"
+      className="w-full h-2 bg-gray-600 cursor-pointer z-20"
       onClick={event => {
-        // event.stopPropagation();
+        event.stopPropagation();
         const rect = event.currentTarget.getBoundingClientRect();
         const offsetX = event.clientX - rect.left;
         if (videoRef.current) {

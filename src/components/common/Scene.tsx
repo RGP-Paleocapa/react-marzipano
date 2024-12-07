@@ -1,17 +1,24 @@
-import React, { useEffect } from 'react';
-import { AppData } from '@/types/marzipano-types';
-import HotspotContainer from '@components/hotspots/HotspotContainer';
-import Marzipano from 'marzipano';
+import React, { useEffect } from "react";
+import { AppData } from "@/types/marzipano-types";
+import HotspotContainer from "@components/hotspots/HotspotContainer";
+import Marzipano from "marzipano";
 
 interface SceneProps {
   viewer: Marzipano.Viewer;
-  data: AppData['scenes'][0];
-  common: AppData['common'];
+  data: AppData["scenes"][0];
+  common: AppData["common"];
   sceneObjects: Marzipano.Scene[];
   currentSceneIndex: number;
+  setAudioSrc: (audioLink: string) => void;
 }
 
-const Scene: React.FC<SceneProps> = ({ viewer, data, sceneObjects, currentSceneIndex }) => {
+const Scene: React.FC<SceneProps> = ({
+  viewer,
+  data,
+  sceneObjects,
+  currentSceneIndex,
+  setAudioSrc,
+}) => {
   useEffect(() => {
     const currentScene = sceneObjects[currentSceneIndex];
 
@@ -33,11 +40,19 @@ const Scene: React.FC<SceneProps> = ({ viewer, data, sceneObjects, currentSceneI
     return () => {
       viewer.stopMovement(); // Ensure no ongoing movement when switching away
     };
-
   }, [currentSceneIndex, sceneObjects, viewer]);
 
+  useEffect(() => {
+    if (data.introAudio) {
+      setAudioSrc(data.introAudio);
+    } else {
+      setAudioSrc("");
+    }
+    console.log(data.introAudio);
+  }, [data]);
+
   return (
-    <div>
+    <div className="relative">
       <HotspotContainer
         infoHotspots={data.infoHotspots}
         linkHotspots={data.linkHotspots}

@@ -59,11 +59,11 @@ declare module 'marzipano' {
     fov: number;
   }
 
-  export interface ViewLimiter {}
+  // export interface ViewLimiter {}
 
-  export interface SceneData {
+  // export interface SceneData {
     // Define properties relevant to scene data if needed
-  }
+  // }
 
   export type Autorotate = (deltaTime: number) => void;
 
