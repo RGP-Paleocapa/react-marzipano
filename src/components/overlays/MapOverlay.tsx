@@ -85,7 +85,7 @@ const MapOverlay = () => {
               e.stopPropagation();
               closeFullScreen();
             }}
-            className="fixed lg:hidden top-5 right-5 mt-2 mr-2 cursor-pointer bg-red-700 text-white w-12 h-12 border-2 rounded-lg shadow-lg z-20 animate-pulse"
+            className="fixed lg:hidden top-5 right-5 mt-24 lg:mt-2 mr-2 cursor-pointer bg-red-700 text-white w-12 h-12 border-2 rounded-lg shadow-lg z-20 animate-pulse"
           >
             X
           </button>
