@@ -70,7 +70,8 @@
           "pitch": 0.19675875920273,
           "rotation": 90,
           "target": "0-museo-1",
-          "isRed": true
+          "isRed": true,
+          "text": "Verso l’entrata del Museo"
         }
       ],
       "infoHotspots": [
@@ -102,7 +103,8 @@
           "pitch": 0.4425969374781431,
           "rotation": 675,
           "target": "3-ingresso-museo-primo-locale-2",
-          "isRed": true
+          "isRed": true,
+          "text": "Ci spostiamo al fondo di questa sala"
         }
       ],
       "infoHotspots": [
@@ -149,7 +151,8 @@
           "pitch": 0.25264886457414804,
           "rotation": 45,
           "target": "4-ingresso-al-tunnel-della-nevera",
-          "isRed": true
+          "isRed": true,
+          "text": "Entriamo nel tunnel della Ghiacciaia"
         }
       ],
       "infoHotspots": [
@@ -204,7 +207,8 @@
           "pitch": 0.25555409802460716,
           "rotation": 0,
           "target": "7-proseguimento-tunnel",
-          "isRed": true
+          "isRed": true,
+          "text": "Procediamo nel primo segmento del tunnel"
         },
         {
           "yaw": -0.6,
@@ -250,7 +254,8 @@
           "pitch": 0.3294780074123391,
           "rotation": 315,
           "target": "3-ingresso-museo-primo-locale-2",
-          "isRed": true
+          "isRed": true,
+          "text": "6"
         },
         {
           "yaw": -2.0929144475571064,
@@ -307,7 +312,8 @@
           "pitch": 0.249667454707706,
           "rotation": 280,
           "target": "3-ingresso-museo-primo-locale-2",
-          "isRed": true
+          "isRed": true,
+          "text": "7"
         }
       ],
       "infoHotspots": [
@@ -340,7 +346,8 @@
           "pitch": 0.3208542954131417,
           "rotation": 270,
           "target": "8-svincolo-tunnel",
-          "isRed": true
+          "isRed": true,
+          "text": "Procediamo al secondo segmento del tunnel, svoltando in fondo con un angolo retto a sinistra"
         }
       ],
       "infoHotspots": [
@@ -379,7 +386,8 @@
           "pitch": 0.8399539928291748,
           "rotation": 450,
           "target": "9-nicchia",
-          "isRed": true
+          "isRed": true,
+          "text": "Entriamo nella nicchia"
         },
         {
           "yaw": -2.3727164315862623,
@@ -418,7 +426,8 @@
           "pitch": 0.3,
           "rotation": 0,
           "target": "10-nevera",
-          "isRed": true
+          "isRed": true,
+          "text": "Affaccio sulla Ghiacciaia"
         },
         {
           "yaw": 1.772068458614073,
@@ -471,7 +480,8 @@
           "pitch": -0.6256786159285639,
           "rotation": 0,
           "target": "11-piazzetta-esterna-1",
-          "isRed": true
+          "isRed": true,
+          "text": "Usciamo sulla piazzetta interna alla Cà del Maestro"
         }
       ],
       "infoHotspots": [
@@ -518,7 +528,8 @@
           "pitch": 0.36729967059663835,
           "rotation": 44.2,
           "target": "12-piazzetta-esterna-2",
-          "isRed": true
+          "isRed": true,
+          "text": "Verso la Ca’ del Maestro"
         }
       ],
       "infoHotspots": [
@@ -557,7 +568,8 @@
           "pitch": 0.24075843149433318,
           "rotation": 225,
           "target": "14-porticato-1",
-          "isRed": true
+          "isRed": true,
+          "text": "Verso la Ca’ del Maestro"
         },
         {
           "yaw": 1.230260574836153,
@@ -621,7 +633,8 @@
           "pitch": 0.25095531570031326,
           "rotation": 45,
           "target": "1-museo-2",
-          "isRed": true
+          "isRed": true,
+          "text": "Attraversiamo il portico che ci riconduce alla piazza antistante il museo"
         },
         {
           "yaw": -2.75260574836153,
@@ -692,7 +705,8 @@
           "pitch": -0.10133365880838774,
           "rotation": 225,
           "target": "15-porticato-2",
-          "isRed": true
+          "isRed": true,
+          "text": "Saliamo le scale"
         },
         {
           "yaw": -1.706518183541572853,
@@ -738,7 +752,8 @@
           "pitch": -0.04103202549088891,
           "rotation": 270,
           "target": "16-porticato-3",
-          "isRed": true
+          "isRed": true,
+          "text": "Al primo piano della Ca’ del Maestro"
         }
       ],
       "infoHotspots": []
@@ -757,7 +772,8 @@
           "pitch": 0.29458640795051494,
           "rotation": 90,
           "target": "17-casa-del-maestro",
-          "isRed": true
+          "isRed": true,
+          "text": "La visuale dalla balconata della Ca’ del Maestro"
         },
         {
           "yaw": 1.1,
@@ -809,7 +825,8 @@
           "pitch": 0.2367534292801828,
           "rotation": 180,
           "target": "13-piazzetta-esterna-3",
-          "isRed": true
+          "isRed": true,
+          "text": "Scendiamo nuovamente nella piazzetta della ghiacciaia"
         }
       ],
       "infoHotspots": [
