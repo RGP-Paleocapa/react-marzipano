@@ -110,7 +110,7 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits }) => 
       <p className="text-lg mb-6 text-justify leading-relaxed">
         Progetto sviluppato nell'ambito delle attività di
         <span className="font-semibold italic text-green-400"> Computing for Social Good </span>
-        guidate da Renato Cortinovis, con materiali forniti da Giuseppe Ghidorzi.
+        sotto la guida di Renato Cortinovis, con materiali forniti da Giuseppe Ghidorzi.
       </p>
       {/* <p className="text-lg mb-6 text-justify leading-relaxed">
         Un ringraziamento speciale a tutti i collaboratori che hanno reso possibile questo progetto.
