@@ -44,7 +44,7 @@ const MapOverlay = () => {
       )}
       <div
         className={`z-10 rounded-lg cursor-pointer max-w-full max-h-full ${
-          isFullScreen ? 'fixed inset-0 m-auto flex items-center justify-center w-full h-full' : 'absolute bottom-10 right-10 w-[150px] lg:w-[250px]'
+          isFullScreen ? 'fixed inset-0 m-auto flex items-center justify-center w-full h-full' : 'absolute bottom-2 right-2 lg:bottom-10 lg:right-10 w-[150px] lg:w-[250px]'
         } ${isAnimating ? 'transition-all duration-300 ease-in-out' : ''}`}
         onClick={!isFullScreen ? toggleFullScreen : undefined}
       >
@@ -52,9 +52,14 @@ const MapOverlay = () => {
           <img
             src={map}
             alt="Map"
-            className={`w-full h-full object-contain ${!isFullScreen ? 'hover:opacity-75 rounded-inherit' : 'rounded-3xl'}`}
+            className={`w-full h-full object-contain ${!isFullScreen ? 'hover:opacity-75 rounded-inherit bg-transparent hidden lg:block' : 'rounded-3xl'}`}
             style={{ borderRadius: isFullScreen ? '0' : 'inherit' }}
           />
+          <button
+            className={`px-8 py-4 ${isFullScreen ? 'hidden' : 'lg:hidden'}`}
+          >
+            Apri mappa
+          </button>
           {isFullScreen && (
             <button
               onClick={(e) => {
