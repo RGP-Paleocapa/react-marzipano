@@ -47,7 +47,8 @@
           "title": "Entrata del museo",
           "infoText": "Questa è la porta di ingresso al Museo etnografico Valdimagnino di Amagno, da dove si potrà poi accedere alla nevera tramite un corridoio sotterraneo"
         }
-      ]
+      ],
+      "introAudio":"Nel porticato.mp3"
     },
     {
       "id": "1-museo-2",
@@ -80,7 +81,8 @@
           "pitch": -0.2144186852938219,
           "title": "Museo Valdimagnino di Amagno"
         }
-      ]
+      ],
+      "introAudio":"Nel porticato.mp3"
     },
     {
       "id": "2-ingresso-museo-primo-locale-1",
@@ -121,7 +123,7 @@
           "videoLink": "1o locale museo.mp4"
         }
       ],
-      "introAudio": "audio_intro.mp3"
+      "introAudio": "All’ingresso del museo.mp3"
     },
     {
       "id": "3-ingresso-museo-primo-locale-2",
@@ -238,7 +240,8 @@
           "title": "Omaggi",
           "infoText": "Un omaggio alle persone che hanno contribuito alla creazione del Museo Valdimagnino, in collaborazione con l'attuale curatore, accompagnato da una selezione di immagini evocative che raccontano la storia e la bellezza senza tempo della valle."
         }
-      ]
+      ],
+      "introAudio": "All’ingresso della ghiacciaia.mp3"
     },
     {
       "id": "5-museo-secondo-locale-1",
@@ -363,7 +366,8 @@
           "title": "Verso la Nevera!",
           "infoText": "Per andare verso la ghiacciaia, usa questa freccia qui a fianco"
         }
-      ]
+      ],
+      "introAudio": "Nella prima parte del tunnel.mp3"
     },
     {
       "id": "8-svincolo-tunnel",
@@ -410,7 +414,8 @@
           "title": "Ritorno al museo!",
           "infoText": "Per tornare al museo, usa questa freccia qui a fianco"
         }
-      ]
+      ],
+      "introAudio": "Nella seconda parte del tunnel.mp3"
     },
     {
       "id": "9-nicchia",
@@ -450,7 +455,8 @@
           "title": "Sporgenza Nevera",
           "infoText": "Per andare verso la ghiacciaia, usa questa freccia qui a fianco"
         }
-      ]
+      ],
+      "introAudio": "Prima della nicchia.mp3"
     },
     {
       "id": "10-nevera",
@@ -505,7 +511,8 @@
           "infoText": "Usa la freccia qui a fianco per uscire dalla botola",
           "videoLink": "video 1 botola.mp4"
         }
-      ]
+      ],
+      "introAudio": "Nella nicchia.mp3"
     },
     {
       "id": "11-piazzetta-esterna-1",
@@ -545,7 +552,8 @@
           "title": "Esploriamo ancora!",
           "infoText": "Usa questa freccia per esplorare nuovi luoghi più avanti e scoprire cosa c'è da vedere."
         }
-      ]
+      ],
+      "introAudio":"Dalla botola alla piazzetta superiore.mp3"
     },
     {
       "id": "12-piazzetta-esterna-2",
@@ -617,7 +625,8 @@
           "title": "Ca' d'Amagn",
           "videoLink": "video 5 ca d amagn.mp4"
         }
-      ]
+      ],
+      "introAudio":"Nella piazzetta.mp3"
     },
     {
       "id": "13-piazzetta-esterna-3",
@@ -689,7 +698,8 @@
           "title": "Ritorniamo all'inizio",
           "infoText": "Usa la freccia qui di fianco per ritornare all'entrata del museo"
         }
-      ]
+      ],
+      "introAudio":"Verso la piazzetta.mp3"
     },
     {
       "id": "14-porticato-1",
@@ -756,7 +766,8 @@
           "text": "Al primo piano della Ca’ del Maestro"
         }
       ],
-      "infoHotspots": []
+      "infoHotspots": [],
+      "introAudio":"Al pianterreno della Ca’ Del Maestro.mp3"
     },
     {
       "id": "16-porticato-3",
@@ -802,7 +813,8 @@
           "title": "Terrazza",
           "infoText": "Usa la freccia qui accanto per osservare il primo piano della casa e goderti la vista sulla terrazza"
         }
-      ]
+      ],
+      "introAudio":"Sulla balconata.mp3"
     },
     {
       "id": "17-casa-del-maestro",
@@ -848,7 +860,8 @@
           "title": "Scendi dalle scale",
           "infoText": "Usa la freccia qui accanto per scendere al piano inferiore tramite le scale."
         }
-      ]
+      ],
+      "introAudio":"Panorama verso il Linzone.mp3"
     }
   ],
   "settings": {
