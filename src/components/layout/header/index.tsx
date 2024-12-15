@@ -16,9 +16,9 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleFullscreen, onShowContent }) =>
   const { isRotating, toggleRotation } = useViewStore();
 
   return (
-    <div className="absolute top-0 left-0 w-full bg-[rgba(0,0,0,0.5)] hover:bg-[rgba(0,0,0,0.8)] flex justify-between items-center z-20 px-4 py-3 shadow-xl">
+    <div className="absolute top-0 left-0 w-full bg-[rgba(0,0,0,0.5)] hover:bg-[rgba(0,0,0,0.8)] flex justify-between items-center z-20 pl-4 shadow-xl">
       {/* Left Side: Info and Credits Buttons */}
-      <div className="flex space-x-4">
+      <div className="flex space-x-4 lg:space-x-10">
         <NavButton
           btnText="Help"
           onClick={() => onShowContent('info')}
@@ -32,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleFullscreen, onShowContent }) =>
       </div>
 
       {/* Right Side: Play/Pause and Fullscreen Buttons */}
-      <div className="flex h-full space-x-4">
+      <div className="flex h-full space-x-4 lg:space-x-10">
         <button
           className={`flex items-center justify-center h-16 w-16 transition-all duration-300 rounded-full shadow-lg ${
             autoSwitch
