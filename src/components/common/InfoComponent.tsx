@@ -81,8 +81,10 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits }) => 
   <div className="w-full lg:w-2/5 bg-gray-900 bg-opacity-80 p-6 rounded-md border border-gray-700">
     <h2 className="text-2xl font-bold mb-4 text-center text-yellow-300">Come Usare la Mappa</h2>
     <p className="text-xl mb-6 text-justify">
-      La mappa interattiva ti consente di navigare tra le stanze del museo.
-      Cliccando sulla mappa, puoi ingrandire per esplorare meglio. I <b className="text-red-300">punti rossi</b> indicano le stanze visitabili, mentre il <b className="text-green-300">punto verde</b> mostra la tua posizione attuale.
+      La mappa interattiva bidimensionale (2D) offre un ulteriore strumento per navigare tra le scene 3D del museo.
+      I <b className="text-red-300">punti rossi</b> indicano i luoghi o le scene visitabili, mentre il <b className="text-green-300">punto verde</b> mostra la tua posizione attuale.
+      È possibile passare dalla mappa 2D alle scene 3D cliccando sui puntini rossi, e viceversa cliccando sulla mappa.
+      È possibile ingrandire la mappa, per una visione più chiara, con un semplice click sulla stessa.
     </p>
     {/* Legend */}
     <div className="flex items-center space-x-4 mt-4">
@@ -112,23 +114,20 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits }) => 
         <span className="font-semibold italic text-green-400"> Computing for Social Good </span>
         sotto la guida di Renato Cortinovis, con materiali forniti da Giuseppe Ghidorzi.
       </p>
-      {/* <p className="text-lg mb-6 text-justify leading-relaxed">
-        Un ringraziamento speciale a tutti i collaboratori che hanno reso possibile questo progetto.
-      </p> */}
       <div className="flex flex-col items-center justify-center space-y-2 mt-4">
         <a
           href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 flex flex-col md:flex-row items-center"
+          className="hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 flex flex-col-reverse md:flex-row items-center gap-y-4"
         >
           <img src={licenza} alt="Creative Commons BY-NC-SA 4.0 License" className="h-12 w-auto mb-2 md:mb-0 md:mr-3" />
-          <span className="text-sm text-gray-400">Licensed under CC BY-NC-SA 4.0</span>
+          <span className="text-sm text-gray-400">
+            {/* Licensed under CC BY-NC-SA 4.0 */}
+            Prodotto multimediale disponibile secondo la licenza <b>Creative Commons Attribuzione - Non Commerciale - Condividi allo Stesso Modo 4.0 Internazionale</b>
+          </span>
         </a>
       </div>
-      {/* <div className="text-sm text-gray-500 mt-4 text-center">
-        <p>Tutti i diritti riservati © Museo Valdimagnino. 2024.</p>
-      </div> */}
     </div>
   );
 
