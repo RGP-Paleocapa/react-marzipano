@@ -1,13 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 interface AudioOverlayProps {
   introAudio: string | null;
 }
 
 const AudioOverlay: React.FC<AudioOverlayProps> = ({ introAudio }) => {
-  const locationAudio = `./assets/audio/${introAudio}`;
+  const audioRef = useRef<HTMLAudioElement>(null);
 
-  useEffect(() => {}, [introAudio]);
+  
+  useEffect(() => {
+    if (audioRef.current && introAudio) {
+      audioRef.current.src = `./assets/audio/${introAudio}`;
+      audioRef.current.play().catch(err => console.error("Error playing audio:", err));
+    }
+  }, [introAudio]);
 
   return introAudio ? (
   <div>
@@ -15,12 +21,16 @@ const AudioOverlay: React.FC<AudioOverlayProps> = ({ introAudio }) => {
     {/* sostituire transparent con green-600 per vedere il greenscreen verde */}
 
     </div>
-    <audio autoPlay controls className="absolute left-0 bottom-0 z-50">
-    <source src={locationAudio} type="audio/mpeg" />
-    Your browser does not support the audio element.
+    <audio
+      ref={audioRef}
+      autoPlay
+      // muted
+      controls
+      className="absolute left-0 bottom-0 z-50">
+      <source src={`./assets/audio${introAudio}`} type="audio/mpeg" />
+      Your browser does not support the audio element.
     </audio>
   </div>
-
   ) : null;
 };
 
