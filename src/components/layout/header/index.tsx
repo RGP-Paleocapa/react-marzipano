@@ -16,7 +16,7 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleFullscreen, onShowContent }) =>
   const { isRotating, toggleRotation } = useViewStore();
 
   return (
-    <div className="absolute top-0 left-0 w-full bg-[rgba(0,0,0,0.5)] hover:bg-[rgba(0,0,0,0.8)] flex justify-between items-center z-20 pl-4 shadow-xl">
+    <div className="absolute bottom-0 left-0 w-full bg-[rgba(0,0,0,0.5)] hover:bg-[rgba(0,0,0,0.8)] flex justify-between items-center z-20 pl-4 shadow-xl">
       {/* Left Side: Info and Credits Buttons */}
       <div className="flex space-x-4 lg:space-x-10">
         <NavButton

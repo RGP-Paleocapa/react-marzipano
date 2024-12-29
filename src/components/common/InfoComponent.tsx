@@ -132,7 +132,7 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits }) => 
   );
 
   return (
-    <div className="z-20 absolute inset-0 flex items-center justify-center bg-black bg-opacity-80 p-4 mt-16">
+    <div className="z-20 absolute inset-0 flex items-center justify-center bg-black bg-opacity-80 p-4 mb-16">
       <main className={`w-full max-w-5xl ${containerStyles} bg-opacity-90 p-8 rounded-md shadow-md text-white overflow-auto max-h-full border-4`}>
         <header className="text-center mb-6">
           <h1 className={`text-4xl font-extrabold mb-4 ${titleStyles} text-justify`}>{contentTitle}</h1>
