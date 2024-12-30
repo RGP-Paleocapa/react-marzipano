@@ -23,7 +23,6 @@ const AudioOverlay: React.FC<AudioOverlayProps> = ({ introAudio }) => {
     </div>
     <audio
       ref={audioRef}
-      muted
       controls
       className="absolute left-0 bottom-20 lg:left-1/2 lg:bottom-1 lg:-translate-x-1/2 z-10 lg:z-20">
       <source src={`./assets/audio${introAudio}`} type="audio/mpeg" />
