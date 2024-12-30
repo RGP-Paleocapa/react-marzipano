@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface AudioOverlayProps {
   introAudio: string | null;
@@ -6,6 +6,7 @@ interface AudioOverlayProps {
 
 const AudioOverlay: React.FC<AudioOverlayProps> = ({ introAudio }) => {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const [isMuted, setMuted] = useState<boolean>(false);
 
   
   useEffect(() => {
@@ -15,6 +16,12 @@ const AudioOverlay: React.FC<AudioOverlayProps> = ({ introAudio }) => {
     }
   }, [introAudio]);
 
+  const handleVolumeChange = () => {
+    if (audioRef.current) {
+      setMuted(audioRef.current.muted);
+    }
+  }
+
   return introAudio ? (
   <div>
     <div className="w-1/5 h-2/5 bg-transparent absolute left-0 bottom-14">
@@ -23,7 +30,9 @@ const AudioOverlay: React.FC<AudioOverlayProps> = ({ introAudio }) => {
     </div>
     <audio
       ref={audioRef}
+      muted={isMuted}
       controls
+      onVolumeChange={handleVolumeChange}
       className="custom-audio">
       <source src={`./assets/audio${introAudio}`} type="audio/mpeg" />
       Your browser does not support the audio element.
