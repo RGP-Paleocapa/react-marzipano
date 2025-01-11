@@ -171,7 +171,7 @@ const VideoOverlay: React.FC<VideoOverlayProps> = ({ videoLink, onClose }) => {
   }
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-20"
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 z-30"
       onClick={togglePlayPause}
     >
       <div
