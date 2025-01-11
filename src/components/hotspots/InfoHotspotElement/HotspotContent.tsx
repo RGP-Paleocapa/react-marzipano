@@ -41,7 +41,7 @@ const HotspotContent: React.FC<HotspotContentProps> = ({
         {/* X close */}
         <button
           onClick={onClose}
-          className="ml-4 bg-red-500 text-white px-1 sm:px-2 py-0.5 sm:py-1 rounded-full hover:bg-red-700"
+          className="lg:hidden ml-4 bg-red-500 text-white px-1 sm:px-2 py-0.5 sm:py-1 rounded-full hover:bg-red-700"
           aria-label="Close content"
         >
           X
