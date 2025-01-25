@@ -29,7 +29,6 @@ const LinkHotspotElement: React.FC<LinkHotspotElementProps> = ({
         tabIndex={0}
         role="button"
         aria-label={hotspot.text || "Link hotspot"}
-        title={hotspot.text || `Link hotspot`}
       >
         <img
           src={hotspot.isRed ? linkRedImage : linkImage}
