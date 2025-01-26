@@ -17,7 +17,7 @@
     "marzipano": "^0.10.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "typescript-eslint": "^8.16.0",
+    "typescript-eslint": "^8.21.0",
     "zustand": "^5.0.1"
   },
   "devDependencies": {
