@@ -34,9 +34,12 @@ const LinkHotspotElement: React.FC<LinkHotspotElementProps> = ({
         />
       </button>
       <h2
-        className="lg:hidden group-hover:block drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] min-w-36 lg:min-w-96 -translate-x-1/2 left-1/2 text-center absolute rounded-md shadow-md p-4">
-          {hotspot.text || ""}
-        </h2>
+        className={`lg:hidden ${hotspot.text ? "group-hover:block" : "hidden"} drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] 
+          min-w-36 lg:min-w-96 -translate-x-1/2 left-1/2 text-center absolute rounded-md 
+          shadow-md p-4 text-white border-2 border-black bg-opacity-40 bg-black font-semibold`}
+      >
+        {hotspot.text || ""}
+      </h2>
     </div>
   );
 };
