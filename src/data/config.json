@@ -39,7 +39,7 @@
           "yaw": 0.47983935090504026,
           "pitch": -0.24488264090410183,
           "title": "Museo Valdimagnino di Amagno",
-          "videoLink": "video introduttivo museo.mp4"
+          "videoLink": "introduzione pierino e museo.mp4"
         },
         {
           "yaw": -0.67983935090504026,
@@ -121,7 +121,7 @@
           "yaw": -2.4455095414426914,
           "pitch": 0.0174025152499762,
           "title": "1° Locale museo Valdimagnino",
-          "videoLink": "1o locale museo.mp4"
+          "videoLink": "1o locale.mp4"
         }
       ],
       "introAudio": "All’ingresso del museo.mp3"
@@ -147,7 +147,7 @@
           "pitch": 0.4653961158338117,
           "rotation": 450,
           "target": "5-museo-secondo-locale-1",
-          "isRed": false, 
+          "isRed": false,
           "text": "Verso la seconda sala del museo"
         },
         {
@@ -175,7 +175,7 @@
           "yaw": 0.9902894520743341,
           "pitch": 0.2955729112845354,
           "title": "Macchina del gelato",
-          "videoLink": "videoMacchinaGelato.mp4"
+          "videoLink": "laMacchinaDelGelato.mp4"
         },
         {
           "yaw": 1.2722730725212834,
@@ -269,7 +269,7 @@
           "yaw": 0.567023140974122,
           "pitch": -0.35435380978542597,
           "title": "2° Locale del Museo",
-          "videoLink": "video 3-2 2o locale.mp4"
+          "videoLink": "2o locale.mp4"
         },
         {
           "yaw": 0.0003265388186144,
@@ -468,7 +468,7 @@
           "pitch": 0.20190122157420163,
           "title": "La Ghiacciaia (Nevera)",
           "infoText": "Ecco la ghiacciaia",
-          "videoLink": "video 2 nevera.mp4"
+          "videoLink": "la nevera.mp4"
         },
         {
           "yaw": 2.37093305124663,
@@ -481,7 +481,7 @@
           "pitch": -0.585480331577072,
           "title": "La botola della Ghiacciaia (Nevera)",
           "infoText": "La botola per il caricamento della ghiacciaia",
-          "videoLink": "video 1 botola.mp4"
+          "videoLink": "la botola.mp4"
         }
       ],
       "introAudio": "Nella nicchia.mp3"
@@ -578,13 +578,13 @@
           "yaw": -1.4921980901382035,
           "pitch": -0.3223224212032427,
           "title": "La casa torre",
-          "videoLink": "video 4 casa torre.mp4"
+          "videoLink": "la casa torre.mp4"
         },
         {
           "yaw": 1.5921980901382035,
           "pitch": 0.0123224212032427,
           "title": "Ca' d'Amagn",
-          "videoLink": "video 5 ca d amagn.mp4"
+          "videoLink": "ca' d'amagn.mp4"
         }
       ],
       "introAudio":"Nella piazzetta.mp3"
