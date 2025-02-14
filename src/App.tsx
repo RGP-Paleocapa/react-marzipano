@@ -12,6 +12,7 @@ import { useFullScreen } from "@hooks/useFullscreen";
 import { useMarzipano } from "@hooks/useMarzipano";
 import { AppData } from "@/types/marzipano-types";
 import APP_DATA from "@data/config.json";
+import { useAudioStore } from "./context/useAudioStore";
 
 const App = () => {
   const panoRef = useRef<HTMLDivElement>(null);
@@ -27,6 +28,7 @@ const App = () => {
     "info" | "credits" | null
   >(null);
   const { toggleFullscreen } = useFullScreen(panoRef);
+  const { audioInvisible, setAudioInvisible } = useAudioStore();
 
   useEffect(() => {
     if (!localStorage.getItem("isFirstVisit")) {
@@ -40,7 +42,11 @@ const App = () => {
     setVisibleContent((prevContent) =>
       prevContent === content ? null : content
     );
+    console.log(audioInvisible);
+    if (content == null) setAudioInvisible(true);
+    else setAudioInvisible(false);
   };
+
 
   return (
     <div
