@@ -1,3 +1,4 @@
+import { useAudioStore } from "@/context/useAudioStore";
 import { useEffect, useRef, useState } from "react";
 
 interface AudioOverlayProps {
@@ -7,6 +8,7 @@ interface AudioOverlayProps {
 const AudioOverlay: React.FC<AudioOverlayProps> = ({ introAudio }) => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isMuted, setMuted] = useState<boolean>(true); // Initially muted
+  const { audioInvisible } = useAudioStore();
 
   // Load from localStorage when component mounts
   useEffect(() => {
@@ -33,14 +35,19 @@ const AudioOverlay: React.FC<AudioOverlayProps> = ({ introAudio }) => {
     }
   };
 
-  return introAudio ? (
+  if (audioInvisible || !introAudio) {
+    return null;
+  }
+
+  return (
     <div>
-      <div className="w-1/5 h-2/5 bg-transparent absolute left-0 bottom-14">
+      <div className={`w-1/5 h-2/5 bg-transparent absolute left-0 bottom-14`}>
         {/* Optionally use a green screen */}
       </div>
       <audio
         ref={audioRef}
         muted={isMuted}
+        hidden={audioInvisible}
         autoPlay
         controls
         onVolumeChange={handleVolumeChange}
@@ -49,7 +56,7 @@ const AudioOverlay: React.FC<AudioOverlayProps> = ({ introAudio }) => {
         Your browser does not support the audio element.
       </audio>
     </div>
-  ) : null;
+  );
 };
 
 export default AudioOverlay;

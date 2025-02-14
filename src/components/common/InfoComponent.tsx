@@ -5,6 +5,7 @@ import info from '@/assets/icons/info.png';
 import link from '@/assets/icons/link.png';
 import linkred from '@/assets/icons/linkred.png';
 import licenza from '@/assets/icons/by-nc-sa.svg';
+import { useAudioStore } from '@/context/useAudioStore';
 
 interface InfoComponentProps {
   onClose: () => void;
@@ -14,6 +15,7 @@ interface InfoComponentProps {
 const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits }) => {
   const { isRotating, toggleRotation } = useViewStore();
   const initialRotationState = useRef<boolean>(isRotating);
+  const { setAudioInvisible } = useAudioStore();
 
   useEffect(() => {
     if (isRotating) {
@@ -146,7 +148,10 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits }) => 
           <button
             id="explore-button"
             className="btn-77 mb-8"
-            onClick={onClose}
+            onClick={() => {
+              onClose();
+              setAudioInvisible(false);
+            }}
           >
             Esplora
           </button>
