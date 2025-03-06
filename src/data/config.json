@@ -167,8 +167,8 @@
           "infoText": "Riviste, libri e illustrazioni legate al museo stesso, alla sua storia, alla storia della Valle Imagna e a molti altri aspetti di interesse culturale e storico."
         },
         {
-          "yaw": 0.802894520743341,
-          "pitch": -0.05729112845354,
+          "yaw": 0.672894520743341,
+          "pitch": 0.065729112845354,
           "title": "Porta di ingresso al passaggio interrato, per accedere alla ghiacciaia."
         },
         {
@@ -546,7 +546,7 @@
         {
           "yaw": 1.3830260574836153,
           "pitch": 0.24075843149433318,
-          "rotation": 180,
+          "rotation": 270,
           "target": "14-porticato-1",
           "isRed": true,
           "text": "Verso la Ca’ del Maestro"
