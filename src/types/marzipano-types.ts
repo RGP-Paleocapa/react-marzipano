@@ -19,7 +19,7 @@ export interface BaseHotspot {
 export interface LinkHotspot extends BaseHotspot {
   rotation?: number;
   target: string;
-  isRed: boolean;
+  color?: string;
 }
 
 export interface InfoHotspot extends BaseHotspot {

@@ -1,6 +1,7 @@
 import React from "react";
 import linkImage from "@/assets/icons/link.png";
 import linkRedImage from "@/assets/icons/linkred.png";
+import linkGreenImage from "@/assets/icons/linkgreen.png";
 import { LinkHotspot } from "@/types/marzipano-types";
 
 interface LinkHotspotElementProps {
@@ -28,14 +29,14 @@ const LinkHotspotElement: React.FC<LinkHotspotElementProps> = ({
         aria-label={hotspot.text || "Link hotspot"}
       >
         <img
-          src={hotspot.isRed ? linkRedImage : linkImage}
+          src= {hotspot.color === "red" ? linkRedImage : hotspot.color === "green" ? linkGreenImage : linkImage}
           alt="Link Icon"
           className="w-10 h-10 sm:w-16 sm:h-16 transition-transform transform hover:scale-110"
         />
       </button>
       <h2
-        className={`lg:hidden ${hotspot.text ? "group-hover:block" : "hidden"} drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] 
-          min-w-36 lg:min-w-96 -translate-x-1/2 left-1/2 text-center absolute rounded-md 
+        className={`lg:hidden ${hotspot.text ? "group-hover:block" : "hidden"} drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]
+          min-w-36 lg:min-w-96 -translate-x-1/2 left-1/2 text-center absolute rounded-md
           shadow-md p-4 text-white border-2 border-black bg-opacity-40 bg-black font-semibold`}
       >
         {hotspot.text || ""}
