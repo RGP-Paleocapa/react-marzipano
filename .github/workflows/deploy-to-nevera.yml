@@ -33,7 +33,7 @@ jobs:
       - name: Checkout the target repository
         uses: actions/checkout@v4
         with:
-          repository: nicolainve/nevera  # Change to the target repo's name
+          repository: RGP-Paleocapa/nevera  # Change to the target repo's name
           ref: main  # Specify the branch in the target repo
           token: ${{ secrets.NEVERA_GRAINED_TOKEN }}  # Use the personal access token
           path: ./nevera  # Checkout the target repository to a specified path
