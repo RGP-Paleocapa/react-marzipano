@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import playIcon from '@/assets/icons/play.png';
 import pauseIcon from '@/assets/icons/pause.png';
 import fullscreenIcon from '@/assets/icons/fullscreen.png';
@@ -9,32 +9,40 @@ import { useAudioStore } from '@/context/useAudioStore';
 
 interface NavbarProps {
   onToggleFullscreen: () => void;
-  onShowContent: (content: 'info' | 'credits') => void;
+  onShowContent: (content: ContentType) => void;
 }
+
+export type ContentType = 'Help' | 'Credits' | null;
 
 const Navbar: React.FC<NavbarProps> = ({ onToggleFullscreen, onShowContent }) => {
   const { autoSwitch } = useSceneStore();
   const { isRotating, toggleRotation } = useViewStore();
-  const { setAudioInvisible, audioInvisible } = useAudioStore();
+  const { setAudioInvisible } = useAudioStore();
+  const [clickedBtn, setClickedBtn] = useState<string | null>(null);
+  
+  const toggleButtonName = (buttonName: ContentType) : void  => {
+    onShowContent(buttonName);
+    if (clickedBtn == buttonName) {
+      setAudioInvisible(false);
+      setClickedBtn(null);
+    } else {
+      setAudioInvisible(true);
+      setClickedBtn(buttonName);
+    }
+  }
 
   return (
     <div className="absolute bottom-0 left-0 w-full bg-[rgba(0,0,0,0.5)] hover:bg-[rgba(0,0,0,0.8)] flex justify-between items-center z-20 pl-4 shadow-xl">
-      {/* Left Side: Info and Credits Buttons */}
+      {/* Left Side: Help and Credits Buttons */}
       <div className="flex space-x-4 lg:space-x-10">
         <NavButton
           btnText="Help"
-          onClick={() => {
-            onShowContent('info')
-            setAudioInvisible(!audioInvisible);
-          }}
+          onClick={() => toggleButtonName('Help')}
           className="bg-gradient-to-r from-blue-500 to-indigo-500 hover:from-blue-400 hover:to-indigo-400 text-white font-semibold rounded-full px-14 py-5 shadow-md transition-all duration-200 transform hover:scale-105"
         />
         <NavButton
           btnText="Crediti"
-          onClick={() => {
-            onShowContent('credits')
-            setAudioInvisible(!audioInvisible);
-          }}
+          onClick={() => toggleButtonName('Credits')}
           className="bg-gray-600 hover:bg-gray-500 text-gray-300 font-semibold rounded-full px-4 py-3 opacity-60 hover:opacity-100 transition-opacity duration-200"
         />
       </div>
