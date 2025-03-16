@@ -2,7 +2,7 @@ import { Scene as SceneObjects, Viewer } from "marzipano";
 import { useRef, useState, useEffect } from "react";
 import Scene from "@components/common/Scene";
 import InfoComponent from "@components/common/InfoComponent";
-import Navbar from "@components/layout/header";
+import Navbar, { ContentType } from "@components/layout/header";
 import MapOverlay from "@components/overlays/MapOverlay";
 import VideoOverlay from "@components/overlays/VideoOverlay";
 import AudioOverlay from "./components/overlays/AudioOverlay";
@@ -12,7 +12,6 @@ import { useFullScreen } from "@hooks/useFullscreen";
 import { useMarzipano } from "@hooks/useMarzipano";
 import { AppData } from "@/types/marzipano-types";
 import APP_DATA from "@data/config.json";
-import { useAudioStore } from "./context/useAudioStore";
 
 const App = () => {
   const panoRef = useRef<HTMLDivElement>(null);
@@ -24,27 +23,21 @@ const App = () => {
     APP_DATA as AppData,
     currentSceneIndex
   );
-  const [visibleContent, setVisibleContent] = useState<
-    "info" | "credits" | null
-  >(null);
+  const [visibleContent, setVisibleContent] = useState<ContentType>(null);
   const { toggleFullscreen } = useFullScreen(panoRef);
-  const { audioInvisible, setAudioInvisible } = useAudioStore();
 
   useEffect(() => {
     if (!localStorage.getItem("isFirstVisit")) {
-      setVisibleContent("info");
+      setVisibleContent("Help");
       localStorage.setItem("isFirstVisit", "false");
     }
   }, []);
 
-  const handleContentChange = (content: "info" | "credits" | null) => {
+  const handleContentChange = (content: ContentType) => {
     // Toggle the content if the same content is clicked again
     setVisibleContent((prevContent) =>
       prevContent === content ? null : content
     );
-    console.log(audioInvisible);
-    if (content == null) setAudioInvisible(true);
-    else setAudioInvisible(false);
   };
 
 
@@ -57,7 +50,7 @@ const App = () => {
       {visibleContent && (
         <InfoComponent
           onClose={() => handleContentChange(null)}
-          isCredits={visibleContent === "credits"}
+          isCredits={visibleContent === "Credits"}
         />
       )}
       <Navbar
