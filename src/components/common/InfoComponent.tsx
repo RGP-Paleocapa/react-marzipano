@@ -3,6 +3,7 @@ import { useViewStore } from '@/context/useViewerStore';
 import info from '@/assets/icons/info.png';
 import link from '@/assets/icons/link.png';
 import linkred from '@/assets/icons/linkred.png';
+import linkgreen from '@/assets/icons/linkgreen.png';
 import licenza from '@/assets/icons/by-nc-sa.svg';
 
 interface InfoComponentProps {
@@ -48,7 +49,7 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits }) => 
       <p>
         Benvenuto nel museo Valdimagnino di Amagno virtuale! <br />
         Per navigare all'interno del museo e visitare la nevera,
-        trascina il cursore per visualizzare al meglio le immagini a 360° e clicca sugli <b className="italic text-yellow-300">hotspot con le frecce</b>
+        trascina il cursore per visualizzare al meglio le varie scene possibili e clicca le <b className="italic text-yellow-300">frecce colorate</b>
         <img src={link} alt="Linkspot" className="w-6 h-6 mx-2 inline" />
         per spostarti in un altro scenario.
       </p>
@@ -56,15 +57,21 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits }) => 
 
     <div className="text-justify text-xl space-y-6">
       <div className="flex items-start">
-        <img src={linkred} alt="Linkspot" className="w-6 h-6 mr-2" />
+        <img src={linkgreen} alt="Linkspot" className="w-6 h-6 mr-2" />
         <p className="flex-1">
-          I <b className="italic text-red-300">linkspot rossi</b> indicano il percorso principale all'interno del museo e consentono di spostarsi tra diverse scene.
+          Le <b className="italic text-green-300">Freccie verdi</b> indicano il percorso principale all'interno del museo e consentono di spostarsi tra diverse scene.
         </p>
       </div>
       <div className="flex items-start">
         <img src={link} alt="Linkspot" className="w-6 h-6 mr-2" />
         <p className="flex-1">
-          I <b className="italic text-white">linkspot bianchi</b> offrono una breve deviazione con scene ed informazioni aggiuntive del museo.
+          Le <b className="italic text-white">Frecce bianche</b> offrono una breve deviazione con scene ed informazioni aggiuntive del museo.
+        </p>
+      </div>
+      <div className="flex items-start">
+        <img src={linkred} alt="Linkspot" className="w-6 h-6 mr-2" />
+        <p className="flex-1">
+          Le <b className="italic text-red-300">Frecce rosse</b> indicano lo scenario precedente a quello attuale.
         </p>
       </div>
       <div className="flex items-start">
