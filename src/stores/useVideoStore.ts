@@ -1,4 +1,4 @@
-import { VideoState } from '@/types/store-types';
+import { VideoState } from '@types';
 import { create } from 'zustand';
 
 // interface VideoState {
