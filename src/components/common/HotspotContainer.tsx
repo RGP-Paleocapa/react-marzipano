@@ -1,12 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { InfoHotspot, LinkHotspot } from '@/types/marzipano-types';
-import InfoHotspotElement from './InfoHotspotElement';
-import LinkHotspotElement from './LinkHotspotElement';
+import { InfoHotspot, LinkHotspot } from '@types';
 import { createRoot } from 'react-dom/client';
 import appData from '@data/config.json';
 import Marzipano from 'marzipano';
-import { useSceneStore } from '@/context/useSceneStore';
-import { useHotspotStore } from '@/context/useHotspotStore';
+import { useHotspotStore, useSceneStore } from '@stores';
+import { InfoHotspotElement, LinkHotspotElement } from '@hotspots';
 
 interface HotspotContainerProps {
   infoHotspots: InfoHotspot[];

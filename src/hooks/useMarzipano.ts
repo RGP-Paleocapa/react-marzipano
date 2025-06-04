@@ -1,9 +1,8 @@
 import { RefObject, useEffect, useState, useRef } from 'react';
-import { AppData } from '@/types/marzipano-types';
-import { createViewer } from '@hooks/marzipanoViewer';
-import { createScene } from '@hooks/marzipanoScene';
 import Marzipano, { autorotate } from 'marzipano';
-import { useViewStore } from '@/context/useViewerStore';
+import { createScene, createViewer } from '@utils';
+import { useViewStore } from '@stores';
+import { AppData } from '@data';
 
 export const useMarzipano = (panoRef: RefObject<HTMLDivElement>, appData: AppData, currentSceneIndex: number) => {
   const [sceneObjects, setSceneObjects] = useState<Marzipano.Scene[]>([]);

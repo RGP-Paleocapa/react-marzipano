@@ -1,7 +1,7 @@
+import { useViewStore } from '@stores';
 import { useState, useEffect } from 'react';
-import map from '@/assets/images/image.jpg';
-import Dot from '../hotspots/Dot';
-import { useViewStore } from '@/context/useViewerStore';
+import { Dot } from '../hotspots';
+import { imageMap } from '@images';
 
 const MapOverlay = () => {
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -50,7 +50,7 @@ const MapOverlay = () => {
       >
         <div className={`relative w-fit h-fit bg-blue-600 ${isFullScreen ? 'rounded-none' : 'rounded-3xl'} ${isAnimating ? 'transition-transform transform' : ''} ${!isFullScreen ? 'hover:scale-105' : ''}`}>
           <img
-            src={map}
+            src={imageMap}
             alt="Map"
             className={`w-full h-full object-contain ${!isFullScreen ? 'hover:opacity-75 rounded-inherit bg-transparent hidden lg:block' : 'rounded-3xl'}`}
             style={{ borderRadius: isFullScreen ? '0' : 'inherit' }}

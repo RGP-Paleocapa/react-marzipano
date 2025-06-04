@@ -2,10 +2,10 @@ import React, { useEffect, useState, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVideo } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import infoImage from '@/assets/icons/info.png';
-import { InfoHotspot } from '@/types/marzipano-types';
-import { useVideoStore } from '@/context/useVideoStore';
+import { InfoHotspot } from '@types';
+import { useVideoStore } from '@stores';
 import HotspotContent from './HotspotContent';
+import { iconInfo } from '@icons';
 
 interface InfoHotspotElementProps {
   hotspot: InfoHotspot;
@@ -81,7 +81,7 @@ const InfoHotspotElement: React.FC<InfoHotspotElementProps> = ({ hotspot }) => {
           />
         ) : (
           <img
-            src={infoImage}
+            src={iconInfo}
             alt="Info Icon"
             className="h-full w-full"
           />

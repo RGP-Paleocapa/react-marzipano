@@ -1,17 +1,11 @@
 import { Scene as SceneObjects, Viewer } from "marzipano";
 import { useRef, useState, useEffect } from "react";
-import Scene from "@components/common/Scene";
-import InfoComponent from "@components/common/InfoComponent";
-import Navbar, { ContentType } from "@components/layout/header";
-import MapOverlay from "@components/overlays/MapOverlay";
-import VideoOverlay from "@components/overlays/VideoOverlay";
-import AudioOverlay from "./components/overlays/AudioOverlay";
-import { useSceneStore } from "@/context/useSceneStore";
-import { useVideoStore } from "@/context/useVideoStore";
-import { useFullScreen } from "@hooks/useFullscreen";
-import { useMarzipano } from "@hooks/useMarzipano";
-import { AppData } from "@/types/marzipano-types";
-import APP_DATA from "@data/config.json";
+import { APP_DATA, AppData } from "@data";
+import { MapOverlay, VideoOverlay, AudioOverlay } from "@overlays";
+import { useSceneStore, useVideoStore } from "@stores";
+import { InfoComponent, Scene } from "@common";
+import { useFullScreen, useMarzipano } from "@hooks";
+import Navbar, { ContentType } from "@layout/header";
 
 const App = () => {
   const panoRef = useRef<HTMLDivElement>(null);

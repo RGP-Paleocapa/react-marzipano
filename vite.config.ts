@@ -8,11 +8,19 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
+      '@assets': path.resolve(__dirname, './src/assets'),
+      '@icons': path.resolve(__dirname, './src/assets/icons'),
+      '@images': path.resolve(__dirname, './src/assets/images'),
       '@components': path.resolve(__dirname, './src/components'),
-      '@utils': path.resolve(__dirname, './src/utils'),
+      '@common': path.resolve(__dirname, './src/components/common'),
+      '@hotspots': path.resolve(__dirname, './src/components/hotspots'),
+      '@layout': path.resolve(__dirname, './src/components/layout'),
+      '@overlays': path.resolve(__dirname, './src/components/overlays'),
       '@hooks': path.resolve(__dirname, './src/hooks'),
+      '@stores': path.resolve(__dirname, './src/stores'),
       '@data': path.resolve(__dirname, './src/data'),
-      '@public': path.resolve(__dirname, './public')
+      '@utils': path.resolve(__dirname, './src/utils'),
+      '@types': path.resolve(__dirname, './src/types'),
     }
   },
   plugins: [
