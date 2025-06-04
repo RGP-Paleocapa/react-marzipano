@@ -1,5 +1,5 @@
 import Marzipano, { Viewer } from 'marzipano';
-import { AppData } from '@/types/marzipano-types';
+import { AppData } from '@data';
 
 export const createScene = (viewer: Viewer, data: AppData['scenes'][0], common: AppData['common']) => {
   const source = Marzipano.ImageUrlSource.fromString(

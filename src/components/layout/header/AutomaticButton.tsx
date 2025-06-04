@@ -1,6 +1,4 @@
-import { useHotspotStore } from '@/context/useHotspotStore';
-import { useSceneStore } from '@/context/useSceneStore';
-import { useViewStore } from '@/context/useViewerStore';
+import { useSceneStore, useViewStore, useHotspotStore } from '@stores';
 import { useState, useEffect } from 'react';
 
 const AutomaticButton = () => {

@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
-import playIcon from '@/assets/icons/play.png';
-import pauseIcon from '@/assets/icons/pause.png';
-import fullscreenIcon from '@/assets/icons/fullscreen.png';
-import { useSceneStore } from '@/context/useSceneStore';
-import { useViewStore } from '@/context/useViewerStore';
 import NavButton from './NavButton';
-import { useAudioStore } from '@/context/useAudioStore';
+import { useSceneStore, useViewStore, useAudioStore } from '@stores';
+import { iconFullscreen, iconPause, iconPlay } from '@icons';
 
 interface NavbarProps {
   onToggleFullscreen: () => void;
@@ -19,7 +15,7 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleFullscreen, onShowContent }) =>
   const { isRotating, toggleRotation } = useViewStore();
   const { setAudioInvisible } = useAudioStore();
   const [clickedBtn, setClickedBtn] = useState<string | null>(null);
-  
+
   const toggleButtonName = (buttonName: ContentType) : void  => {
     onShowContent(buttonName);
     if (clickedBtn == buttonName) {
@@ -62,7 +58,7 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleFullscreen, onShowContent }) =>
           disabled={autoSwitch}
         >
           <img
-            src={isRotating ? pauseIcon : playIcon}
+            src={isRotating ? iconPause : iconPlay}
             alt={isRotating ? 'Stop Autorotation' : 'Start Autorotation'}
             className="w-8 h-8"
           />
@@ -72,7 +68,7 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleFullscreen, onShowContent }) =>
           onClick={onToggleFullscreen}
           aria-label="Toggle Fullscreen"
         >
-          <img src={fullscreenIcon} alt="Toggle Fullscreen" className="w-8 h-8" />
+          <img src={iconFullscreen} alt="Toggle Fullscreen" className="w-8 h-8" />
         </button>
       </div>
     </div>

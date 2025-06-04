@@ -1,4 +1,4 @@
-import { useAudioStore } from "@/context/useAudioStore";
+import { useAudioStore } from "@stores";
 import { useEffect, useRef, useState } from "react";
 
 interface AudioOverlayProps {

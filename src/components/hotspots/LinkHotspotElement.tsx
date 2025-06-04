@@ -1,8 +1,5 @@
-import React from "react";
-import linkImage from "@/assets/icons/link.png";
-import linkRedImage from "@/assets/icons/linkred.png";
-import linkGreenImage from "@/assets/icons/linkgreen.png";
-import { LinkHotspot } from "@/types/marzipano-types";
+import { iconLink, iconLinkGreen, iconLinkRed } from "@icons";
+import { LinkHotspot } from "@types";
 
 interface LinkHotspotElementProps {
   setSceneIndex: () => void;
@@ -29,7 +26,7 @@ const LinkHotspotElement: React.FC<LinkHotspotElementProps> = ({
         aria-label={hotspot.text || "Link hotspot"}
       >
         <img
-          src= {hotspot.color === "red" ? linkRedImage : hotspot.color === "green" ? linkGreenImage : linkImage}
+          src= {hotspot.color === "red" ? iconLinkRed : hotspot.color === "green" ? iconLinkGreen : iconLink}
           alt="Link Icon"
           className="w-10 h-10 sm:w-16 sm:h-16 transition-transform transform hover:scale-110"
         />

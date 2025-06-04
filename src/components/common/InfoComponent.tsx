@@ -1,10 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { useViewStore } from '@/context/useViewerStore';
-import info from '@/assets/icons/info.png';
-import link from '@/assets/icons/link.png';
-import linkred from '@/assets/icons/linkred.png';
-import linkgreen from '@/assets/icons/linkgreen.png';
-import licenza from '@/assets/icons/by-nc-sa.svg';
+import { useViewStore } from '@stores/useViewerStore';
+import { iconInfo, iconLicense, iconLink, iconLinkGreen, iconLinkRed } from '@icons';
 
 interface InfoComponentProps {
   onClose: () => void;
@@ -50,32 +46,32 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits }) => 
         Benvenuto nel museo Valdimagnino di Amagno virtuale! <br />
         Per navigare all'interno del museo e visitare la nevera,
         trascina il cursore per visualizzare al meglio le varie scene possibili e clicca le <b className="italic text-yellow-300">frecce colorate</b>
-        <img src={link} alt="Linkspot" className="w-6 h-6 mx-2 inline" />
+        <img src={iconLink} alt="Linkspot" className="w-6 h-6 mx-2 inline" />
         per spostarti in un altro scenario.
       </p>
     </div>
 
     <div className="text-justify text-xl space-y-6">
       <div className="flex items-start">
-        <img src={linkgreen} alt="Linkspot" className="w-6 h-6 mr-2" />
+        <img src={iconLinkGreen} alt="Linkspot" className="w-6 h-6 mr-2" />
         <p className="flex-1">
           Le <b className="italic text-green-300">Freccie verdi</b> indicano il percorso principale all'interno del museo e consentono di spostarsi tra diverse scene.
         </p>
       </div>
       <div className="flex items-start">
-        <img src={link} alt="Linkspot" className="w-6 h-6 mr-2" />
+        <img src={iconLink} alt="Linkspot" className="w-6 h-6 mr-2" />
         <p className="flex-1">
           Le <b className="italic text-white">Frecce bianche</b> offrono una breve deviazione con scene ed informazioni aggiuntive del museo.
         </p>
       </div>
       <div className="flex items-start">
-        <img src={linkred} alt="Linkspot" className="w-6 h-6 mr-2" />
+        <img src={iconLinkRed} alt="Linkspot" className="w-6 h-6 mr-2" />
         <p className="flex-1">
           Le <b className="italic text-red-300">Frecce rosse</b> indicano lo scenario precedente a quello attuale.
         </p>
       </div>
       <div className="flex items-start">
-        <img src={info} alt="Infospot" className="w-6 h-6 mr-2" />
+        <img src={iconInfo} alt="Infospot" className="w-6 h-6 mr-2" />
         <p className="flex-1">
           Gli <b className="italic text-blue-300">infospot bianchi</b> mostrano informazioni su oggetti o luoghi del museo e possono includere anche video esplicativi per approfondire il contenuto.
         </p>
@@ -127,7 +123,7 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits }) => 
           rel="noopener noreferrer"
           className="hover:text-blue-600 dark:hover:text-blue-400 transition duration-300 flex flex-col-reverse md:flex-row items-center gap-y-4"
         >
-          <img src={licenza} alt="Creative Commons BY-NC-SA 4.0 License" className="h-12 w-auto mb-2 md:mb-0 md:mr-3" />
+          <img src={iconLicense} alt="Creative Commons BY-NC-SA 4.0 License" className="h-12 w-auto mb-2 md:mb-0 md:mr-3" />
           <span className="text-sm text-gray-400">
             {/* Licensed under CC BY-NC-SA 4.0 */}
             Prodotto multimediale disponibile secondo la licenza <b>Creative Commons Attribuzione - Non Commerciale - Condividi allo Stesso Modo 4.0 Internazionale</b>
