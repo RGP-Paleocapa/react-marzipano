@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { BaseHotspot } from '@/types/marzipano-types';
+import { BaseHotspot } from '@types';
 
 interface HotspotState {
   hotspotVisible: boolean;
