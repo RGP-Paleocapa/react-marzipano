@@ -5,7 +5,7 @@ import { MapOverlay, VideoOverlay, AudioOverlay } from "@overlays";
 import { useSceneStore, useVideoStore } from "@stores";
 import { InfoComponent, Scene } from "@common";
 import { useFullScreen, useMarzipano } from "@hooks";
-import Navbar, { ContentType } from "@layout/header";
+import Navbar, { HeaderContentType } from "@layout/header";
 
 const App = () => {
   const panoRef = useRef<HTMLDivElement>(null);
@@ -17,7 +17,7 @@ const App = () => {
     APP_DATA as AppData,
     currentSceneIndex
   );
-  const [visibleContent, setVisibleContent] = useState<ContentType>(null);
+  const [visibleContent, setVisibleContent] = useState<HeaderContentType | null>(null);
   const { toggleFullscreen } = useFullScreen(panoRef);
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const App = () => {
     }
   }, []);
 
-  const handleContentChange = (content: ContentType) => {
+  const handleContentChange = (content: HeaderContentType | null) => {
     // Toggle the content if the same content is clicked again
     setVisibleContent((prevContent) =>
       prevContent === content ? null : content
