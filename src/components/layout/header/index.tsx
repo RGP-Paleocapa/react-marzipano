@@ -5,10 +5,10 @@ import { iconFullscreen, iconPause, iconPlay } from '@icons';
 
 interface NavbarProps {
   onToggleFullscreen: () => void;
-  onShowContent: (content: ContentType) => void;
+  onShowContent: (content: HeaderContentType) => void;
 }
 
-export type ContentType = 'Help' | 'Credits' | null;
+export type HeaderContentType = 'Help' | 'Credits';
 
 const Navbar: React.FC<NavbarProps> = ({ onToggleFullscreen, onShowContent }) => {
   const { autoSwitch } = useSceneStore();
@@ -16,7 +16,7 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleFullscreen, onShowContent }) =>
   const { setAudioInvisible } = useAudioStore();
   const [clickedBtn, setClickedBtn] = useState<string | null>(null);
 
-  const toggleButtonName = (buttonName: ContentType) : void  => {
+  const toggleButtonName = (buttonName: HeaderContentType) : void  => {
     onShowContent(buttonName);
     if (clickedBtn == buttonName) {
       setAudioInvisible(false);
