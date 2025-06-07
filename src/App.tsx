@@ -2,9 +2,10 @@ import { MapOverlay, VideoOverlay, AudioOverlay } from "@overlays";
 import { HotspotContainer, InfoComponent } from "@common";
 import Navbar from "@layout/header";
 import { useAppController } from "@hooks";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorFallback from "@components/utils/ErrorFallback";
+import Tour from "@components/common/Tour";
 
 const App = () => {
 
@@ -30,17 +31,23 @@ const App = () => {
     setAudioSrc(audio ?? '');
   }, [currentScene, setAudioSrc]);
 
+  const [runTour, setRunTour] = useState<boolean>(false);
+
   return (
     <main
       id="pano"
       ref={panoRef}
       className="relative w-full h-full overflow-hidden"
     >
+      {/* Tour component: controls the Joyride walkthroughs */}
+      <Tour run={runTour} setRun={setRunTour} audioVisible={Boolean(currentScene?.introAudio)} />
+
       {/* Overlay: Info panel (Help / Credits) */}
       {visibleContent && (
         <InfoComponent
           onClose={() => handleContentChange(null)}
           isCredits={visibleContent === "Credits"}
+          setRunTour={setRunTour}
         />
       )}
 

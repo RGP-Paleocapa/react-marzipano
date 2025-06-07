@@ -48,7 +48,10 @@ const MapOverlay = () => {
         } ${isAnimating ? 'transition-all duration-300 ease-in-out' : ''}`}
         onClick={!isFullScreen ? toggleFullScreen : undefined}
       >
-        <div className={`relative w-fit h-fit bg-blue-600 ${isFullScreen ? 'rounded-none' : 'rounded-3xl'} ${isAnimating ? 'transition-transform transform' : ''} ${!isFullScreen ? 'hover:scale-105' : ''}`}>
+        <div
+          className={`relative w-fit h-fit bg-blue-600 ${isFullScreen ? 'rounded-none' : 'rounded-3xl'} ${isAnimating ? 'transition-transform transform' : ''} ${!isFullScreen ? 'hover:scale-105' : ''}`}
+          id="map-overlay"
+          >
           <img
             src={imageMap}
             alt="Map"
