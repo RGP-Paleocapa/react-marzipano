@@ -23,14 +23,14 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits, setRu
         toggleRotation(initialRotationState.current);
       }
     };
-  }, [isRotating, toggleRotation]);
+  }, []);
 
   const { setAudioInvisible } = useAudioStore();
 
   const handleButtonClick = () => {
     onClose();
     setAudioInvisible(false);
-    setTimeout(() => setRunTour(true), 300);
+    requestAnimationFrame(() => setRunTour(true));
   }
 
   const contentTitle = isCredits
