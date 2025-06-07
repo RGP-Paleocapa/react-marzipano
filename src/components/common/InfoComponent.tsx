@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useViewStore } from '@stores/useViewerStore';
 import { iconInfo, iconLicense, iconLink, iconLinkGreen, iconLinkRed } from '@icons';
+import { useAudioStore } from '@stores';
 
 interface InfoComponentProps {
   onClose: () => void;
@@ -22,6 +23,13 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits }) => 
       }
     };
   }, [isRotating, toggleRotation]);
+
+  const { setAudioInvisible } = useAudioStore();
+
+  const handleButtonClick = () => {
+    onClose();
+    setAudioInvisible(false);
+  }
 
   const contentTitle = isCredits
     ? 'Visita Virtuale <br /> alla <br /> Nevera del Museo Valdimagnino'
@@ -148,9 +156,7 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits }) => 
           <button
             id="explore-button"
             className="btn-77 mb-8"
-            onClick={() => {
-              onClose();
-            }}
+            onClick={handleButtonClick}
           >
             Esplora
           </button>
