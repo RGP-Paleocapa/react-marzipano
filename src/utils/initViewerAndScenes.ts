@@ -9,12 +9,15 @@ export const initViewerAndScenes = (
   isRotating: boolean | null,
   setAutorotateEnabled: (val: boolean) => void,
 ) => {
-  if (!panoRef.current) return;
+  if (!panoRef.current) throw new Error('Panorama contaienr reference (panoRef) is null.  ');
 
   const { settings, scenes, common } = appData;
 
-  const viewer = createViewer(panoRef, settings);
+  if (!scenes[currentSceneIndex]) {
+    throw new Error(`Scene at index ${currentSceneIndex} does not exist.`);
+  }
 
+  const viewer = createViewer(panoRef, settings);
   const sceneObjects = scenes.map(sceneData =>
     createScene(viewer, sceneData, common)
   );

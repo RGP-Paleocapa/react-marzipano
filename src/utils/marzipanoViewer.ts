@@ -8,5 +8,10 @@ export const createViewer = (panoRef: RefObject<HTMLDivElement>, settings: Setti
       mouseViewMode: settings.mouseViewMode
     }
   };
-  return new Marzipano.Viewer(panoRef.current!, viewerOpts);
+
+  if (!panoRef.current) {
+    throw new Error("Cannot create viewer: panoRef is null.");
+  }
+
+  return new Marzipano.Viewer(panoRef.current, viewerOpts);
 };

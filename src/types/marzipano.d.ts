@@ -29,6 +29,9 @@ declare module 'marzipano' {
   }
 
   export class Hotspot {
+    destroy(): void {
+      throw new Error('Method not implemented.');
+    }
     // Define properties and methods relevant to Hotspots if needed
   }
 
