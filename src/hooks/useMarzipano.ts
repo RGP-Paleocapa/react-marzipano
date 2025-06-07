@@ -1,65 +1,62 @@
 import { RefObject, useEffect, useState, useRef } from 'react';
 import Marzipano, { autorotate } from 'marzipano';
-import { createScene, createViewer } from '@utils';
+import { initViewerAndScenes } from '@utils';
 import { useViewStore } from '@stores';
 import { AppData } from '@data';
 
-export const useMarzipano = (panoRef: RefObject<HTMLDivElement>, appData: AppData, currentSceneIndex: number) => {
+const AUTOROTATE_SETTINGS = {
+  yawSpeed: 0.03,
+  targetPitch: 0,
+  targetFov: Math.PI / 4,
+};
+
+export const useMarzipano = (
+  panoRef: RefObject<HTMLDivElement>,
+  appData: AppData,
+  currentSceneIndex: number
+) => {
   const [sceneObjects, setSceneObjects] = useState<Marzipano.Scene[]>([]);
   const [viewer, setViewer] = useState<Marzipano.Viewer | null>(null);
 
-  // Access autorotation state and actions from the context
   const { isRotating, setAutorotateEnabled } = useViewStore();
   const autorotateControlRef = useRef<ReturnType<typeof autorotate> | null>(null);
 
-  // Effect to initialize Marzipano viewer and scene objects
+  // Initialize viewer and scenes on mount or dependencies change
   useEffect(() => {
-    if (!panoRef.current) return;
+    const results = initViewerAndScenes(
+      panoRef,
+      appData,
+      currentSceneIndex,
+      isRotating,
+      setAutorotateEnabled
+    );
 
-    const { settings, scenes, common } = appData;
+    if (!results) return;
 
-    // Create the Marzipano viewer
-    const viewer = createViewer(panoRef, settings);
-    setViewer(viewer);
+    setViewer(results.viewer);
+    setSceneObjects(results.sceneObjects);
 
-    // Create and store the scene objects
-    const newSceneObjects = scenes.map(data => createScene(viewer, data, common));
-    setSceneObjects(newSceneObjects);
-
-    // Switch to the initial scene
-    if (newSceneObjects[currentSceneIndex]) {
-      newSceneObjects[currentSceneIndex].switchTo();
-    }
-
-    // Initialize autorotation state from appData settings only on mount
-    if (isRotating == null) {
-      console.log("Setting initial viewer state=" + settings.autorotateEnabled);
-      setAutorotateEnabled(settings.autorotateEnabled);
-    }
-
+    // Cleanup on mount
     return () => {
-      // Cleanup the viewer movement on unmount
-      viewer.stopMovement();
-      viewer.setIdleMovement(Infinity);
+      results.viewer.stopMovement();
+      results.viewer.setIdleMovement(Infinity);
     };
-  }, [panoRef, appData, currentSceneIndex, setAutorotateEnabled]);
+  }, [
+    panoRef,
+    appData,
+    currentSceneIndex,
+    setAutorotateEnabled,
+  ]);
 
-  // Effect to handle autorotation state changes (triggered by changes in global context)
+  // —————— AUTOROTATE CONTROL ——————
   useEffect(() => {
     if (!viewer) return;
 
     if (isRotating) {
-      // Start autorotation if enabled
-      const autorotateSettings = {
-        yawSpeed: 0.03,
-        targetPitch: 0,
-        targetFov: Math.PI / 4
-      };
-      autorotateControlRef.current = autorotate(autorotateSettings);
+      autorotateControlRef.current = autorotate(AUTOROTATE_SETTINGS);
       viewer.setIdleMovement(3000, autorotateControlRef.current);
       viewer.startMovement(autorotateControlRef.current);
     } else {
-      // Stop autorotation if disabled
       viewer.stopMovement();
       viewer.setIdleMovement(Infinity);
     }

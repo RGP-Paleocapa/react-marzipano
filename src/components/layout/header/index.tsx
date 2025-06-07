@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import NavButton from './NavButton';
-import { useSceneStore, useViewStore, useAudioStore } from '@stores';
+import { useAudioStore, useSceneStore, useViewStore } from '@stores';
 import { iconFullscreen, iconPause, iconPlay } from '@icons';
 
 interface NavbarProps {
@@ -64,7 +64,7 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleFullscreen, onShowContent }) =>
           />
         </button>
         <button
-          className="bg-yellow-600 text-gray-800 flex items-center justify-center hover:bg-yellow-500 transition-all duration-200 h-12 w-12 rounded-full shadow-lg transform hover:scale-105"
+          className="bg-yellow-600 text-gray-800 flex items-center justify-center hover:bg-yellow-500 transition-all duration-200 h-16 w-16 rounded-full shadow-lg transform hover:scale-105"
           onClick={onToggleFullscreen}
           aria-label="Toggle Fullscreen"
         >

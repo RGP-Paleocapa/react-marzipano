@@ -1,8 +1,8 @@
 import { RefObject } from 'react';
 import Marzipano from 'marzipano';
-import { AppData } from '@data';
+import { Settings } from '@types';
 
-export const createViewer = (panoRef: RefObject<HTMLDivElement>, settings: AppData['settings']) => {
+export const createViewer = (panoRef: RefObject<HTMLDivElement>, settings: Settings) => {
   const viewerOpts = {
     controls: {
       mouseViewMode: settings.mouseViewMode

@@ -1,24 +1,33 @@
 import Marzipano, { Viewer } from 'marzipano';
-import { AppData } from '@data';
+import { Common, Scene } from '@types';
 
-export const createScene = (viewer: Viewer, data: AppData['scenes'][0], common: AppData['common']) => {
-  const source = Marzipano.ImageUrlSource.fromString(
-    `./assets/tiles/${data.id}/{z}/{f}/{y}/{x}.jpg`,
-    { cubeMapPreviewUrl: `./assets/tiles/${data.id}/preview.jpg` }
-  );
-
+export const createScene = (
+  viewer: Viewer,
+  scene: Scene,
+  common: Common,
+) => {
   const levels = common.levels;
   const faceSize = common.faceSize;
-  const geometry = new Marzipano.CubeGeometry(levels);
-  const limiter = Marzipano.RectilinearView.limit.traditional(faceSize, 100 * Math.PI / 180, 120 * Math.PI / 180);
-  const view = new Marzipano.RectilinearView(data.initialViewParameters, limiter);
+  const limiter = Marzipano.RectilinearView.limit.traditional(
+    faceSize,
+    100 * Math.PI / 180,
+    120 * Math.PI / 180
+  );
 
-  const scene = viewer.createScene({
-    source: source,
-    geometry: geometry,
-    view: view,
-    pinFirstLevel: true
+  const source = Marzipano.ImageUrlSource.fromString(
+    `./assets/tiles/${scene.id}/{z}/{f}/{y}/{x}.jpg`,
+    { cubeMapPreviewUrl: `./assets/tiles/${scene.id}/preview.jpg` }
+  );
+
+  const geometry = new Marzipano.CubeGeometry(levels);
+  const view = new Marzipano.RectilinearView(scene.initialViewParameters, limiter);
+
+  const sceneCreated = viewer.createScene({
+    source,
+    geometry,
+    view,
+    pinFirstLevel: true,
   });
 
-  return scene;
+  return sceneCreated;
 };

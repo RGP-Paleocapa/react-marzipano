@@ -21,7 +21,7 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits }) => 
         toggleRotation(initialRotationState.current);
       }
     };
-  }, [toggleRotation]);
+  }, [isRotating, toggleRotation]);
 
   const contentTitle = isCredits
     ? 'Visita Virtuale <br /> alla <br /> Nevera del Museo Valdimagnino'

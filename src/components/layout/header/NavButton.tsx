@@ -3,7 +3,7 @@ import React from 'react';
 interface NavButtonProps {
   btnText: string;
   onClick: () => void;
-  className?: string; // Allow custom styles to be passed in
+  className?: string;
 }
 
 const NavButton: React.FC<NavButtonProps> = ({ btnText, onClick, className }) => {

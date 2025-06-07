@@ -1,72 +1,73 @@
-import { Scene as SceneObjects, Viewer } from "marzipano";
-import { useRef, useState, useEffect } from "react";
-import { APP_DATA, AppData } from "@data";
 import { MapOverlay, VideoOverlay, AudioOverlay } from "@overlays";
-import { useSceneStore, useVideoStore } from "@stores";
-import { InfoComponent, Scene } from "@common";
-import { useFullScreen, useMarzipano } from "@hooks";
-import Navbar, { HeaderContentType } from "@layout/header";
+import { HotspotContainer, InfoComponent } from "@common";
+import Navbar from "@layout/header";
+import { useAppController } from "@hooks";
+import { useEffect } from "react";
 
 const App = () => {
-  const panoRef = useRef<HTMLDivElement>(null);
-  const { currentSceneIndex } = useSceneStore();
-  const { closeVideo, isVideoVisible, videoLink } = useVideoStore();
-  const [audioSrc, setAudioSrc] = useState<string | null>(null);
-  const { viewer, sceneObjects } = useMarzipano(
+
+  const {
     panoRef,
-    APP_DATA as AppData,
-    currentSceneIndex
-  );
-  const [visibleContent, setVisibleContent] = useState<HeaderContentType | null>(null);
-  const { toggleFullscreen } = useFullScreen(panoRef);
+    sceneObjects,
+    currentSceneIndex,
+    currentScene,
+    audioSrc,
+    setAudioSrc,
+    isVideoVisible,
+    videoLink,
+    closeVideo,
+    toggleFullscreen,
+    visibleContent,
+    handleContentChange,
+  } = useAppController();
 
+  // Set audio when scene changes
   useEffect(() => {
-    if (!localStorage.getItem("isFirstVisit")) {
-      setVisibleContent("Help");
-      localStorage.setItem("isFirstVisit", "false");
-    }
-  }, []);
-
-  const handleContentChange = (content: HeaderContentType | null) => {
-    // Toggle the content if the same content is clicked again
-    setVisibleContent((prevContent) =>
-      prevContent === content ? null : content
-    );
-  };
-
+    const audio = currentScene.introAudio;
+    setAudioSrc(audio || '');
+  }, [currentSceneIndex, setAudioSrc]);
 
   return (
-    <div
+    <main
       id="pano"
       ref={panoRef}
       className="relative w-full h-full overflow-hidden"
     >
+      {/* Overlay: Info panel (Help / Credits) */}
       {visibleContent && (
         <InfoComponent
           onClose={() => handleContentChange(null)}
           isCredits={visibleContent === "Credits"}
         />
       )}
+
+      {/* App header / controls */}
       <Navbar
         onToggleFullscreen={toggleFullscreen}
         onShowContent={handleContentChange}
       />
-      {viewer && sceneObjects.length > 0 && (
-        <Scene
-          viewer={viewer as Viewer}
-          data={APP_DATA.scenes[currentSceneIndex] as AppData["scenes"][number]}
-          common={APP_DATA.common as AppData["common"]}
-          sceneObjects={sceneObjects as SceneObjects[]}
+
+      {/* Render Marzipano scene when ready */}
+      {sceneObjects.length > 0 && (
+        <HotspotContainer
+          infoHotspots={currentScene.infoHotspots}
+          linkHotspots={currentScene.linkHotspots}
+          sceneObjects={sceneObjects}
           currentSceneIndex={currentSceneIndex}
-          setAudioSrc={setAudioSrc}
         />
       )}
+
+      {/* Always-on map overlay */}
       <MapOverlay />
+
+      {/* Conditional video overlay */}
       {isVideoVisible && videoLink && (
         <VideoOverlay videoLink={videoLink} onClose={closeVideo} />
       )}
+
+      {/* Audio playback for current scene */}
       <AudioOverlay introAudio={audioSrc} />
-    </div>
+    </main>
   );
 };
 
