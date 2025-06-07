@@ -6,9 +6,10 @@ import { useAudioStore } from '@stores';
 interface InfoComponentProps {
   onClose: () => void;
   isCredits: boolean;
+  setRunTour: (val: boolean) => void;
 }
 
-const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits }) => {
+const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits, setRunTour }) => {
   const { isRotating, toggleRotation } = useViewStore();
   const initialRotationState = useRef<boolean>(isRotating);
 
@@ -29,6 +30,7 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits }) => 
   const handleButtonClick = () => {
     onClose();
     setAudioInvisible(false);
+    setTimeout(() => setRunTour(true), 300);
   }
 
   const contentTitle = isCredits

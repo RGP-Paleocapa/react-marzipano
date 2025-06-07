@@ -47,6 +47,7 @@ const AudioOverlay: React.FC<AudioOverlayProps> = ({ introAudio }) => {
       <audio
         ref={audioRef}
         muted={isMuted}
+        id="audio-overlay"
         hidden={audioInvisible}
         autoPlay
         controls
