@@ -3,6 +3,8 @@ import { HotspotContainer, InfoComponent } from "@common";
 import Navbar from "@layout/header";
 import { useAppController } from "@hooks";
 import { useEffect } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+import ErrorFallback from "@components/utils/ErrorFallback";
 
 const App = () => {
 
@@ -19,13 +21,14 @@ const App = () => {
     toggleFullscreen,
     visibleContent,
     handleContentChange,
+    error,
   } = useAppController();
 
   // Set audio when scene changes
   useEffect(() => {
-    const audio = currentScene.introAudio;
-    setAudioSrc(audio || '');
-  }, [currentSceneIndex, setAudioSrc]);
+    const audio = currentScene?.introAudio;
+    setAudioSrc(audio ?? '');
+  }, [currentScene, setAudioSrc]);
 
   return (
     <main
@@ -47,14 +50,19 @@ const App = () => {
         onShowContent={handleContentChange}
       />
 
-      {/* Render Marzipano scene when ready */}
-      {sceneObjects.length > 0 && (
-        <HotspotContainer
-          infoHotspots={currentScene.infoHotspots}
-          linkHotspots={currentScene.linkHotspots}
-          sceneObjects={sceneObjects}
-          currentSceneIndex={currentSceneIndex}
-        />
+      {error ? (
+        <ErrorFallback error={error} resetErrorBoundary={() => location.reload()} />
+      ) : sceneObjects.length > 0 && currentScene ? (
+        <ErrorBoundary FallbackComponent={ErrorFallback}>
+          <HotspotContainer
+            infoHotspots={currentScene.infoHotspots}
+            linkHotspots={currentScene.linkHotspots}
+            sceneObjects={sceneObjects}
+            currentSceneIndex={currentSceneIndex}
+          />
+        </ErrorBoundary>
+      ) : (
+        <div className="p-6 text-center text-gray-500">Loading scene...</div>
       )}
 
       {/* Always-on map overlay */}

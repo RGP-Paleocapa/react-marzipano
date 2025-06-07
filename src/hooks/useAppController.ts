@@ -12,7 +12,7 @@ export const useAppController = () => {
   const appData = APP_DATA as AppData;
   const currentScene = appData.scenes[currentSceneIndex];
 
-  const { sceneObjects } = useMarzipano(
+  const { sceneObjects, error } = useMarzipano(
     panoRef,
     APP_DATA,
     currentSceneIndex
@@ -35,5 +35,6 @@ export const useAppController = () => {
     toggleFullscreen,
     visibleContent,
     handleContentChange,
+    error
   };
 };
