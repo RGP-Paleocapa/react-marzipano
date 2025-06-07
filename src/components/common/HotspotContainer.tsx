@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { InfoHotspot, LinkHotspot } from '@types';
 import { createRoot } from 'react-dom/client';
 import appData from '@data/config.json';
@@ -23,27 +23,8 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
   const { hotspotVisible } = useHotspotStore();
   const containerRef = useRef<HTMLDivElement>(null);
   const hotspotsRef = useRef<Marzipano.Hotspot[]>([]);
-  const [prevSceneIndex, setPrevSceneIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    if (prevSceneIndex !== null) {
-      const prevScene = sceneObjects[prevSceneIndex];
-      const hotspotContainer = prevScene.hotspotContainer();
-
-      console.log('Clearing existing hotspots from previous scene');
-      hotspotsRef.current.forEach((hotspot, index) => {
-        try {
-          if (hotspotContainer.hasHotspot(hotspot)) {
-            console.log(`Destroying hotspot ${index} from previous scene`);
-            hotspotContainer.destroyHotspot(hotspot);
-          }
-        } catch (error) {
-          console.error(`Error destroying hotspot ${index} from previous scene:`, error);
-        }
-      });
-      hotspotsRef.current = [];
-    }
-
     const scene = sceneObjects[currentSceneIndex];
     if (!scene || !containerRef.current) {
       console.error('Scene or container not found');
@@ -89,7 +70,6 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
       hotspotsRef.current.push(marzipanoHotspot);
     });
 
-    setPrevSceneIndex(currentSceneIndex);
   }, [currentSceneIndex, sceneObjects, infoHotspots, linkHotspots, setSceneIndex]);
 
   if (!hotspotVisible) {
