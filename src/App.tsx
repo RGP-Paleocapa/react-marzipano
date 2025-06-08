@@ -1,11 +1,11 @@
-import { MapOverlay, VideoOverlay, AudioOverlay } from "@overlays";
-import { HotspotContainer, InfoComponent } from "@common";
+import { MapOverlay, VideoOverlay, AudioOverlay, InformationOverlay } from "@features/overlays";
 import Navbar from "@layout/header";
 import { useAppController } from "@hooks";
 import { useEffect, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import ErrorFallback from "@components/utils/ErrorFallback";
-import Tour from "@components/common/Tour";
+import ErrorFallback from "@ui/ErrorFallback";
+import Tour from "@features/tour";
+import Scene from "@features/scene";
 
 const App = () => {
 
@@ -44,7 +44,7 @@ const App = () => {
 
       {/* Overlay: Info panel (Help / Credits) */}
       {visibleContent && (
-        <InfoComponent
+        <InformationOverlay
           onClose={() => handleContentChange(null)}
           isCredits={visibleContent === "Credits"}
           setRunTour={setRunTour}
@@ -61,7 +61,7 @@ const App = () => {
         <ErrorFallback error={error} resetErrorBoundary={() => location.reload()} />
       ) : sceneObjects.length > 0 && currentScene ? (
         <ErrorBoundary FallbackComponent={ErrorFallback}>
-          <HotspotContainer
+          <Scene
             infoHotspots={currentScene.infoHotspots}
             linkHotspots={currentScene.linkHotspots}
             sceneObjects={sceneObjects}
