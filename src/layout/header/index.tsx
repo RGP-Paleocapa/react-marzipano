@@ -3,14 +3,14 @@ import NavButton from './NavButton';
 import { useAudioStore, useSceneStore, useViewStore } from '@stores';
 import { iconFullscreen, iconPause, iconPlay } from '@icons';
 
-interface NavbarProps {
+interface HeaderProps {
   onToggleFullscreen: () => void;
   onShowContent: (content: HeaderContentType) => void;
 }
 
 export type HeaderContentType = 'Help' | 'Credits';
 
-const Navbar: React.FC<NavbarProps> = ({ onToggleFullscreen, onShowContent }) => {
+const Header: React.FC<HeaderProps> = ({ onToggleFullscreen, onShowContent }) => {
   const { autoSwitch } = useSceneStore();
   const { isRotating, toggleRotation } = useViewStore();
   const { setAudioInvisible } = useAudioStore();
@@ -75,4 +75,4 @@ const Navbar: React.FC<NavbarProps> = ({ onToggleFullscreen, onShowContent }) =>
   );
 };
 
-export default Navbar;
+export default Header;

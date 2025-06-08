@@ -1,5 +1,5 @@
 import { MapOverlay, VideoOverlay, AudioOverlay, InformationOverlay } from "@features/overlays";
-import Navbar from "@layout/header";
+import Header from "@layout/header";
 import { useAppController } from "@hooks";
 import { useEffect, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
@@ -52,7 +52,7 @@ const App = () => {
       )}
 
       {/* App header / controls */}
-      <Navbar
+      <Header
         onToggleFullscreen={toggleFullscreen}
         onShowContent={handleContentChange}
       />
