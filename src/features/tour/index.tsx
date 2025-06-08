@@ -13,7 +13,19 @@ const Tour = ({
   const baseSteps: Step[] = [
     {
       target: '#map-overlay',
-      content: "Questa è la mappa. Clicca sui pallini per cambiare scena.",
+      content: "Questa è la mappa. Cliccare per ingrandirla",
+      placement: "left",
+      disableBeacon: true,
+    },
+    {
+      target: '#dot-11',
+      content: "I punti rossi indicano i luoghi o le scene visitabili.",
+      placement: "left",
+      disableBeacon: true,
+    },
+    {
+      target: '#dot-0',
+      content: "Il punto verde mostra la tua posizione attuale.",
       placement: "left",
       disableBeacon: true,
     },
