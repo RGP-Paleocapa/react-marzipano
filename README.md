@@ -1,71 +1,102 @@
-# Vite + React + TypeScript + Marzipano + TailwindCSS Project
+# 🧭 Project Structure Guide & Setup Guide
 
-This project is a setup for developing a modern web application using Vite, React, TypeScript, Marzipano, and TailwindCSS.
+## 📁 Root Structure
 
-## Table of Contents
+<pre style="background:#1e1e1e; color:#d4d4d4; padding:10px; border-radius:5px; font-family: monospace;">
+<span style="color:#569cd6;">├──</span> App.tsx                <span style="color:#6a9955;"># Root component rendering scenes and overlays</span>
+<span style="color:#569cd6;">├──</span> main.tsx               <span style="color:#6a9955;"># Entry point</span>
+<span style="color:#569cd6;">├──</span> index.css              <span style="color:#6a9955;"># Global CSS styles (Tailwind)</span>
+<span style="color:#569cd6;">├──</span> assets/                <span style="color:#6a9955;"># Static assets: images and icons</span>
+│   <span style="color:#569cd6;">├──</span> icons/             <span style="color:#6a9955;"># Icon images</span>
+│   <span style="color:#569cd6;">└──</span> images/            <span style="color:#6a9955;"># Other static images</span>
+<span style="color:#569cd6;">├──</span> data/                  <span style="color:#6a9955;"># Configuration and static data</span>
+<span style="color:#569cd6;">├──</span> features/              <span style="color:#6a9955;"># Domain-specific features and components</span>
+│   <span style="color:#569cd6;">├──</span> overlays/          <span style="color:#6a9955;"># UI overlays (Map, Video, etc.)</span>
+│   <span style="color:#569cd6;">├──</span> scene/             <span style="color:#6a9955;"># Scene-related components</span>
+│   <span style="color:#569cd6;">└──</span> tour/              <span style="color:#6a9955;"># Tour component (e.g., Joyride walkthrough)</span>
+<span style="color:#569cd6;">├──</span> hooks/                 <span style="color:#6a9955;"># Custom React hooks</span>
+<span style="color:#569cd6;">├──</span> layout/                <span style="color:#6a9955;"># App-level UI (e.g., header)</span>
+<span style="color:#569cd6;">├──</span> stores/                <span style="color:#6a9955;"># Global state management (e.g., Zustand)</span>
+<span style="color:#569cd6;">├──</span> types/                 <span style="color:#6a9955;"># TypeScript types and declarations</span>
+<span style="color:#569cd6;">├──</span> ui/                    <span style="color:#6a9955;"># Reusable presentational UI components</span>
+<span style="color:#569cd6;">└──</span> utils/                 <span style="color:#6a9955;"># Utility and helper functions</span>
+</pre>
 
-- [Getting Started](#getting-started)
-- [Scripts](#scripts)
-- [Dependencies](#dependencies)
 
-## Getting Started
+## 🧩 Folder Details
 
-To get started with this project, follow these steps:
+### `features/`
+Holds core application domains grouped by responsibility. These are **feature-specific** components — they are tightly coupled with domain logic.
 
-1. **Clone the repository**:
-    ```bash
+- `scene/`: Manages Marzipano scenes and hotspots
+- `overlays/`: Modular UI overlays like audio, map, and video
+- `tour/`: Contains the Joyride-based onboarding system
+
+### `hooks/`
+Project-specific logic extracted as composable hooks. These are not tied to specific pages, but may be scoped to the app's Marzipano context.
+
+### `layout/`
+Persistent UI elements like `Header` and nav buttons. Does not contain domain-specific logic.
+
+### `stores/`
+Zustand stores managing state for audio, scenes, hotspots, video, and the viewer instance.
+
+### `types/`
+Centralised types and type declarations, including external (e.g., Marzipano) and internal app types.
+
+### `ui/`
+Contains "dumb" components: purely presentational UI with no state or business logic (e.g. error UIs).
+
+### `utils/`
+Stateless helper functions, initialisers, or config logic (e.g. viewer initialisation, scene loader). No rendering logic.
+
+---
+
+## 🔧 Design Principles
+
+- 🧠 **Feature-based separation** over type-based. Code is grouped by purpose, not file kind.
+- 🧼 **Clean boundaries** between reusable UI, domain logic, and state.
+- 🔁 Only promote to `ui/` or `utils/` if a second use-case arises.
+- 🚫 Avoid over-abstraction — simplicity wins unless proven otherwise.
+
+---
+
+## 📝 Notes
+
+- Uses [Marzipano](https://www.marzipano.net/) for 360° scene rendering.
+- State managed with [Zustand](https://github.com/pmndrs/zustand).
+- Tour system based on [React Joyride](https://github.com/gilbarbara/react-joyride).
+
+---
+
+<br>
+<br>
+
+# 🚀 Getting Started
+
+## 📦 Prerequisites
+
+Make sure you have the following installed:
+
+  - Node.js (v18+ recommended)
+  - pnpm or npm/yarn
+
+## Clone the repository
     git clone https://github.com/rgp-paleocapa/react-marzipano.git
-    cd react-marzipano
-    ```
+    cd react-marzipano;
 
-2. **Install dependencies**:
-    ```bash
-    npm install
-    ```
+## 🛠 Installation
+```
+npm install
+```
 
-3. **Start the development server**:
-    ```bash
-    npm run dev
-    ```
+## ▶️ Running the App
+```
+npm run dev
+```
 
-This will start the development server and you can view the application in your browser at `http://localhost:5173`.
+This will start the app at http://localhost:5173/ (using Vite).
 
-## Scripts
+## 🧃 Feedback & Contributions
 
-Here are the common scripts you can run for this project:
-
-- **Development**: Start the development server.
-    ```bash
-    npm run dev
-    ```
-
-- **Build**: Build the project for production.
-    ```bash
-    npm run build
-    ```
-
-- **Preview**: Preview the production build locally.
-    ```bash
-    npm run preview
-    ```
-
-- **Lint**: Check for code style issues using ESLint.
-    ```bash
-    npm run lint
-    ```
-
-## Dependencies
-
-### Core Dependencies
-
-- **React**: A JavaScript library for building user interfaces.
-- **TypeScript**: A superset of JavaScript that adds static types.
-- **Vite**: A build tool that aims to provide a faster and leaner development experience for modern web projects.
-- **TailwindCSS**: A utility-first CSS framework for rapidly building custom designs.
-- **Marzipano**: A 360° media viewer for the web.
-
-### Dev Dependencies
-
-- **ESLint**: A tool for identifying and fixing problems in JavaScript code.
-- **Prettier**: An opinionated code formatter.
-- **Stylelint**: A linter for CSS and other related languages.
+This project is a work in progress. Feedback, ideas, and contributions are welcome!
