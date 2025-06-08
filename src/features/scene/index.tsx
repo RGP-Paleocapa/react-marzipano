@@ -4,7 +4,8 @@ import { createRoot } from 'react-dom/client';
 import appData from '@data/config.json';
 import Marzipano from 'marzipano';
 import { useHotspotStore, useSceneStore } from '@stores';
-import { InfoHotspotElement, LinkHotspotElement } from '@hotspots';
+import LinkHotspotElement from './LinkHotspotElement';
+import InfoHotspotElement from './InfoHotspotElement';
 
 interface HotspotContainerProps {
   infoHotspots: InfoHotspot[];

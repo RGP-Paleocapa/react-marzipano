@@ -1,7 +1,7 @@
 import { useViewStore } from '@stores';
 import { useState, useEffect } from 'react';
-import { Dot } from '../hotspots';
 import { imageMap } from '@images';
+import Dot from './Dot';
 
 const MapOverlay = () => {
   const [isFullScreen, setIsFullScreen] = useState(false);
