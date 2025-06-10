@@ -2,6 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import { useViewStore } from '@stores/useViewerStore';
 import { iconInfo, iconLicense, iconLink, iconLinkGreen, iconLinkRed } from '@icons';
 import { useAudioStore } from '@stores';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { faVideo } from '@fortawesome/free-solid-svg-icons';
 
 interface InfoComponentProps {
   onClose: () => void;
@@ -47,68 +50,87 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits, setRu
     ? 'bg-gray-700 bg-opacity-50'
     : 'bg-gray-800 bg-opacity-50';
 
+  const renderVideoSpot = () => (
+    <span className="bg-red-500 p-1 w-6 h-6 mr-2">
+      <FontAwesomeIcon
+        icon={faVideo as IconProp}
+        className="text-white"
+      />
+    </span>
+  );
+
   const renderInfoContent = () => (
-    <section className="flex flex-col lg:flex-row lg:space-x-8">
-  {/* Main Info Content */}
-  <div className="flex-1 mb-8 lg:mb-0">
-    <div className="mb-6 text-justify text-xl">
-      <p>
-        Benvenuto nel museo Valdimagnino di Amagno virtuale! <br />
-        Per navigare all'interno del museo e visitare la nevera,
-        trascina il cursore per visualizzare al meglio le varie scene possibili e clicca le <b className="italic text-yellow-300">frecce colorate</b>
-        <img src={iconLink} alt="Linkspot" className="w-6 h-6 mx-2 inline" />
-        per spostarti in un altro scenario.
-      </p>
-    </div>
+    <section className="flex flex-col lg:flex-row lg:space-x-8 text-justify">
+      {/* Main Info Content */}
+      <div className="flex-1 mb-8 lg:mb-0">
+        <hr className="mb-6" />
+        <div className="mb-6 text-justify text-xl">
+          <p>
+            Benvenuto nel museo Valdimagnino! <br />
+            {/*Per navigare all'interno del museo e visitare la nevera,
+            trascina il cursore per visualizzare al meglio le varie scene possibili e clicca le <b className="italic text-yellow-300">frecce colorate</b>
+            <img src={iconLink} alt="Linkspot" className="w-6 h-6 mx-2 inline" />
+            per spostarti in un altro scena.*/}
+            {/* Una breve panoramica: */}
+          </p>
+        </div>
 
-    <div className="text-justify text-xl space-y-6">
-      <div className="flex items-start">
-        <img src={iconLinkGreen} alt="Linkspot" className="w-6 h-6 mr-2" />
-        <p className="flex-1">
-          Le <b className="italic text-green-300">Freccie verdi</b> indicano il percorso principale all'interno del museo e consentono di spostarsi tra diverse scene.
-        </p>
+        <div className="text-justify text-xl space-y-6">
+          <hr />
+          <div className="flex items-start">
+            <img src={iconLinkGreen} alt="Linkspot" className="w-8 h-8 mr-2" />
+            <p className="flex-1">
+              Le <b className="italic text-green-300">Freccie verdi</b> indicano il percorso principale da seguire all'interno del museo e consentono di spostarsi tra diverse scenari.
+            </p>
+          </div>
+          <div className="flex items-start">
+            <img src={iconLink} alt="Linkspot" className="w-8 h-8 mr-2" />
+            <p className="flex-1">
+              Le <b className="italic text-white">Frecce bianche</b> offrono una breve deviazione con scenari ed informazioni aggiuntive del museo.
+            </p>
+          </div>
+          <div className="flex items-start">
+            <img src={iconLinkRed} alt="Linkspot" className="w-8 h-8 mr-2" />
+            <p className="flex-1">
+              Le <b className="italic text-red-300">Frecce rosse</b> indicano lo scena precedente a quello attuale.
+            </p>
+          </div>
+          <hr />
+          <div className="flex items-start">
+            <img src={iconInfo} alt="Infospot" className="w-8 h-8 mr-2" />
+            <p className="flex-1">
+              Gli <b className="italic text-blue-300">infospot bianchi</b> mostrano informazioni su oggetti o luoghi del museo e possono includere anche
+            </p>
+          </div>
+          <div className="flex items-start">
+            <p className="flex-1">
+              {renderVideoSpot()}
+              I <b className="italic text-red-300">video esplicativi</b>, usati per approfondire il contenuti.
+            </p>
+          </div>
+        </div>
       </div>
-      <div className="flex items-start">
-        <img src={iconLink} alt="Linkspot" className="w-6 h-6 mr-2" />
-        <p className="flex-1">
-          Le <b className="italic text-white">Frecce bianche</b> offrono una breve deviazione con scene ed informazioni aggiuntive del museo.
-        </p>
-      </div>
-      <div className="flex items-start">
-        <img src={iconLinkRed} alt="Linkspot" className="w-6 h-6 mr-2" />
-        <p className="flex-1">
-          Le <b className="italic text-red-300">Frecce rosse</b> indicano lo scenario precedente a quello attuale.
-        </p>
-      </div>
-      <div className="flex items-start">
-        <img src={iconInfo} alt="Infospot" className="w-6 h-6 mr-2" />
-        <p className="flex-1">
-          Gli <b className="italic text-blue-300">infospot bianchi</b> mostrano informazioni su oggetti o luoghi del museo e possono includere anche video esplicativi per approfondire il contenuto.
-        </p>
-      </div>
-    </div>
-  </div>
 
-  {/* Map Navigation Info */}
-  <div className="w-full lg:w-2/5 bg-gray-900 bg-opacity-80 p-6 rounded-md border border-gray-700">
-    <h2 className="text-2xl font-bold mb-4 text-center text-yellow-300">Come Usare la Mappa</h2>
-    <p className="text-xl mb-6 text-justify">
-      La mappa interattiva bidimensionale (2D) offre un ulteriore strumento per navigare tra le scene 3D del museo.
-      I <b className="text-red-300">punti rossi</b> indicano i luoghi o le scene visitabili, mentre il <b className="text-green-300">punto verde</b> mostra la tua posizione attuale.
-      È possibile passare dalla mappa 2D alle scene 3D cliccando sui puntini rossi, e viceversa cliccando sulla mappa.
-      È possibile ingrandire la mappa, per una visione più chiara, con un semplice click sulla stessa.
-    </p>
-    {/* Legend */}
-    <div className="flex items-center space-x-4 mt-4">
-      <div className="w-4 h-4 bg-red-500 rounded-full border-2 border-white"></div>
-      <span className="text-white">Stanze del museo</span>
-    </div>
-    <div className="flex items-center space-x-4 mt-2">
-      <div className="w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
-      <span className="text-green-300">Posizione attuale</span>
-    </div>
-  </div>
-</section>
+      {/* Map Navigation Info */}
+      {/* <div className="w-full lg:w-2/5 bg-gray-900 bg-opacity-80 p-6 rounded-md border border-gray-700">
+        <h2 className="text-2xl font-bold mb-4 text-center text-yellow-300">Come Usare la Mappa</h2>
+        <p className="text-xl mb-6 text-justify">
+          La mappa interattiva bidimensionale (2D) offre un ulteriore strumento per navigare tra le scene 3D del museo.
+          I <b className="text-red-300">punti rossi</b> indicano i luoghi o le scene visitabili, mentre il <b className="text-green-300">punto verde</b> mostra la tua posizione attuale.
+          È possibile passare dalla mappa 2D alle scene 3D cliccando sui puntini rossi, e viceversa cliccando sulla mappa.
+          È possibile ingrandire la mappa, per una visione più chiara, con un semplice click sulla stessa.
+        </p> */}
+        {/* Legend */}
+        {/*<div className="flex items-center space-x-4 mt-4">
+          <div className="w-4 h-4 bg-red-500 rounded-full border-2 border-white"></div>
+          <span className="text-white">Stanze del museo</span>
+        </div>
+        <div className="flex items-center space-x-4 mt-2">
+          <div className="w-4 h-4 bg-green-500 rounded-full border-2 border-white"></div>
+          <span className="text-green-300">Posizione attuale</span>
+        </div>
+      </div>*/}
+    </section>
   );
 
   const renderCreditsContent = () => (

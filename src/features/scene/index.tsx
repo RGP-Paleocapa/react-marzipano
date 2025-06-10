@@ -101,7 +101,7 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
     return;
   }
 
-  return <div ref={containerRef}></div>;
+  return <div id="marzipano-scene" ref={containerRef}></div>;
 };
 
 export default HotspotContainer;
