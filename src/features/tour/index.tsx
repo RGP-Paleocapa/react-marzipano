@@ -12,14 +12,20 @@ const Tour = ({
 }) => {
   const baseSteps: Step[] = [
     {
+      target: '#marzipano-scene',
+      content: "Dopo aver finiro il tour trascina il cursore per iniziare a navigare nel museo.",
+      placement: "center",
+      disableBeacon: true,
+    },
+    {
       target: '#map-overlay',
-      content: "Questa è la mappa. Cliccare per ingrandirla",
+      content: "La mappa che ti permette di cambiare scena.",
       placement: "left",
       disableBeacon: true,
     },
     {
       target: '#dot-11',
-      content: "I punti rossi indicano i luoghi o le scene visitabili.",
+      content: "I punti rossi indicano i luoghi o le scena visitabili.",
       placement: "left",
       disableBeacon: true,
     },
@@ -31,18 +37,26 @@ const Tour = ({
     },
   ];
 
-  const audioStep: Step = {
-    target: "#audio-overlay",
-    content: "Questo è il lettore audio. Puoi controllare l'audio della scena qui.",
-    placement: "top",
-    disableBeacon: true,
-  };
+  const audioStep: Step[] = [
+    {
+      target: "#audio-overlay",
+      content: "Questo è il lettore audio. Puoi controllare l'audio dello scena qui.",
+      placement: "top",
+      disableBeacon: true,
+    },
+    {
+      target: "#audio-volume",
+      content: "Ricordati di attivare l'audio (colore Verde).",
+      placement: "top",
+      disableBeacon: true,
+    },
+  ];
 
-  const [steps, setSteps] = useState<Step[]>(audioVisible ? [...baseSteps, audioStep] : baseSteps);
+  const [steps, setSteps] = useState<Step[]>(audioVisible ? [...baseSteps, ...audioStep] : baseSteps);
 
   useEffect(() => {
     if (audioVisible) {
-      setSteps([...baseSteps, audioStep]);
+      setSteps([...baseSteps, ...audioStep]);
     } else {
       setSteps(baseSteps);
     }
