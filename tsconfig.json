@@ -36,8 +36,6 @@
       "@icons/*": ["assets/icons/*"],
       "@images": ["assets/images/index"],
       "@images/*": ["assets/images/*"],
-      "@layout": ["layout/index"],
-      "@layout/*": ["layout/*"],
       "@overlays": ["features/overlays/index"],
       "@overlays/*": ["features/overlays/*"],
       "@stores": ["stores/index"],

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { HeaderContentType } from "@layout/header";
+import { HeaderContentType } from "@ui/header";
 
 export const useContentToggle = () => {
   const [visibleContent, setVisibleContent] = useState<HeaderContentType | null>(null);

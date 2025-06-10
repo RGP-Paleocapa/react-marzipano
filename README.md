@@ -15,10 +15,9 @@
 │   <span style="color:#569cd6;">├──</span> scene/             <span style="color:#6a9955;"># Scene-related components</span>
 │   <span style="color:#569cd6;">└──</span> tour/              <span style="color:#6a9955;"># Tour component (e.g., Joyride walkthrough)</span>
 <span style="color:#569cd6;">├──</span> hooks/                 <span style="color:#6a9955;"># Custom React hooks</span>
-<span style="color:#569cd6;">├──</span> layout/                <span style="color:#6a9955;"># App-level UI (e.g., header)</span>
 <span style="color:#569cd6;">├──</span> stores/                <span style="color:#6a9955;"># Global state management (e.g., Zustand)</span>
 <span style="color:#569cd6;">├──</span> types/                 <span style="color:#6a9955;"># TypeScript types and declarations</span>
-<span style="color:#569cd6;">├──</span> ui/                    <span style="color:#6a9955;"># Reusable presentational UI components</span>
+<span style="color:#569cd6;">├──</span> ui/                    <span style="color:#6a9955;"># Reusable presentational UI components (e.g. Header, ErrorFallback)</span>
 <span style="color:#569cd6;">└──</span> utils/                 <span style="color:#6a9955;"># Utility and helper functions</span>
 </pre>
 
@@ -35,9 +34,6 @@ Holds core application domains grouped by responsibility. These are **feature-sp
 ### `hooks/`
 Project-specific logic extracted as composable hooks. These are not tied to specific pages, but may be scoped to the app's Marzipano context.
 
-### `layout/`
-Persistent UI elements like `Header` and nav buttons. Does not contain domain-specific logic.
-
 ### `stores/`
 Zustand stores managing state for audio, scenes, hotspots, video, and the viewer instance.
 
@@ -45,7 +41,7 @@ Zustand stores managing state for audio, scenes, hotspots, video, and the viewer
 Centralised types and type declarations, including external (e.g., Marzipano) and internal app types.
 
 ### `ui/`
-Contains "dumb" components: purely presentational UI with no state or business logic (e.g. error UIs).
+Contains reusable presentational components (e.g. error, header, footer UIs).
 
 ### `utils/`
 Stateless helper functions, initialisers, or config logic (e.g. viewer initialisation, scene loader). No rendering logic.
