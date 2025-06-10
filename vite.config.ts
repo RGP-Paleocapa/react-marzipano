@@ -16,7 +16,6 @@ export default defineConfig({
       '@hotspots': path.resolve(__dirname, './src/features/scene'),
       '@icons': path.resolve(__dirname, './src/assets/icons'),
       '@images': path.resolve(__dirname, './src/assets/images'),
-      '@layout': path.resolve(__dirname, './src/layout'),
       '@overlays': path.resolve(__dirname, './src/features/overlays'),
       '@stores': path.resolve(__dirname, './src/stores'),
       '@tour': path.resolve(__dirname, './src/features/tour'),
