@@ -16,7 +16,7 @@ export const useMarzipano = (
   currentSceneIndex: number
 ) => {
   const [sceneObjects, setSceneObjects] = useState<Marzipano.Scene[]>([]);
-  const [viewer, setViewer] = useState<Marzipano.Viewer | null>(null);
+  const viewerRef = useRef<Marzipano.Viewer | null>(null);
   const [error, setError] = useState<Error | null>(null);
 
   const { isRotating, setAutorotateEnabled } = useViewStore();
@@ -25,7 +25,10 @@ export const useMarzipano = (
 
   // Initialize viewer and scenes on mount or dependencies change
   useEffect(() => {
+    if (viewerRef.current) return; // Already initialized
+
     let results: { viewer: Marzipano.Viewer, sceneObjects: Marzipano.Scene[] } | undefined;
+
 
     try {
       results = initViewerAndScenes(
@@ -38,7 +41,7 @@ export const useMarzipano = (
 
       if (!results) throw new Error('Failed to initialize Marzipano viewer and Scenes.');
 
-      setViewer(results.viewer);
+      viewerRef.current = results.viewer;
       setSceneObjects(results.sceneObjects);
     } catch (error) {
       setError(error as Error);
@@ -56,14 +59,19 @@ export const useMarzipano = (
     setAutorotateEnabled,
   ]);
 
-  // useEffect(() => {
-  //   if (sceneObjects.length === 0) return
-  //   if (currentSceneIndex < 0 || currentSceneIndex >= sceneObjects.length) return;
-  //   sceneObjects[currentSceneIndex].switchTo();
-  // }, [sceneObjects, currentSceneIndex]);
+  useEffect(() => {
+    if (
+      sceneObjects.length === 0 ||
+      currentSceneIndex < 0 ||
+      currentSceneIndex >= sceneObjects.length
+    ) return;
+
+    sceneObjects[currentSceneIndex].switchTo();
+  }, [sceneObjects, currentSceneIndex]);
 
   // —————— AUTOROTATE CONTROL ——————
   useEffect(() => {
+    const viewer = viewerRef.current;
     if (!viewer) return;
 
     try {
@@ -78,7 +86,7 @@ export const useMarzipano = (
     } catch (error) {
       console.error('Error controlling autorotate:', error);
     }
-  }, [isRotating, viewer]);
+  }, [isRotating]);
 
-  return { viewer, sceneObjects, error };
+  return { viewer: viewerRef.current, sceneObjects, error };
 };
