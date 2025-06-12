@@ -9,7 +9,7 @@
 <span style="color:#569cd6;">├──</span> assets/                <span style="color:#6a9955;"># Static assets: images and icons</span>
 │   <span style="color:#569cd6;">├──</span> icons/             <span style="color:#6a9955;"># Icon images</span>
 │   <span style="color:#569cd6;">└──</span> images/            <span style="color:#6a9955;"># Other static images</span>
-<span style="color:#569cd6;">├──</span> data/                  <span style="color:#6a9955;"># Configuration and static data</span>
+<span style="color:#569cd6;">├──</span> config/                <span style="color:#6a9955;"># App-wide configuration (e.g. scene data)</span>
 <span style="color:#569cd6;">├──</span> features/              <span style="color:#6a9955;"># Domain-specific features and components</span>
 │   <span style="color:#569cd6;">├──</span> overlays/          <span style="color:#6a9955;"># UI overlays (Map, Video, etc.)</span>
 │   <span style="color:#569cd6;">├──</span> scene/             <span style="color:#6a9955;"># Scene-related components</span>
@@ -23,6 +23,9 @@
 
 
 ## 🧩 Folder Details
+
+### `config/`
+Contains Marzipano scene data (e.g. hotspots), common settings among all scenes and global settings (e.g. fullscreen, autorotate).
 
 ### `features/`
 Holds core application domains grouped by responsibility. These are **feature-specific** components — they are tightly coupled with domain logic.
