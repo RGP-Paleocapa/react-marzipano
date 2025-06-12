@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import { useSceneStore, useVideoStore } from "@stores";
 import { useContentToggle, useFullScreen, useMarzipano } from "@hooks";
-import { APP_DATA, AppData } from "@data";
+import { APP_DATA } from "@config";
+import type { AppData } from "@types";
 
 export const useAppController = () => {
   const panoRef = useRef<HTMLDivElement>(null);

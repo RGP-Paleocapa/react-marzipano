@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { InfoHotspot, LinkHotspot } from '@types';
 import { createRoot } from 'react-dom/client';
-import appData from '@data/config.json';
+import { APP_DATA } from '@config';
 import Marzipano from 'marzipano';
 import { useHotspotStore, useSceneStore } from '@stores';
 import LinkHotspotElement from './LinkHotspotElement';
@@ -54,7 +54,7 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
   linkHotspots.forEach((hotspot, index) => {
     const element = document.createElement('div');
     containerRef.current?.appendChild(element);
-    const targetSceneIndex = appData.scenes.findIndex(scene => scene.id === hotspot.target);
+    const targetSceneIndex = APP_DATA.scenes.findIndex(scene => scene.id === hotspot.target);
     if (targetSceneIndex === -1) {
       console.error(`Target scene with ID ${hotspot.target} not found.`);
       return;

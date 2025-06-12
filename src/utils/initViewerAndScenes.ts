@@ -1,6 +1,6 @@
 import { RefObject } from "react"
 import { createScene, createViewer } from "@utils"
-import { AppData } from "@data";
+import { AppData } from "@types";
 
 export const initViewerAndScenes = (
   panoRef: RefObject<HTMLDivElement>,
