@@ -10,19 +10,14 @@ export const useAudioLogic = (introAudio: string | null) => {
 
     audio.src = `./assets/audio/${introAudio}`;
     const handleCanPlay = () => {
-      audio.play().catch((err) => {
-        if (err.name !== "AbortError") {
-          console.error("Playback failed:", err);
-        }
-        setReady(true);
-      });
+      setReady(true);
     };
 
-    audio.addEventListener("canplay", handleCanPlay);
+    audio.addEventListener("canplaythrough", handleCanPlay);
     audio.load();
 
     return () => {
-      audio.removeEventListener("canplay", handleCanPlay);
+      audio.removeEventListener("canplaythrough", handleCanPlay);
     };
   }, [introAudio]);
 
