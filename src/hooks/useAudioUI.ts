@@ -14,30 +14,45 @@ export const useAudioUI = (audioRef: React.RefObject<HTMLAudioElement>, ready: b
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.muted = isMuted;
-      audioRef.current.autoplay = true;
-      audioRef.current.load();
+      if (!isMuted) {
+        audioRef.current.currentTime = 0;
+      }
     }
   }, [isMuted]);
 
-useEffect(() => {
-  const interval = setInterval(() => {
+  useEffect(() => {
+      const audio = audioRef.current;
+      if (!audio) return;
+
+      const onPlay = () => setIsPlaying(true);
+      const onPause = () => setIsPlaying(false);
+
+      audio.addEventListener("play", onPlay);
+      audio.addEventListener("pause", onPause);
+
+      setIsPlaying(!audio.paused);
+
+      return () => {
+        audio.removeEventListener("play", onPlay);
+        audio.removeEventListener("pause", onPause);
+      }
+}, [ready]);
+
+  useEffect(() => {
     const audio = audioRef.current;
-    if (!audio) return;
+    if (!audio || !ready) return;
 
-    const onPlay = () => setIsPlaying(true);
-    const onPause = () => setIsPlaying(false);
-
-    audio.addEventListener("play", onPlay);
-    audio.addEventListener("pause", onPause);
-
-    setIsPlaying(!audio.paused);
-
-    clearInterval(interval); // once it's set up, stop
-  }, 100);
-
-  return () => clearInterval(interval);
-}, [ready, audioRef.current]);
-
+    audio.play().catch((err) => {
+      // Autoplay blocked by browser
+      if (err.name === "NotAllowedError") {
+        setMuted(false);
+        setIsPlaying(false);
+        console.warn("Autoplay blocked, waiting for user interaction");
+      } else {
+        console.error("Playback failed:", err);
+      }
+    });
+  }, [ready]);
 
   const toggleMute = useCallback(() => {
     if (!audioRef.current) return;

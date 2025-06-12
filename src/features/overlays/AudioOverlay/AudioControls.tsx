@@ -9,7 +9,7 @@ const AudioControls: React.FC<Props> = ({ isPlaying, onToggle }) => {
     onClick={onToggle}
     className="text-sm w-24 font-medium px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
   >
-    {isPlaying ? "⏸ Avvia" : "▶️ Ferma"}
+    {isPlaying ? "⏸ Ferma" : "▶️ Avvia"}
   </button>
 );
 }

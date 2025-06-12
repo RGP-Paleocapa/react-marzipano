@@ -2,7 +2,7 @@ import { RefObject, useEffect, useState, useRef } from 'react';
 import Marzipano, { autorotate } from 'marzipano';
 import { initViewerAndScenes } from '@utils';
 import { useViewStore } from '@stores';
-import { AppData } from '@data';
+import { AppData } from '@types';
 
 const AUTOROTATE_SETTINGS = {
   yawSpeed: 0.03,

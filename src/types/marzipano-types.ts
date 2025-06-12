@@ -48,3 +48,9 @@ export interface Common {
   levels: Level[];
   faceSize: number;
 }
+
+export interface AppData {
+  settings: Settings;
+  scenes: Scene[];
+  common: Common;
+}

@@ -25,8 +25,8 @@
     "paths": {
       "@assets/*": ["assets/*"],
       "@components/*": ["components/*"],
-      "@data": ["data/index"],
-      "@data/*": ["data/*"],
+      "@config": ["config/index"],
+      "@config/*": ["config/*"],
       "@features/*": ["features/*"],
       "@hooks": ["hooks/index"],
       "@hooks/*": ["hooks/*"],
