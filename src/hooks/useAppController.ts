@@ -6,8 +6,10 @@ import type { AppData } from "@types";
 
 export const useAppController = () => {
   const panoRef = useRef<HTMLDivElement>(null);
-  const { currentSceneIndex } = useSceneStore();
-  const { closeVideo, isVideoVisible, videoLink } = useVideoStore();
+  const currentSceneIndex = useSceneStore(state => state.currentSceneIndex);
+  const closeVideo = useVideoStore(state => state.closeVideo);
+  const isVideoVisible = useVideoStore(state => state.isVideoVisible);
+  const videoLink = useVideoStore(state => state.videoLink);
   const [audioSrc, setAudioSrc] = useState<string | null>(null);
 
   const appData = APP_DATA as AppData;

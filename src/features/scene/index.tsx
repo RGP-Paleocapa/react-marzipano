@@ -20,8 +20,8 @@ const HotspotContainer: React.FC<HotspotContainerProps> = ({
   sceneObjects,
   currentSceneIndex,
 }) => {
-  const { setSceneIndex } = useSceneStore();
-  const { hotspotVisible } = useHotspotStore();
+  const setSceneIndex = useSceneStore(state => state.setSceneIndex);
+  const hotspotVisible = useHotspotStore(state => state.hotspotVisible);
   const containerRef = useRef<HTMLDivElement>(null);
   // const hotspotsRef = useRef<Marzipano.Hotspot[]>([]);
 
