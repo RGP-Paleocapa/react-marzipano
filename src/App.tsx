@@ -1,10 +1,9 @@
-import { MapOverlay, VideoOverlay, AudioOverlay, InformationOverlay } from "@features/overlays";
+import { MapOverlay, VideoOverlay, AudioOverlay, InformationOverlay } from "@overlays";
 import { useAppController } from "@hooks";
 import { useEffect, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { ErrorFallback, Header } from "@ui";
-import Tour from "@features/tour";
-import Scene from "@features/scene";
+import { Header, Tour, Scene } from '@components';
+import { ErrorFallback } from "@errors";
 
 const App = () => {
 

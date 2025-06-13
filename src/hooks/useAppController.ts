@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import { useSceneStore, useVideoStore } from "@stores";
+import { useSceneStore, useVideoStore } from "@store";
 import { useContentToggle, useFullScreen, useMarzipano } from "@hooks";
-import { APP_DATA } from "@config";
+import { APP_DATA } from "@data";
 import type { AppData } from "@types";
 
 export const useAppController = () => {

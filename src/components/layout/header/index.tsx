@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import NavButton from './NavButton';
-import { useAudioStore, useSceneStore, useViewStore } from '@stores';
+import { useAudioStore, useSceneStore, useViewStore } from '@store';
 import { iconFullscreen, iconPause, iconPlay } from '@icons';
 
 interface HeaderProps {
