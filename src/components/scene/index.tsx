@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import { InfoHotspot, LinkHotspot } from '@types';
 import { createRoot } from 'react-dom/client';
-import { APP_DATA } from '@config';
+import { APP_DATA } from '@data';
 import Marzipano from 'marzipano';
-import { useHotspotStore, useSceneStore } from '@stores';
+import { useHotspotStore, useSceneStore } from '@store';
 import LinkHotspotElement from './LinkHotspotElement';
 import InfoHotspotElement from './InfoHotspotElement';
 

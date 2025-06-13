@@ -1,4 +1,4 @@
-import { useAudioStore } from "@stores";
+import { useAudioStore } from "@store";
 import { useAudioLogic } from "./useAudioLogic";
 import { useAudioUI } from "./useAudioUI";
 

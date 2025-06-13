@@ -1,4 +1,4 @@
-import { useViewStore } from '@stores';
+import { useViewStore } from '@store';
 import { useState, useEffect } from 'react';
 import { imageMap } from '@images';
 import Dot from './Dot';

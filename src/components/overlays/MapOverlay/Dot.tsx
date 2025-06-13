@@ -1,5 +1,5 @@
 import React from 'react';
-import { useSceneStore } from '@stores';
+import { useSceneStore } from '@store';
 
 interface DotProps {
   index: number;

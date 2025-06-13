@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { useViewStore } from '@stores/useViewerStore';
+import { useViewStore, useAudioStore } from '@store';
 import { iconInfo, iconLicense, iconLink, iconLinkGreen, iconLinkRed } from '@icons';
-import { useAudioStore } from '@stores';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faVideo } from '@fortawesome/free-solid-svg-icons';

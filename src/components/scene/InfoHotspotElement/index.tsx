@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVideo } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { InfoHotspot } from '@types';
-import { useVideoStore } from '@stores';
+import { useVideoStore } from '@store';
 import HotspotContent from './HotspotContent';
 import { iconInfo } from '@icons';
 

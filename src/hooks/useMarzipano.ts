@@ -1,7 +1,7 @@
 import { RefObject, useEffect, useState, useRef } from 'react';
 import Marzipano, { autorotate } from 'marzipano';
 import { initViewerAndScenes } from '@utils';
-import { useViewStore } from '@stores';
+import { useViewStore } from '@store';
 import { AppData } from '@types';
 
 const AUTOROTATE_SETTINGS = {
