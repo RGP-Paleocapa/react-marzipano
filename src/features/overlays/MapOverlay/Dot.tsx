@@ -20,7 +20,8 @@ const Dot: React.FC<DotProps> = ({
   y,
   roomIndexes,
 }) => {
-  const { setSceneIndex, currentSceneIndex } = useSceneStore();
+  const setSceneIndex = useSceneStore(state => state.setSceneIndex);
+  const currentSceneIndex = useSceneStore(state => state.currentSceneIndex);
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();

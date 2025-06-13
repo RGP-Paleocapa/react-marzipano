@@ -13,7 +13,9 @@ interface InfoComponentProps {
 }
 
 const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits, setRunTour }) => {
-  const { isRotating, toggleRotation } = useViewStore();
+  const isRotating = useViewStore(state => state.isRotating);
+  const toggleRotation = useViewStore(state => state.toggleRotation);
+  const setAudioInvisible = useAudioStore(state => state.setAudioInvisible);
   const initialRotationState = useRef<boolean>(isRotating);
 
   useEffect(() => {
@@ -28,7 +30,6 @@ const InfoComponent: React.FC<InfoComponentProps> = ({ onClose, isCredits, setRu
     };
   }, []);
 
-  const { setAudioInvisible } = useAudioStore();
 
   const handleButtonClick = () => {
     onClose();

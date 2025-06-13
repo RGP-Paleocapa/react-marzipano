@@ -12,7 +12,7 @@ interface InfoHotspotElementProps {
 }
 
 const InfoHotspotElement: React.FC<InfoHotspotElementProps> = ({ hotspot }) => {
-  const { showVideo } = useVideoStore();
+  const showVideo = useVideoStore(state => state.showVideo);
   const [isHovered, setHovered] = useState(false);
   const [isContentVisible, setContentVisibility] = useState<boolean>(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);

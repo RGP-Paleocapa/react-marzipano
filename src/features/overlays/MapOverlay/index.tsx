@@ -4,6 +4,9 @@ import { imageMap } from '@images';
 import Dot from './Dot';
 
 const MapOverlay = () => {
+  const mapEnabled = useViewStore(state => state.mapEnabled);
+  if (!mapEnabled) return null;
+
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(true);
 
@@ -34,8 +37,6 @@ const MapOverlay = () => {
     { index: 5, x: 76, y: 30, roomIndexes: [6] },
   ];
 
-  const { mapEnabled } = useViewStore();
-  if (!mapEnabled) { return null;}
 
   return (
     <div>

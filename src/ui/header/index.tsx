@@ -11,9 +11,10 @@ interface HeaderProps {
 export type HeaderContentType = 'Help' | 'Credits';
 
 const Header: React.FC<HeaderProps> = ({ onToggleFullscreen, onShowContent }) => {
-  const { autoSwitch } = useSceneStore();
-  const { isRotating, toggleRotation } = useViewStore();
-  const { setAudioInvisible } = useAudioStore();
+  const autoSwitch = useSceneStore(state => state.autoSwitch);
+  const isRotating = useViewStore(state => state.isRotating);
+  const toggleRotation = useViewStore(state => state.toggleRotation);
+  const setAudioInvisible = useAudioStore(state => state.setAudioInvisible);
   const [clickedBtn, setClickedBtn] = useState<string | null>(null);
 
   const toggleButtonName = (buttonName: HeaderContentType) : void  => {
