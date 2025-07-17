@@ -18,6 +18,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-error-boundary": "^6.0.0",
+    "react-howler": "^5.2.0",
+    "react-icons": "^5.5.0",
     "react-joyride": "^2.9.3",
     "typescript-eslint": "^8.16.0",
     "zustand": "^5.0.1"
@@ -27,6 +29,7 @@
     "@types/node": "^22.10.1",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.2.22",
+    "@types/react-howler": "^5.2.3",
     "@typescript-eslint/eslint-plugin": "^8.16.0",
     "@typescript-eslint/parser": "^8.16.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
