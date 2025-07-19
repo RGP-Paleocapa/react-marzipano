@@ -32,7 +32,7 @@
     "@types/react-howler": "^5.2.3",
     "@typescript-eslint/eslint-plugin": "^8.16.0",
     "@typescript-eslint/parser": "^8.16.0",
-    "@vitejs/plugin-react-swc": "^3.5.0",
+    "@vitejs/plugin-react-swc": "^3.8.0",
     "autoprefixer": "^10.4.19",
     "eslint": "^9.16.0",
     "eslint-plugin-react-hooks": "^5.0.0",
