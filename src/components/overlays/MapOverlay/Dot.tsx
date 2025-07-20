@@ -1,25 +1,26 @@
 import React from 'react';
 import { useSceneStore } from '@store';
 
-interface DotProps {
+export type DotPosition = {
   index: number;
-  closeFullScreen: () => void;
-  toggleFullScreen: () => void;
-  isFullScreen: boolean;
   x: number;
   y: number;
   roomIndexes: number[];
 }
+interface DotProps {
+  dotPosition: DotPosition;
+  closeFullscreen: () => void;
+  openFullscreen: () => void;
+  isFullScreen: boolean;
+}
 
 const Dot: React.FC<DotProps> = ({
-  index,
-  closeFullScreen,
-  toggleFullScreen,
+  dotPosition,
+  closeFullscreen,
+  openFullscreen,
   isFullScreen,
-  x,
-  y,
-  roomIndexes,
 }) => {
+  const { index, roomIndexes, x, y } = dotPosition;
   const setSceneIndex = useSceneStore(state => state.setSceneIndex);
   const currentSceneIndex = useSceneStore(state => state.currentSceneIndex);
 
@@ -27,9 +28,9 @@ const Dot: React.FC<DotProps> = ({
     e.stopPropagation();
     if (window.innerWidth > 1024 || isFullScreen) {
       setSceneIndex(index);
-      closeFullScreen();
+      closeFullscreen();
     } else {
-      toggleFullScreen();
+      openFullscreen();
     }
   };
 
@@ -38,7 +39,6 @@ const Dot: React.FC<DotProps> = ({
 
   const dotSize = isFullScreen ? 'w-6 h-6 lg:w-8 lg:h-8' : 'hidden lg:block w-3 h-3 text-xs';
   const dotColor = isActive ? 'bg-green-500' : 'bg-red-500';
-
 
   return (
     <div
@@ -51,3 +51,4 @@ const Dot: React.FC<DotProps> = ({
 };
 
 export default Dot;
+  

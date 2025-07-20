@@ -99,7 +99,7 @@ const AudioOverlay: React.FC<AudioOverlayProps> = ({ introAudio }) => {
       <div
         id="audio-overlay"
         className="
-          fixed z-50 px-4 py-2 rounded-md shadow-md
+          fixed z-0 lg:z-20 px-4 py-2 rounded-md shadow-md
           bg-white/90 backdrop-blur-md border border-gray-300
           flex items-center justify-between gap-4
           w-full lg:w-[500px] 2xl:w-[650px]
