@@ -36,7 +36,7 @@ const Dot: React.FC<DotProps> = ({
 
   const isActive = currentSceneIndex === index || roomIndexes.includes(currentSceneIndex);
 
-  const dotSize = isFullScreen ? 'w-6 h-6 lg:w-8 lg:h-8' : 'hidden lg:block w-3 h-3 text-xs';
+  const dotSize = isFullScreen ? 'w-4 h-4' : 'hidden lg:block w-3 h-3 text-xs';
   const dotColor = isActive ? 'bg-green-500' : 'bg-red-500';
 
   return (
