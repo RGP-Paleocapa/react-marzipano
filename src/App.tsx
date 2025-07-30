@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import Scene from "@components/common/Scene";
 import InfoComponent from "@components/common/InfoComponent";
 import Navbar, { ContentType } from "@components/layout/header";
-import MapOverlay from "@components/overlays/MapOverlay";
+import MapOverlay from "@components/overlays/MapOverlay/MapOverlay";
 import VideoOverlay from "@components/overlays/VideoOverlay";
 import AudioOverlay from "./components/overlays/AudioOverlay";
 import { useSceneStore } from "@/context/useSceneStore";
