@@ -10,12 +10,14 @@ const MapOverlay = () => {
 
 
   const dotPositions: DotPosition[] = [
-    { index: 11, x: 23, y: 24, roomIndexes: [12, 13, 14, 15, 16, 17] },
-    { index: 10, x: 23, y: 52, roomIndexes: [] },
-    { index: 8, x: 40, y: 34, roomIndexes: [7, 9] },
-    { index: 2, x: 58, y: 42, roomIndexes: [3, 4] },
-    { index: 0, x: 69, y: 63, roomIndexes: [1] },
-    { index: 5, x: 76, y: 30, roomIndexes: [6] },
+    { index: 16, x: 62, y: 21, roomIndexes: [15, 17] },
+    { index: 12, x: 47, y: 33, roomIndexes: [13, 14] },
+    { index: 11, x: 21, y: 32, roomIndexes: [] },
+    { index: 10, x: 22, y: 59, roomIndexes: [] },
+    { index: 8, x: 40, y: 46, roomIndexes: [7, 9] },
+    { index: 2, x: 56, y: 52, roomIndexes: [3, 4] },
+    { index: 0, x: 65, y: 68, roomIndexes: [1] },
+    { index: 5, x: 73, y: 42, roomIndexes: [6] },
   ];
 
   return (
