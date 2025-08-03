@@ -11,7 +11,7 @@ const FullscreenOverlay: React.FC<FullscreenOverlayProps> = ({
 }) => {
   return (
     <div
-      className={`fixed flex items-center justify-center bottom-16 inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-10 ${className}`}
+      className={`fixed flex items-center justify-center bottom-16 inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-20 ${className}`}
       onClick={onClick}
     >
       {children}
