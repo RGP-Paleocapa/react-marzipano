@@ -41,12 +41,13 @@ const Dot: React.FC<DotProps> = ({
 
   return (
     <div
-      className={`absolute text-white flex items-center justify-center rounded-full cursor-pointer border-2 ${dotSize} ${dotColor}`}
+      className={`absolute w-8 h-8 flex items-center justify-center rounded-full`}
       style={{ top: `${y}%`, left: `${x}%` }}
       onClick={handleClick}
-    />
+    >
+      <div className={`text-white rounded-full cursor-pointer border-2 ${dotSize} ${dotColor}`} />
+    </div>
   );
 };
 
 export default Dot;
-  
