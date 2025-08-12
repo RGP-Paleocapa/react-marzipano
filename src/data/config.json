@@ -555,7 +555,7 @@
         {
           "yaw": -0.2921980901382035,
           "pitch": 0.3223224212032427,
-          "rotation": 270,
+          "rotation": 35,
           "target": "13-piazzetta-esterna-3"
         }
       ],
@@ -585,8 +585,8 @@
       "id": "13-piazzetta-esterna-3",
       "name": "Piazzetta esterna",
       "initialViewParameters": {
-        "yaw": -6.048399731506681,
-        "pitch": -0.1647925166301711,
+        "yaw": 2.048399731506681,
+        "pitch": -0.147925166301711,
         "fov": 1.4550425388027854
       },
       "linkHotspots": [
